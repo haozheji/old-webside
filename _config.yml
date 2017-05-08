@@ -8,6 +8,7 @@ permalink: /:title
 url: cdjhz.github.io
 baseurl:
 
+excerpt_separator: '<!--more-->'
 sass:
   sass_dir: public/css
   style: :compressed
