@@ -1,11 +1,11 @@
-title: Brume
-author: Aigars Dzerviniks
-description: It's simple. It's easy to use. It's a Jekyll theme.
+title: Thoughts of JHz
+author: Haozhe Ji
+description: Stories and thoughs to tell
 
 highlighter: null
 permalink: /:title
 
-url:
+url: cdjhz.github.io
 baseurl:
 
 sass:
