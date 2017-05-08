@@ -8,7 +8,13 @@ permalink: /:title
 url: cdjhz.github.io
 baseurl:
 
+#define the seperator for excerpt
 excerpt_separator: '<!--more-->'
+
+#restrict posts' number per page
+paginate: 10
+#the style of url like "blog/page-2"
+paginate_path: "blog/page-:num"
 sass:
   sass_dir: public/css
   style: :compressed
