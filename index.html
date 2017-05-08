@@ -31,17 +31,6 @@ title: Home
     <div class="post-date col span_4">
       <time datetime="{{ post.date | date: '%Y-%m-%d' }}">{{ post.date | date: "%-d %B" }}</time>
     </div>
-    {{ post.excerpt }}
-    {% capture content_words %} 
-    {{ post.content | number_of_words }} 
-    {% endcapture %} 
-    {% capture excerpt_words %} 
-    {{ post.excerpt | number_of_words }} 
-    {% endcapture %} 
-    {% if excerpt_words != content_words %}
-    <p><a class="btn btn-sm btn-primary" href="{{ post.url }}/#read-more" role="button">Read more <i class="fa fa-arrow-circle-right"></i></a>
-    </p>
-    {{ content | replace: '<!--more-->', '<a class="anchor" id="read-more"></a>' }}
   </article>
 
 {% if forloop.last %}</div></div>{% endif %}
