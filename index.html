@@ -31,7 +31,7 @@ title: Home
     <div class="post-date col span_4">
       <time datetime="{{ post.date | date: '%Y-%m-%d' }}">{{ post.date | date: "%-d %B" }}</time>
     </div>
-    <h3>{{ post.excerpt | strip_html }}</h3>
+    <h3><p>{{ post.excerpt | strip_html }}</p></h3>
   </article>
 
 {% if forloop.last %}</div></div>{% endif %}
