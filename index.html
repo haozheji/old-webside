@@ -7,7 +7,7 @@ title: Home
 {% for post in site.posts %}
 {% unless post.next %}
 
-{% unless forloop.first %}</div></div>{% endunless %}
+{% unless forloop.first %}<div></div>{% endunless %}
 
   <div class="bundle row gutters fadeInDown animated">
     <h2 class="post-year col span_2">{{ post.date | date: '%Y' }}</h2>
@@ -27,21 +27,14 @@ title: Home
 {% endunless %}
 
   <article class="row gutters">
-      <h3 class="media-heading"><a class="text-dblue" href="{{ site.baseurl }}{{ post.url }}" title="{{ post.title }}" class="col span_8">{{ post.title }}</a></h3>
+      <div class="post"><h2 class="post-title"><a href="{{ site.baseurl }}{{ post.url }}" title="{{ post.title }}" class="col span_8">{{ post.title }}</a></h2></div>
     <div class="post-date col span_4">
-      <time datetime="{{ post.date | date: '%Y-%m-%d' }}">{{ post.date | date: "%-d %B" }}</time>
+      <div class="post-meta"><h3><time datetime="{{ post.date | date: '%Y-%m-%d' }}">{{ post.date | date: "%-d %B" }}</time></h3></div>
     </div>
-    {{ post.excerpt }}
-    {% capture content_words %} 
-    {{ post.content | number_of_words }} 
-    {% endcapture %} 
-    {% capture excerpt_words %} 
-    {{ post.excerpt | number_of_words }} 
-    {% endcapture %} 
-    {% if excerpt_words != content_words %}
-    <p><a class="btn btn-sm btn-primary" href="{{ post.url }}/#read-more" role="button">Read more <i class="fa fa-arrow-circle-right"></i></a>
-    </p>
-    {{ content | replace: '<!--more-->', '<a class="anchor" id="read-more"></a>' }}
+    <div class="post-content">
+    {{ post.excerpt | strip_html }}
+    </div>
+    <p class="readmore"><a href="{{ site.baseurl }}{{ post.url }}" title="{{ post.title }}" class="col span_8">Read more</a></p>
   </article>
 
 {% if forloop.last %}</div></div>{% endif %}
