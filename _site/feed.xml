@@ -6,99 +6,85 @@
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
     <description></description>
     <language>en-us</language>
-    <pubDate>Mon, 08 May 2017 18:47:06 +0800</pubDate>
-    <lastBuildDate>Mon, 08 May 2017 18:47:06 +0800</lastBuildDate>
+    <pubDate>Tue, 09 May 2017 13:35:02 +0800</pubDate>
+    <lastBuildDate>Tue, 09 May 2017 13:35:02 +0800</lastBuildDate>
 
     
       <item>
-        <title>Demo post</title>
-        <link>http://localhost:4000/demo-post</link>
-        <pubDate>Fri, 07 Mar 2014 00:00:00 +0800</pubDate>
+        <title>courant-Fischer 定理的证明</title>
+        <link>http://localhost:4000/courant-fischer-prove</link>
+        <pubDate>Tue, 09 May 2017 00:00:00 +0800</pubDate>
         <author></author>
-        <description>&lt;p&gt;Praesent tincidunt vestibulum sem nec eleifend. Pellentesque adipiscing mollis adipiscing. Sed ipsum sem, eleifend eget dapibus in, tincidunt ut dolor. Curabitur gravida urna leo, eget auctor turpis feugiat non. Vivamus pharetra, lorem id ullamcorper rutrum, eros erat condimentum erat, ac dignissim lorem nisi nec nunc. Praesent tellus mi, volutpat quis nisl et, consectetur blandit nibh.&lt;/p&gt;
+        <description>&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;\( A \)&lt;/code&gt;为&lt;code class=&quot;highlighter-rouge&quot;&gt;\( n \)&lt;/code&gt;阶实对称矩阵，有特征值&lt;code class=&quot;highlighter-rouge&quot;&gt;\[ \lambda_1\ge \lambda_2\ge\cdots\ge\lambda_n \]&lt;/code&gt;,则有：
+&lt;code class=&quot;highlighter-rouge&quot;&gt;\[ \min_{\dim V=n-k+1}\max_{0\ne v\in V}\frac{v^HAv}{v^Hv}=\lambda_k \]&lt;/code&gt;
+该定理又被称为极小-极大定理.&lt;/p&gt;
 
-&lt;p&gt;Nulla sit amet nulla non odio sodales mollis elementum sed sem. Aenean et laoreet enim. Curabitur vulputate, mi rutrum commodo condimentum, enim nunc feugiat magna, vel rutrum sapien ante nec ante. Donec nec nibh placerat, molestie felis ac, vulputate arcu. Donec condimentum pellentesque nibh vel tincidunt. Fusce sem ipsum, varius at laoreet vitae, accumsan sed nisl. Nunc eget viverra diam. Aliquam pulvinar, enim id commodo tincidunt, risus lectus pharetra lacus, et semper enim ligula ut mauris. Sed vitae sollicitudin ante. In sollicitudin placerat dui et sagittis.&lt;/p&gt;
+&lt;!--more--&gt;
 
-&lt;blockquote&gt;
-  &lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas egestas leo id tortor feugiat, sit amet cursus diam mollis. Nunc sit amet tellus est. Nunc lacus nisl, gravida ut aliquam vel, molestie eget odio. Nulla facilisi. Ut sed libero pharetra nunc volutpat hendrerit. Mauris eget mi adipiscing, congue tellus ut, scelerisque eros. Phasellus ullamcorper dictum tellus nec pretium.&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;它的对偶问题，也就是极大-极小定理，表述如下：
+&lt;code class=&quot;highlighter-rouge&quot;&gt;\[ \max_{\dim V=k}\min_{0\ne v\in V}\frac{v^HAv}{v^Hv}=\lambda_k \]&lt;/code&gt;&lt;/p&gt;
 
-&lt;p&gt;Integer molestie orci ante, nec dictum metus aliquam ut. Donec id tristique enim. Quisque tellus est, dignissim ut justo ac, volutpat fringilla mi. Duis ultricies nec sapien vitae blandit. &lt;strong&gt;Suspendisse sed est mi&lt;/strong&gt;. Mauris varius sapien vel nulla accumsan, id tincidunt ipsum ultrices. Sed eget magna mauris. Etiam porttitor lacus ullamcorper lacus tincidunt aliquam. Sed feugiat congue fringilla. Nunc velit diam, vulputate sed metus vitae, iaculis tempor arcu. Proin consectetur a erat in dignissim.&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;\( proof: \)&lt;/code&gt;
+令&lt;code class=&quot;highlighter-rouge&quot;&gt;\[ \mu(V)=\max_{0\ne v\in V}\frac{v^HAv}{v^Hv} \]&lt;/code&gt;
+且对应&lt;code class=&quot;highlighter-rouge&quot;&gt;\( \lambda_1,\lambda_2,\cdots,\lambda_n \)&lt;/code&gt;的特征向量为&lt;code class=&quot;highlighter-rouge&quot;&gt;\( q_1,q_2,\cdots,q_n\)&lt;/code&gt;.&lt;/p&gt;
 
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th&gt;Tables&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;Are&lt;/th&gt;
-      &lt;th style=&quot;text-align: right&quot;&gt;Cool&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;col 3 is&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;right-aligned&lt;/td&gt;
-      &lt;td style=&quot;text-align: right&quot;&gt;$1600&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;col 2 is&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;centered&lt;/td&gt;
-      &lt;td style=&quot;text-align: right&quot;&gt;$12&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;zebra stripes&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;are neat&lt;/td&gt;
-      &lt;td style=&quot;text-align: right&quot;&gt;$1&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
+&lt;p&gt;考虑&lt;code class=&quot;highlighter-rouge&quot;&gt;\( n-k+1 \)&lt;/code&gt;维子空间&lt;code class=&quot;highlighter-rouge&quot;&gt;\( V_0 \)&lt;/code&gt;.
+&lt;code class=&quot;highlighter-rouge&quot;&gt;\[ V_0\perp V^*=span\{ q_1,q_2,\cdots,q_{k-1} \} \]&lt;/code&gt;
+因为&lt;code class=&quot;highlighter-rouge&quot;&gt;\(n \)&lt;/code&gt;阶实对称矩阵的特征向量为&lt;code class=&quot;highlighter-rouge&quot;&gt;\( Re^n \)&lt;/code&gt;的一组标准正交基。因此&lt;/p&gt;
 
-&lt;p&gt;Pellentesque adipiscing mollis adipiscing.&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;\(V_0=(V^*)^{\perp}=span\{q_k,q_{k+1},\cdots,q_n\}\)&lt;/code&gt;&lt;/p&gt;
 
-&lt;ul&gt;
-  &lt;li&gt;Nulla sit amet nulla non odio sodales mollis elementum sed sem.&lt;/li&gt;
-  &lt;li&gt;Donec id tristique enim. Quisque tellus est, dignissim ut justo ac, volutpat fringilla mi.&lt;/li&gt;
-  &lt;li&gt;Nam luctus erat dolor, non viverra nulla varius at.&lt;/li&gt;
-&lt;/ul&gt;
+&lt;p&gt;即对任意&lt;code class=&quot;highlighter-rouge&quot;&gt;\(v\in V_0\)&lt;/code&gt;,存在&lt;code class=&quot;highlighter-rouge&quot;&gt;\(\{c_i\}_{i=k}^n\)&lt;/code&gt;使得：
+&lt;code class=&quot;highlighter-rouge&quot;&gt;\[v=c_kq_k+c_{k+1}q_{k+1}+\cdots+c_{n}q_n\]&lt;/code&gt;
+则有：
+&lt;code class=&quot;highlighter-rouge&quot;&gt;\[\mu(V_0)=\max_{c_k,\cdots,c_n}\frac{\sum_{i=k}^n\lambda_ic_i^2}{\sum_{i=k}^{n}c_i^2}=\lambda_k\]&lt;/code&gt;
+考虑任意&lt;code class=&quot;highlighter-rouge&quot;&gt;\( \dim{V'}=n-k+1\)&lt;/code&gt;且&lt;code class=&quot;highlighter-rouge&quot;&gt;\(V'\ne V_0 \)&lt;/code&gt;.直观上认识，&lt;code class=&quot;highlighter-rouge&quot;&gt;\(V'\)&lt;/code&gt;可能包含原有&lt;code class=&quot;highlighter-rouge&quot;&gt;\(V_0\)&lt;/code&gt;的成分也可能不包含(换句话说就是&lt;code class=&quot;highlighter-rouge&quot;&gt;\(V'\)&lt;/code&gt;在&lt;code class=&quot;highlighter-rouge&quot;&gt;\(V_0\)&lt;/code&gt;上投影的子空间可以有分量，也可以为&lt;code class=&quot;highlighter-rouge&quot;&gt;\(\{0\}\)&lt;/code&gt;.但&lt;code class=&quot;highlighter-rouge&quot;&gt;\(V'\)&lt;/code&gt;在&lt;code class=&quot;highlighter-rouge&quot;&gt;\(V_0\)&lt;/code&gt;的正交子空间&lt;code class=&quot;highlighter-rouge&quot;&gt;\(V^*\)&lt;/code&gt;中一定是有投影分量的。&lt;/p&gt;
 
-&lt;p&gt;Curabitur nec ullamcorper dui, blandit aliquet ipsum. Integer suscipit odio quis eros fermentum auctor. Sed tincidunt quam eleifend, egestas erat vulputate, tincidunt metus. Maecenas gravida sodales mi nec posuere. Cras vel nisi condimentum, hendrerit lacus sed, scelerisque ipsum. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nunc convallis vestibulum erat, quis porta tellus. &lt;em&gt;In lorem erat, sollicitudin varius posuere id, molestie ac eros&lt;/em&gt;. Fusce luctus tellus vitae vulputate venenatis. Sed scelerisque bibendum interdum. Sed pretium commodo ultrices. Fusce luctus quam id porttitor vulputate. Integer ornare consectetur diam eget rutrum. Etiam eget sapien metus.&lt;/p&gt;
+&lt;p&gt;这时我们把&lt;code class=&quot;highlighter-rouge&quot;&gt;\(V'\)&lt;/code&gt;写成两个正交子空间的直和的形式，一部分是在&lt;code class=&quot;highlighter-rouge&quot;&gt;\(V_0\)&lt;/code&gt;中的投影(可能为&lt;code class=&quot;highlighter-rouge&quot;&gt;\(\{0\}\)&lt;/code&gt;)，另一部分是在&lt;code class=&quot;highlighter-rouge&quot;&gt;\(V^*\)&lt;/code&gt;中的投影。
+后者一定是存在分量的,且一定可以用&lt;code class=&quot;highlighter-rouge&quot;&gt;\(V^*\)&lt;/code&gt;的一部分基(假设&lt;code class=&quot;highlighter-rouge&quot;&gt;\(j\)&lt;/code&gt;个)张成，因为它是&lt;code class=&quot;highlighter-rouge&quot;&gt;\(V^*\)&lt;/code&gt;的子空间。
+则存在&lt;code class=&quot;highlighter-rouge&quot;&gt;\(q_{i_1},q_{i_2},\cdots,q_{i_j},(1\le j\le k-1,1\le i_1,i_2,\cdots,i_j\le k-1)\)&lt;/code&gt; 使得任意&lt;code class=&quot;highlighter-rouge&quot;&gt;\(v'\in V'\)&lt;/code&gt;
+&lt;code class=&quot;highlighter-rouge&quot;&gt;\[ v'=\sum_{l=1}^jc_{i_l}q_{i_l}+v_x\\v_x\in V'|span\{q_{i_1},\cdots,q_{i_j}\} \]&lt;/code&gt;
+&lt;code class=&quot;highlighter-rouge&quot;&gt;\(v_x\)&lt;/code&gt;分量为&lt;code class=&quot;highlighter-rouge&quot;&gt;\(v'\)&lt;/code&gt;在&lt;code class=&quot;highlighter-rouge&quot;&gt;\(V_0\)&lt;/code&gt;中的投影，故为&lt;code class=&quot;highlighter-rouge&quot;&gt;\(q_k,\cdots,q_n\)&lt;/code&gt;的线性组合(系数可以为0).
+而同时&lt;code class=&quot;highlighter-rouge&quot;&gt;\(v'\)&lt;/code&gt;还含有分量&lt;code class=&quot;highlighter-rouge&quot;&gt;\[q_{i_1},q_{i_2},\cdots,q_{i_j},(1\le j\le k-1,1\le i_1,i_2,\cdots,i_j\le k-1)\]&lt;/code&gt;它们对应更大的特征值。即&lt;code class=&quot;highlighter-rouge&quot;&gt;\(v'\)&lt;/code&gt;可以写成：
+&lt;code class=&quot;highlighter-rouge&quot;&gt;\[ v'=c_{i_1}q_{i_1}+\cdots+c_{i_j}q_{i_j}+b_kq_k+\cdots+b_nq_n\]&lt;/code&gt;
+则有：
+&lt;code class=&quot;highlighter-rouge&quot;&gt;\[ \mu(V')=\max_{c,b}\frac{\lambda_{i_1}c_{i_1}^2+\cdots+\lambda_{i_j}c_{i_j}^2+\lambda_kb_k^2\cdots+\lambda_nb_n^2}{c_{i_1}^2+\cdots+c_{i_j}^2+b_k^2\cdots+b_n^2}=\max_{1\le l\le j}\lambda_{i_l}&amp;gt;\lambda_k \]&lt;/code&gt;
+即
+&lt;code class=&quot;highlighter-rouge&quot;&gt;\[ \min_{\dim V=n-k+1}\mu(V)=\lambda_k \]&lt;/code&gt;
+当且仅当&lt;code class=&quot;highlighter-rouge&quot;&gt;\(V=V_0\)&lt;/code&gt;时取到.&lt;/p&gt;
 
-&lt;dl&gt;
-  &lt;dt&gt;Ornare&lt;/dt&gt;
-  &lt;dd&gt;Cras vel nisi condimentum, hendrerit lacus sed, scelerisque ipsum.&lt;/dd&gt;
-  &lt;dt&gt;Convallis&lt;/dt&gt;
-  &lt;dd&gt;In lorem erat, sollicitudin varius posuere id, molestie ac eros&lt;/dd&gt;
-&lt;/dl&gt;
+&lt;p&gt;作为特征分析中有较多应用的定理，对于它的证明却极其罕至。其中笔者认为写得比较详细精彩的是来自于台湾国立交通大学的周志成老师的一篇博文&lt;a href=&quot;https://ccjou.wordpress.com/2010/03/16/hermitian-%E7%9F%A9%E9%99%A3%E7%89%B9%E5%BE%B5%E5%80%BC%E7%9A%84%E8%AE%8A%E5%8C%96%E7%95%8C%E5%AE%9A/&quot;&gt;Hermitian 矩陣特徵值的變化界定&lt;/a&gt;.从特征向量和子空间的本质出发，步步深入，应该说讲的十分透彻了。除此之外清华大学张贤达老师的《矩阵分析与应用》一书中也有该定理的证明;可能由于篇幅所限，证明过程有所压缩，笔者觉得理解起来不太容易。&lt;/p&gt;
 
-&lt;p&gt;Proin at libero id lorem fermentum elementum quis eget est.&lt;/p&gt;
+&lt;p&gt;参考了以上的证明，笔者决定从自己理解的角度给出证明。从特殊情况推广到一般，建立之间的桥梁应该是主要思路;这一定理也给出Rayleigh商的直观，我认为是二次型对应的闭超曲面(超椭球？姑且这么叫)的最长轴长在不同子空间的取值。如何将对于定理的直观转化为严密的数学文字需要再三斟酌，或许这就是线性代数的魅力吧。&lt;/p&gt;
 
-&lt;ol&gt;
-  &lt;li&gt;Nam bibendum turpis massa, at accumsan justo fermentum ac.&lt;/li&gt;
-  &lt;li&gt;Nulla non nulla ut ante condimentum mattis vel at lectus.&lt;/li&gt;
-  &lt;li&gt;Etiam eget tortor tincidunt, iaculis ligula a, tristique massa. Fusce sed congue lorem, interdum sodales nisl.&lt;/li&gt;
-&lt;/ol&gt;
+</description>
+      </item>
+    
+      <item>
+        <title>git push repo 时保存密码的命令</title>
+        <link>http://localhost:4000/git-push-save-pwd</link>
+        <pubDate>Mon, 08 May 2017 00:00:00 +0800</pubDate>
+        <author></author>
+        <description>&lt;p&gt;在git push之前输一条命令可将密码保存到硬盘.&lt;/p&gt;
+&lt;div class=&quot;language-terminal highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;w&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;git&lt;/span&gt;&lt;span class=&quot;kv&quot;&gt; config credential.helper store
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;密码保存在用户目录的.git-credentials文件中.&lt;/p&gt;
+</description>
+      </item>
+    
+      <item>
+        <title>第一篇博文</title>
+        <link>http://localhost:4000/First-post</link>
+        <pubDate>Mon, 08 May 2017 00:00:00 +0800</pubDate>
+        <author></author>
+        <description>&lt;p&gt;经过再三斟酌和尝试之后，决定使用&lt;a href=&quot;https://pages.github.com&quot;&gt;github page&lt;/a&gt;和&lt;a href=&quot;http://jekyllcn.com/&quot;&gt;jekyll&lt;/a&gt;来建立自己的第一个博客。
+&lt;!--more--&gt;
+考虑到博客的维护问题和单纯的只是想记录一些想法写些文章的初心，就选择了一个足够简单纯粹且能够驾驭的框架和主题。&lt;/p&gt;
 
-&lt;p&gt;Etiam consequat euismod ornare. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nulla pellentesque ipsum vulputate, pellentesque nisl vitae, lacinia sem. Praesent auctor felis et odio ultrices, nec tempor elit lobortis. Etiam ornare massa non risus luctus, id iaculis lacus egestas. Pellentesque massa dolor, mattis id lobortis eget, tristique vitae est.&lt;/p&gt;
+&lt;p&gt;现在只定下了一个初步的框架，以后也许会加入一些projects和paper reading也不定。&lt;/p&gt;
 
-&lt;hr /&gt;
-
-&lt;p&gt;Nam vulputate leo vitae libero vehicula, id tincidunt velit malesuada. In vel ornare nisi, id semper turpis. Vivamus erat elit, venenatis quis dui at, convallis suscipit sapien. Nunc in nisi scelerisque, aliquam mauris porttitor, facilisis ligula. Vestibulum cursus erat ac turpis bibendum, id pulvinar dolor dapibus. Proin vitae justo et velit imperdiet ultrices id id odio. Cras adipiscing ante vel mauris lobortis rutrum. Aenean eu felis est. In lacinia porttitor risus non sagittis.&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Greeter&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;initialize&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;message&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;vi&quot;&gt;@message&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;message&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-
-  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;greet&lt;/span&gt;
-    &lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;message&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-
-&lt;span class=&quot;n&quot;&gt;john&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Greeter&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;Hello, World&amp;#39;&lt;/span&gt;
-
-&lt;span class=&quot;n&quot;&gt;john&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;greet&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;Sed imperdiet interdum ultrices. Phasellus iaculis porttitor lorem nec scelerisque. Suspendisse eros urna, adipiscing vel luctus at, feugiat sit amet arcu. Aliquam porttitor ut urna pellentesque sagittis. Donec pellentesque venenatis diam sit amet cursus. Etiam luctus, metus quis gravida fermentum, tortor arcu consequat metus, eget viverra augue risus ac dui. Fusce faucibus scelerisque quam eu sagittis. Sed sit amet sapien non augue lobortis adipiscing. Sed sagittis at lectus eu tempus. Nulla non nulla ut ante condimentum mattis vel at lectus. Nulla ultricies dui et urna semper ultrices. Sed neque ante, dictum in dignissim luctus, facilisis ornare odio. Aenean tempor ultrices magna non pharetra. Curabitur vulputate nec est aliquet suscipit. Etiam ipsum sapien, dictum quis tristique vel, pretium at elit.&lt;/p&gt;
+&lt;p&gt;总之一切顺着自己性子来;希望时间在此地缓缓流淌。&lt;/p&gt;
 </description>
       </item>
     

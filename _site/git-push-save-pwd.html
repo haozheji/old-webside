@@ -4,14 +4,14 @@
     <!-- meta information -->
 <meta charset="utf-8">
 <meta name="description" 
-      content="An undergraduate at THU@EE fascinated by all those cutting-edge technologies. " >
+      content="在git push之前输一条命令可将密码保存到硬盘.$ git config credential.helper store密码保存在用户目录的.git-credentials文件中." >
 <meta name="author" content="Haozhe Ji">
 
 <!-- Enable responsiveness on mobile devices-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
 
 <!-- title -->
-<title>About &middot; </title>
+<title>git push repo 时保存密码的命令 &middot; </title>
 
 <!-- icons -->
 <link rel="shortcut icon" href="/public/images/favicon.ico" />
@@ -64,7 +64,7 @@
      >Home</a>
   
   <a href="/about" title="About"
-     class="current-page">About</a>
+     >About</a>
   
   <a href="/info" title="Information"
      >Information</a>
@@ -74,9 +74,13 @@
       </header>
 
       <article class="single row gutters">
-  <h2>About</h2>
+  <h2>git push repo 时保存密码的命令</h2>
 
-  <p>An undergraduate at THU@EE fascinated by all those cutting-edge technologies.</p>
+  <p>在git push之前输一条命令可将密码保存到硬盘.</p>
+<div class="language-terminal highlighter-rouge"><pre class="highlight"><code><span class="w">$ </span><span class="nc">git</span><span class="kv"> config credential.helper store
+</span></code></pre>
+</div>
+<p>密码保存在用户目录的.git-credentials文件中.</p>
 
 </article>
 

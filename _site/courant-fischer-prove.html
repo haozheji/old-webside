@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- meta information -->
+<meta charset="utf-8">
+<meta name="description" 
+      content="\( A \)为\( n \)阶实对称矩阵，有特征值\[ \lambda_1\ge \lambda_2\ge\cdots\ge\lambda_n \],则有：\[ \min_{\dim V=n-k+1}\max_{0\ne v\in ..." >
+<meta name="author" content="Haozhe Ji">
+
+<!-- Enable responsiveness on mobile devices-->
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+<!-- title -->
+<title>courant-Fischer 定理的证明 &middot; </title>
+
+<!-- icons -->
+<link rel="shortcut icon" href="/public/images/favicon.ico" />
+
+<!-- stylesheets -->
+<link rel="stylesheet" href="/public/css/responsive.gs.12col.css">
+<link rel="stylesheet" href="/public/css/animate.min.css">
+<link rel="stylesheet" href="/public/css/main.css">
+
+<!-- Google fonts -->
+<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700,400italic&subset=latin-ext">
+
+
+<!-- font Awesome -->
+<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+
+
+<!-- feed links -->
+<link rel="alternate" href="http://localhost:4000/feed.xml" type="application/rss+xml" title="">
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+          }
+        });
+      
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+          for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+          }
+        });
+    </script>      
+    <script type="text/javascript"
+    src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+    </script>
+  </head>
+  <body>
+    <div class="container azul">
+      <header class="top row gutters">
+        <div class="col span_2 center">
+          <!-- TODO: add baseurl to the logo link -->
+          <a href="http://localhost:4000" id="logo" title="Thoughts of JHz"
+             style="background-image: url(/public/images/logo.png);"></a>
+        </div>
+        <nav class="col span_10 top-navbar">
+  
+  <a href="/" title="Home"
+     >Home</a>
+  
+  <a href="/about" title="About"
+     >About</a>
+  
+  <a href="/info" title="Information"
+     >Information</a>
+  
+</nav>
+
+      </header>
+
+      <article class="single row gutters">
+  <time class="published" datetime="2017-05-09">09 May 2017</time>
+  <h2>courant-Fischer 定理的证明</h2>
+
+  <p><code class="highlighter-rouge">\( A \)</code>为<code class="highlighter-rouge">\( n \)</code>阶实对称矩阵，有特征值<code class="highlighter-rouge">\[ \lambda_1\ge \lambda_2\ge\cdots\ge\lambda_n \]</code>,则有：
+<code class="highlighter-rouge">\[ \min_{\dim V=n-k+1}\max_{0\ne v\in V}\frac{v^HAv}{v^Hv}=\lambda_k \]</code>
+该定理又被称为极小-极大定理.</p>
+
+<!--more-->
+
+<p>它的对偶问题，也就是极大-极小定理，表述如下：
+<code class="highlighter-rouge">\[ \max_{\dim V=k}\min_{0\ne v\in V}\frac{v^HAv}{v^Hv}=\lambda_k \]</code></p>
+
+<p><code class="highlighter-rouge">\( proof: \)</code>
+令<code class="highlighter-rouge">\[ \mu(V)=\max_{0\ne v\in V}\frac{v^HAv}{v^Hv} \]</code>
+且对应<code class="highlighter-rouge">\( \lambda_1,\lambda_2,\cdots,\lambda_n \)</code>的特征向量为<code class="highlighter-rouge">\( q_1,q_2,\cdots,q_n\)</code>.</p>
+
+<p>考虑<code class="highlighter-rouge">\( n-k+1 \)</code>维子空间<code class="highlighter-rouge">\( V_0 \)</code>.
+<code class="highlighter-rouge">\[ V_0\perp V^*=span\{ q_1,q_2,\cdots,q_{k-1} \} \]</code>
+因为<code class="highlighter-rouge">\(n \)</code>阶实对称矩阵的特征向量为<code class="highlighter-rouge">\( Re^n \)</code>的一组标准正交基。因此</p>
+
+<p><code class="highlighter-rouge">\(V_0=(V^*)^{\perp}=span\{q_k,q_{k+1},\cdots,q_n\}\)</code></p>
+
+<p>即对任意<code class="highlighter-rouge">\(v\in V_0\)</code>,存在<code class="highlighter-rouge">\(\{c_i\}_{i=k}^n\)</code>使得：
+<code class="highlighter-rouge">\[v=c_kq_k+c_{k+1}q_{k+1}+\cdots+c_{n}q_n\]</code>
+则有：
+<code class="highlighter-rouge">\[\mu(V_0)=\max_{c_k,\cdots,c_n}\frac{\sum_{i=k}^n\lambda_ic_i^2}{\sum_{i=k}^{n}c_i^2}=\lambda_k\]</code>
+考虑任意<code class="highlighter-rouge">\( \dim{V'}=n-k+1\)</code>且<code class="highlighter-rouge">\(V'\ne V_0 \)</code>.直观上认识，<code class="highlighter-rouge">\(V'\)</code>可能包含原有<code class="highlighter-rouge">\(V_0\)</code>的成分也可能不包含(换句话说就是<code class="highlighter-rouge">\(V'\)</code>在<code class="highlighter-rouge">\(V_0\)</code>上投影的子空间可以有分量，也可以为<code class="highlighter-rouge">\(\{0\}\)</code>.但<code class="highlighter-rouge">\(V'\)</code>在<code class="highlighter-rouge">\(V_0\)</code>的正交子空间<code class="highlighter-rouge">\(V^*\)</code>中一定是有投影分量的。</p>
+
+<p>这时我们把<code class="highlighter-rouge">\(V'\)</code>写成两个正交子空间的直和的形式，一部分是在<code class="highlighter-rouge">\(V_0\)</code>中的投影(可能为<code class="highlighter-rouge">\(\{0\}\)</code>)，另一部分是在<code class="highlighter-rouge">\(V^*\)</code>中的投影。
+后者一定是存在分量的,且一定可以用<code class="highlighter-rouge">\(V^*\)</code>的一部分基(假设<code class="highlighter-rouge">\(j\)</code>个)张成，因为它是<code class="highlighter-rouge">\(V^*\)</code>的子空间。
+则存在<code class="highlighter-rouge">\(q_{i_1},q_{i_2},\cdots,q_{i_j},(1\le j\le k-1,1\le i_1,i_2,\cdots,i_j\le k-1)\)</code> 使得任意<code class="highlighter-rouge">\(v'\in V'\)</code>
+<code class="highlighter-rouge">\[ v'=\sum_{l=1}^jc_{i_l}q_{i_l}+v_x\\v_x\in V'|span\{q_{i_1},\cdots,q_{i_j}\} \]</code>
+<code class="highlighter-rouge">\(v_x\)</code>分量为<code class="highlighter-rouge">\(v'\)</code>在<code class="highlighter-rouge">\(V_0\)</code>中的投影，故为<code class="highlighter-rouge">\(q_k,\cdots,q_n\)</code>的线性组合(系数可以为0).
+而同时<code class="highlighter-rouge">\(v'\)</code>还含有分量<code class="highlighter-rouge">\[q_{i_1},q_{i_2},\cdots,q_{i_j},(1\le j\le k-1,1\le i_1,i_2,\cdots,i_j\le k-1)\]</code>它们对应更大的特征值。即<code class="highlighter-rouge">\(v'\)</code>可以写成：
+<code class="highlighter-rouge">\[ v'=c_{i_1}q_{i_1}+\cdots+c_{i_j}q_{i_j}+b_kq_k+\cdots+b_nq_n\]</code>
+则有：
+<code class="highlighter-rouge">\[ \mu(V')=\max_{c,b}\frac{\lambda_{i_1}c_{i_1}^2+\cdots+\lambda_{i_j}c_{i_j}^2+\lambda_kb_k^2\cdots+\lambda_nb_n^2}{c_{i_1}^2+\cdots+c_{i_j}^2+b_k^2\cdots+b_n^2}=\max_{1\le l\le j}\lambda_{i_l}&gt;\lambda_k \]</code>
+即
+<code class="highlighter-rouge">\[ \min_{\dim V=n-k+1}\mu(V)=\lambda_k \]</code>
+当且仅当<code class="highlighter-rouge">\(V=V_0\)</code>时取到.</p>
+
+<p>作为特征分析中有较多应用的定理，对于它的证明却极其罕至。其中笔者认为写得比较详细精彩的是来自于台湾国立交通大学的周志成老师的一篇博文<a href="https://ccjou.wordpress.com/2010/03/16/hermitian-%E7%9F%A9%E9%99%A3%E7%89%B9%E5%BE%B5%E5%80%BC%E7%9A%84%E8%AE%8A%E5%8C%96%E7%95%8C%E5%AE%9A/">Hermitian 矩陣特徵值的變化界定</a>.从特征向量和子空间的本质出发，步步深入，应该说讲的十分透彻了。除此之外清华大学张贤达老师的《矩阵分析与应用》一书中也有该定理的证明;可能由于篇幅所限，证明过程有所压缩，笔者觉得理解起来不太容易。</p>
+
+<p>参考了以上的证明，笔者决定从自己理解的角度给出证明。从特殊情况推广到一般，建立之间的桥梁应该是主要思路;这一定理也给出Rayleigh商的直观，我认为是二次型对应的闭超曲面(超椭球？姑且这么叫)的最长轴长在不同子空间的取值。如何将对于定理的直观转化为严密的数学文字需要再三斟酌，或许这就是线性代数的魅力吧。</p>
+
+
+</article>
+
+
+      <footer>
+        <p>
+        Blogger's <a href="https://www.github.com/cdjhz">github</a>.
+        This blog is powered by jekyll, theme by <a href="https://github.com/aigarsdz/brume">aigarsdz</a>.
+        </p>
+      </footer>
+    </div>
+
+    <!-- scripts -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="/public/js/jquery.fitvids.js"></script>
+    <script>
+      $(document).ready(function(){
+        $("article").fitVids();
+      });
+    </script>
+  </body>
+</html>

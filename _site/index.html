@@ -4,8 +4,8 @@
     <!-- meta information -->
 <meta charset="utf-8">
 <meta name="description" 
-      content="It's simple. It's easy to use. It's a Jekyll theme." >
-<meta name="author" content="Aigars Dzerviniks">
+      content="Stories and thoughs to tell" >
+<meta name="author" content="Haozhe Ji">
 
 <!-- Enable responsiveness on mobile devices-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
@@ -25,17 +25,37 @@
 <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700,400italic&subset=latin-ext">
 
 
+<!-- font Awesome -->
+<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+
 
 <!-- feed links -->
 <link rel="alternate" href="http://localhost:4000/feed.xml" type="application/rss+xml" title="">
 
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+          }
+        });
+      
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+          for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+          }
+        });
+    </script>      
+    <script type="text/javascript"
+    src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+    </script>
   </head>
   <body>
     <div class="container azul">
       <header class="top row gutters fadeInLeft animated">
         <div class="col span_2 center">
           <!-- TODO: add baseurl to the logo link -->
-          <a href="http://localhost:4000" id="logo" title="Brume"
+          <a href="http://localhost:4000" id="logo" title="Thoughts of JHz"
              style="background-image: url(/public/images/logo.png);"></a>
         </div>
         <nav class="col span_10 top-navbar">
@@ -43,8 +63,11 @@
   <a href="/" title="Home"
      class="current-page">Home</a>
   
-  <a href="/brume/about" title="About"
+  <a href="/about" title="About"
      >About</a>
+  
+  <a href="/info" title="Information"
+     >Information</a>
   
 </nav>
 
@@ -57,16 +80,71 @@
 
 
   <div class="bundle row gutters fadeInDown animated">
-    <h2 class="post-year col span_2">2014</h2>
+    <h2 class="post-year col span_2">2017</h2>
     <div class="posts-by-year col span_10">
 
 
 
   <article class="row gutters">
-    <a href="/demo-post" title="Demo post" class="col span_8">Demo post</a>
+      <div class="post"><h2 class="post-title"><a href="/courant-fischer-prove" title="courant-Fischer 定理的证明" class="col span_8">courant-Fischer 定理的证明</a></h2></div>
     <div class="post-date col span_4">
-      <time datetime="2014-03-07">7 March</time>
+      <div class="post-meta"><h3><time datetime="2017-05-09">9 May</time></h3></div>
     </div>
+    <div class="post-content">
+    \( A \)为\( n \)阶实对称矩阵，有特征值\[ \lambda_1\ge \lambda_2\ge\cdots\ge\lambda_n \],则有：
+\[ \min_{\dim V=n-k+1}\max_{0\ne v\in V}\frac{v^HAv}{v^Hv}=\lambda_k \]
+该定理又被称为极小-极大定理.
+
+
+    </div>
+    <p class="readmore"><a href="/courant-fischer-prove" title="courant-Fischer 定理的证明" class="col span_8">Read more</a></p>
+  </article>
+
+
+
+
+
+
+
+
+
+
+  <article class="row gutters">
+      <div class="post"><h2 class="post-title"><a href="/git-push-save-pwd" title="git push repo 时保存密码的命令" class="col span_8">git push repo 时保存密码的命令</a></h2></div>
+    <div class="post-date col span_4">
+      <div class="post-meta"><h3><time datetime="2017-05-08">8 May</time></h3></div>
+    </div>
+    <div class="post-content">
+    在git push之前输一条命令可将密码保存到硬盘.
+$ git config credential.helper store
+
+
+密码保存在用户目录的.git-credentials文件中.
+
+    </div>
+    <p class="readmore"><a href="/git-push-save-pwd" title="git push repo 时保存密码的命令" class="col span_8">Read more</a></p>
+  </article>
+
+
+
+
+
+
+
+
+
+
+  <article class="row gutters">
+      <div class="post"><h2 class="post-title"><a href="/First-post" title="第一篇博文" class="col span_8">第一篇博文</a></h2></div>
+    <div class="post-date col span_4">
+      <div class="post-meta"><h3><time datetime="2017-05-08">8 May</time></h3></div>
+    </div>
+    <div class="post-content">
+    经过再三斟酌和尝试之后，决定使用github page和jekyll来建立自己的第一个博客。
+
+
+    </div>
+    <p class="readmore"><a href="/First-post" title="第一篇博文" class="col span_8">Read more</a></p>
   </article>
 
 </div></div>
@@ -77,7 +155,8 @@
 
       <footer>
         <p>
-          This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/deed.en_US">Creative Commons Attribution-NonCommercial 4.0 International License</a>.
+        Blogger's <a href="https://www.github.com/cdjhz">github</a>.
+        This blog is powered by jekyll, theme by <a href="https://github.com/aigarsdz/brume">aigarsdz</a>.
         </p>
       </footer>
     </div>

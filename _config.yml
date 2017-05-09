@@ -19,10 +19,11 @@ sass:
   sass_dir: public/css
   style: :compressed
 
+
+markdown: kramdown
 #default?
 lsi: false
 safe: true
-source: github.com/cdjhz/cdjhz.github.io
 incremental: false
 highlighter: rouge
 gist:
