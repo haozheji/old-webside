@@ -18,3 +18,14 @@ paginate_path: "blog/page-:num"
 sass:
   sass_dir: public/css
   style: :compressed
+
+#default?
+lsi: false
+safe: true
+source: github.com/cdjhz/cdjhz.github.io
+incremental: false
+highlighter: rouge
+gist:
+    noscript: false
+kramdown:
+    math_engine: mathjax
