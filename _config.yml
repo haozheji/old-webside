@@ -12,9 +12,9 @@ baseurl:
 excerpt_separator: '<!--more-->'
 
 #restrict posts' number per page
-paginate: 10
+#paginate: 10
 #the style of url like "blog/page-2"
-paginate_path: "blog/page-:num"
+#paginate_path: "blog/page-:num"
 sass:
   sass_dir: public/css
   style: :compressed
@@ -24,9 +24,9 @@ markdown: kramdown
 #default?
 lsi: false
 safe: true
-incremental: false
+#incremental: false
 highlighter: rouge
-gist:
-    noscript: false
+#gist:
+#noscript: false
 kramdown:
     math_engine: mathjax

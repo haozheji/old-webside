@@ -2,8 +2,8 @@
 layout: post
 title: courant-Fischer 定理的证明
 ---
-`\( A \)`为`\( n \)`阶实对称矩阵，有特征值`\[ \lambda_1\ge \lambda_2\ge\cdots\ge\lambda_n \]`,则有：
-`\[ \min_{\dim V=n-k+1}\max_{0\ne v\in V}\frac{v^HAv}{v^Hv}=\lambda_k \]`
+\\( A \\)为\\( n \\)阶实对称矩阵，有特征值\\[ \lambda_1\ge \lambda_2\ge\cdots\ge\lambda_n \\],则有：
+\\[ \min_{\dim V=n-k+1}\max_{0\ne v\in V}\frac{v^HAv}{v^Hv}=\lambda_k \\]
 该定理又被称为极小-极大定理.
 
 <!--more-->
