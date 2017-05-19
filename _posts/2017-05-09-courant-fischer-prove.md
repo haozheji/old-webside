@@ -37,10 +37,9 @@ title: Courant-Fischer 定理的证明
 而同时\\(v'\\)还含有分量\\[q_{i_1},q_{i_2},\cdots,q_{i_j},(1\le j\le k-1,1\le i_1,i_2,\cdots,i_j\le k-1)\\]它们对应更大的特征值。即\\(v'\\)可以写成：
 \\[ v'=c_{i_1}q_{i_1}+\cdots+c_{i_j}q_{i_j}+b_kq_k+\cdots+b_nq_n\\]
 则有：
-\\[ \mu(V')=\max_{c,b}\frac{\lambda_{i_1}c_{i_1}^2+\cdots+\lambda_{i_j}c_{i_j}^2+\lambda_kb_k^2\cdots+\lambda_nb_n^2}{c_{i_1}^2+\cdots+c_{i_j}^2+b_k^2\cdots+b_n^2}=\max_{1\le l\le j}\lambda_{i_l}>\lambda_k \\]
+\\[ \mu(V')=\max_{c,b}\frac{\lambda_{i_1}c_{i_1}^2+\cdots+\lambda_{i_j}c_{i_j}^2+\lambda_kb_k^2\cdots+\lambda_nb_n^2}{c_{i_1}^2+\cdots+c_{i_j}^2+b_k^2\cdots+b_n^2}\ge\lambda_k \\]
 即
 \\[ \min_{\dim V=n-k+1}\mu(V)=\lambda_k \\]
-当且仅当\\(V=V_0\\)时取到.
 
 作为特征分析中有较多应用的定理，对于它的证明却极其罕至。其中笔者认为写得比较详细精彩的是来自于台湾国立交通大学的周志成老师的一篇博文<a href="https://ccjou.wordpress.com/2010/03/16/hermitian-%E7%9F%A9%E9%99%A3%E7%89%B9%E5%BE%B5%E5%80%BC%E7%9A%84%E8%AE%8A%E5%8C%96%E7%95%8C%E5%AE%9A/">Hermitian 矩陣特徵值的變化界定</a>.从特征向量和子空间的本质出发，步步深入，应该说讲的十分透彻了。除此之外清华大学张贤达老师的《矩阵分析与应用》一书中也有该定理的证明;可能由于篇幅所限，证明过程有所压缩，笔者觉得理解起来不太容易。
 
