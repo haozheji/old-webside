@@ -6,8 +6,8 @@
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
     <description></description>
     <language>en-us</language>
-    <pubDate>Sun, 04 Jun 2017 10:30:29 +0800</pubDate>
-    <lastBuildDate>Sun, 04 Jun 2017 10:30:29 +0800</lastBuildDate>
+    <pubDate>Sun, 04 Jun 2017 10:40:47 +0800</pubDate>
+    <lastBuildDate>Sun, 04 Jun 2017 10:40:47 +0800</lastBuildDate>
 
     
       <item>
@@ -46,6 +46,8 @@
 &lt;p&gt;可以得到\(X\)的边缘分布:\(P(X=x_j)=\sum_kP(X=x_j,Y=y_k)\)，\(Y\)同理。&lt;/p&gt;
 
 &lt;p&gt;即得到：\[L.H.S=\sum_jx_jP(X=x_j)+\sum_ky_kP(Y=y_k)=E(X)+E(Y)\]&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;直接计算失败后，从递归的角度考虑得到了答案。递归的方法从第三部分开始。&lt;/strong&gt;&lt;/p&gt;
 
 &lt;hr /&gt;
 
