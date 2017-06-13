@@ -46,7 +46,7 @@ title: Courant Fischer定理的证明
 
 </div>
 
-鞍点的困难在于,对于一个特定的\\(x\\),我们不知道\\(R(x)\\)和那些中间的特征值\\(\lambda_2,\cdots, \lambda_n\\)的大小关系. 比如说我们想要让\\(R(x)\\)的最小值取到第\\(j\\)个特征值, 利用实对称矩阵的特征向量\\(x_i\\)相互正交的性质, 直接的想法是约束变量\\(x\\)取到与\\(x_1,\cdots,x_{j-1}\\)正交, 即\\(x\\)取值于子空间\\(span\{x_j,\cdots,x_n\}\\). 这样\\(R(x)\\)表达式中的\\(y_1=\cdots=y_{j-1}=0\\), Rayleigh 商也化为:
+鞍点的困难在于,对于一个特定的\\(x\\),我们不知道\\(R(x)\\)和那些中间的特征值\\(\lambda_2,\cdots, \lambda_n\\)的大小关系. 比如说我们想要让\\(R(x)\\)的最小值取到第\\(j\\)个特征值, 利用实对称矩阵的特征向量\\(x_i\\)相互正交的性质, 直接的想法是约束变量\\(x\\)取到与\\(x_1,\cdots,x_{j-1}\\)正交, 即\\(x\\)取值于子空间\\(span\\{x_j,\cdots,x_n\\}\\). 这样\\(R(x)\\)表达式中的\\(y_1=\cdots=y_{j-1}=0\\), Rayleigh 商也化为:
 
 \\[\frac{\lambda_{j}y_j^2+\cdots+\lambda_ny_n^2}{y_j^2+\cdots+y_n^2}\\]
 
@@ -70,7 +70,7 @@ title: Courant Fischer定理的证明
 
 \\[R(x)=\frac{\lambda_1 \alpha^2+\lambda_2 \beta^2}{\alpha^2+\beta^2}\le \lambda_2\\]
 
-将上述定理推广, 即可得到要证的定理, 下面给出证明.
+将上述定理推广, 即可得到*Courant Fischer*定理, 下面给出证明.
 
 *proof:*
 
@@ -80,7 +80,7 @@ title: Courant Fischer定理的证明
 
 \\[R(x)=\frac{\lambda_1c_1^2+\cdots+\lambda_{n-k+1}c_{n-k+1}^2}{c_1^2+\cdots+c_{n-k+1}^2}\le\lambda_{n-k+1}\\]
 
-容易验证当\\(V_{k}=span\{x_{n-k+1},\cdots, x_{n}\}\\)时, 上式取到最大值\\(\lambda_{n-k+1}\\).
+容易验证当\\(V_{k}=span\{x_\\{n-k+1\\},\cdots, x_{n}\}\\)时, 上式取到最大值\\(\lambda_{n-k+1}\\).
 
 
 
