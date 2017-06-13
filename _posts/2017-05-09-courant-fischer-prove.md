@@ -80,7 +80,7 @@ title: Courant Fischer定理的证明
 
 \\[R(x)=\frac{\lambda_1c_1^2+\cdots+\lambda_{n-k+1}c_{n-k+1}^2}{c_1^2+\cdots+c_{n-k+1}^2}\le\lambda_{n-k+1}\\]
 
-容易验证当\\(V_{k}=span\{x_\\{n-k+1\\},\cdots, x_{n}\}\\)时, 上式取到最大值\\(\lambda_{n-k+1}\\).
+容易验证当\\(V_{k}=span\\{x_{n-k+1},\cdots, x_{n}\\}\\)时, 上式取到最大值\\(\lambda_{n-k+1}\\).
 
 
 
