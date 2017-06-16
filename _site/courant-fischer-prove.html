@@ -28,6 +28,7 @@
 
 <!-- feed links -->
 <link rel="alternate" href="http://localhost:4000/feed.xml" type="application/rss+xml" title="">
+<link href='https://fonts.googleapis.com/css?family=Arvo:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
 
     <script type="text/x-mathjax-config">
       MathJax.Hub.Config({
@@ -116,7 +117,7 @@
 
 </div>
 
-<p>鞍点的困难在于,对于一个特定的\(x\),我们不知道\(R(x)\)和那些中间的特征值\(\lambda_2,\cdots, \lambda_n\)的大小关系. 比如说我们想要让\(R(x)\)的最小值取到第\(j\)个特征值, 利用实对称矩阵的特征向量\(x_i\)相互正交的性质, 直接的想法是约束变量\(x\)取到与\(x_1,\cdots,x_{j-1}\)正交, 即\(x\)取值于子空间\(span{x_j,\cdots,x_n}\). 这样\(R(x)\)表达式中的\(y_1=\cdots=y_{j-1}=0\), Rayleigh 商也化为:</p>
+<p>鞍点的困难在于,对于一个特定的\(x\),我们不知道\(R(x)\)和那些中间的特征值\(\lambda_2,\cdots, \lambda_n\)的大小关系. 比如说我们想要让\(R(x)\)的最小值取到第\(j\)个特征值, 利用实对称矩阵的特征向量\(x_i\)相互正交的性质, 直接的想法是约束变量\(x\)取到与\(x_1,\cdots,x_{j-1}\)正交, 即\(x\)取值于子空间\(span\{x_j,\cdots,x_n\}\). 这样\(R(x)\)表达式中的\(y_1=\cdots=y_{j-1}=0\), Rayleigh 商也化为:</p>
 
 <p>\[\frac{\lambda_{j}y_j^2+\cdots+\lambda_ny_n^2}{y_j^2+\cdots+y_n^2}\]</p>
 
@@ -140,7 +141,7 @@
 
 <p>\[R(x)=\frac{\lambda_1 \alpha^2+\lambda_2 \beta^2}{\alpha^2+\beta^2}\le \lambda_2\]</p>
 
-<p>将上述定理推广, 即可得到要证的定理, 下面给出证明.</p>
+<p>将上述定理推广, 即可得到<em>Courant Fischer</em>定理, 下面给出证明.</p>
 
 <p><em>proof:</em></p>
 
@@ -150,19 +151,27 @@
 
 <p>\[R(x)=\frac{\lambda_1c_1^2+\cdots+\lambda_{n-k+1}c_{n-k+1}^2}{c_1^2+\cdots+c_{n-k+1}^2}\le\lambda_{n-k+1}\]</p>
 
-<p>容易验证当\(V_{k}=span{x_{n-k+1},\cdots, x_{n}}\)时, 上式取到最大值\(\lambda_{n-k+1}\).</p>
+<p>容易验证当\(V_{k}=span\{x_{n-k+1},\cdots, x_{n}\}\)时, 上式取到最大值\(\lambda_{n-k+1}\).</p>
 
 
 </article>
-
-<div class="PageNavigation">
+             
+<ul class="posts posts--previous-next">
+   
+    <li>
+      <h4 class="pagination-title"><a href="/git-push-save-pwd">git push repo 时保存密码的命令</a></h4>
+      <h5 class="pagination-date">2017-05-08 00:00:00 +0800</h5>
+      <p class="pagination-description"></p>
+    </li>
   
-    <a class="prev" href="/git-push-save-pwd">&laquo; git push repo 时保存密码的命令</a>
+   
+    <li>
+      <h4 class="pagination-title"><a href="/toss-coin-problem">抛硬币先后手对胜率的影响</a></h4>
+      <h5 class="pagination-date">2017-05-19 00:00:00 +0800</h5>
+      <p class="pagination-description"></p>
+    </li>
   
-  
-    <a class="next" href="/toss-coin-problem" align="left">抛硬币先后手对胜率的影响 &raquo;</a>
-  
-</div>
+</ul>
 
 
       <footer>

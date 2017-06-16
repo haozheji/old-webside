@@ -6,9 +6,151 @@
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
     <description></description>
     <language>en-us</language>
-    <pubDate>Tue, 13 Jun 2017 17:57:40 +0800</pubDate>
-    <lastBuildDate>Tue, 13 Jun 2017 17:57:40 +0800</lastBuildDate>
+    <pubDate>Fri, 16 Jun 2017 10:39:15 +0800</pubDate>
+    <lastBuildDate>Fri, 16 Jun 2017 10:39:15 +0800</lastBuildDate>
 
+    
+      <item>
+        <title>How does FFT work?</title>
+        <link>http://localhost:4000/How-does-FFT-work</link>
+        <pubDate>Thu, 15 Jun 2017 00:00:00 +0800</pubDate>
+        <author></author>
+        <description>
+&lt;p&gt;Let’s first start with DFT (Discrete Fourier Transform)&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{bmatrix}
+y_1\\\
+y_2\\\
+y_3\\\
+\vdots\\\
+y_n
+\end{bmatrix}=
+\begin{bmatrix}
+1 &amp; 1 &amp; 1 &amp; \cdots &amp; 1 \\\
+1 &amp;  \omega &amp; \omega^2 &amp;\cdots &amp; \omega^{n-1} \\\
+1 &amp; \omega^2 &amp; \omega^4 &amp; \cdots &amp; \omega^{2n-2} \\\
+\vdots &amp; \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\\
+1 &amp; \omega^{n-1} &amp;\omega^{2n-2} &amp; \cdots &amp; \omega^{(n-1)^2}
+\end{bmatrix}
+\begin{bmatrix}
+c_1\\\
+c_2\\\
+c_3\\\
+\vdots\\\
+c_n
+\end{bmatrix},\quad \omega=e^{\frac{2\pi i}{n}} %]]&gt;&lt;/script&gt;
+
+&lt;!--more--&gt;
+
+&lt;p&gt;The vector \(y\) is the function to be expanded; it is seen in &lt;em&gt;frequency space&lt;/em&gt; through the coefficients \(c_k\). This formula is actually called the inverse Fourier transform. It can be seen from \(\omega\)(it has positive sign on \(\omega\)). Fourier transform is the one that computes the frequency expansion given the function value at each time step.&lt;/p&gt;
+
+&lt;p&gt;Compare to the continuous form of Fourier transform:&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;f(t)=\int_{-\infty}^{+\infty}F(\nu)e^{2\pi i\nu t}d\nu&lt;/script&gt;
+
+&lt;p&gt;The vector \(y\) presents the discrete function series \(f\). By transferring \(\nu\) into&lt;/p&gt;
+
+&lt;p&gt;In the n order Fourier matrix, we have to compute&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;y_j=\sum_{k=0}^{n-1}\omega^{jk}x_k, \quad j=0,1,\cdots,n-1&lt;/script&gt;
+
+&lt;p&gt;The complexity is \(O(n^2)\). The idea of FFT is to recursively compute the half size matrix (i.e. \(F_{n/2}, F_{n/4}, \cdots\)) and the complexity can be reduced to \(O(nlog(n))\).
+The link between the origin matrix and its half sized counterpart is the property of complex number. Suppose \(m=\frac{n}{2}\), then \(\omega_m=\omega_n^2\) (It’s easy to see, since the m-order unit roots separate the unit circle into m parts.) 
+For the first m entries of \(y\), we split the sum into even and odd parts.
+\[y_j=\sum_{k=0}^{n-1}\omega_n^{jk}c_k=\sum_{k=0}^{n/2-1}\omega_n^{2jk}c_{2k}+\sum_{k=0}^{n/2-1}\omega_n^{j(2k+1)}c_{2k+1}, \quad j=0,1,\cdots, n/2-1\]
+The even c’s go into \(c’=(c_0,c_2,\cdots)\) and the odd c’s go into \(c’’=(c_1,c_3,\cdots)\). Set \(y’=F_mc’,y’'=F_mc’’\). Then using \(\omega_m=\omega_n^2\), we can transform it into the combintion of \(y’ and y’’\).&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;LHS=\sum_{k=0}^{m-1}\omega_m^{jk}c'_k + \omega_n^j \sum_{k=0}^{m-1}\omega_m^{jk}c''_k=y'_j+(\omega_n)^jy''_j&lt;/script&gt;
+
+&lt;p&gt;For \(j\ge m\), Noticing that \(\omega_n^m=-1\) we have:&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{equation} 
+\begin{split}
+y_{j+m} &amp; = \sum_{k=0}^{n-1}\omega_n^{(j+m)k}c_{k} \\
+&amp; = \sum_{k=0}^{n/2-1}(-1)^{2k}\omega_n^{2jk}c_{2k}+\sum_{k=0}^{n/2-1}(-1)^{(2k+1)}\omega_n^{j(2k+1)}c_{2k+1} \\
+&amp; =\sum_{k=0}^{m-1}\omega_m^{jk}c'_k - \omega_n^j \sum_{k=0}^{m-1}\omega_m^{jk}c''_k \\
+&amp; = y'_j - (\omega_n)^j y''_j 
+\end{split}
+\end{equation} %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;So here we are, the essential expansion in this recursion.&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\begin{align}
+y_j=y'_j+\omega_n^jy''_j, \quad j=0,1,\cdots,m-1 \\
+y_{j+m}=y'_j-\omega_n^jy''_j, \quad j=0,1,\cdots,m-1
+\end{align}&lt;/script&gt;
+
+&lt;p&gt;The equations can be written in matrix expression.&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+y=
+\begin{bmatrix}
+I_m &amp; D_m \\
+I_m &amp; -D_m
+\end{bmatrix}
+\begin{bmatrix}
+y'\\
+y''
+\end{bmatrix}, \quad D_m=diag(1,\omega,\cdots, \omega^{m-1}) %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;Remember the definition of \(y’ and y’’\).&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{bmatrix}
+y'\\y''
+\end{bmatrix}=
+\begin{bmatrix}
+F_m &amp;O\\
+O&amp;F_m
+\end{bmatrix}
+\begin{bmatrix}
+c'\\c''
+\end{bmatrix} %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;We are nearly there; the last matrix is an ‘even-odd’ permutation that separates the incoming vector \(c\) into its even and odd parts \(c’=(c_0,c_2,\cdots,c_{n-2}) and c’’=(c_1, c_3,\cdots,c_{n-1})\). For a direct look, we give the example of a 4-order even-odd permutation matrix:&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+P_4=\begin{bmatrix}
+1 &amp;&amp;&amp;\\
+&amp;&amp;1&amp;\\
+&amp;1&amp;&amp;\\
+&amp;&amp;&amp;1
+\end{bmatrix} %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;So one recursion of the FFT can be written as the multiplication of three matrix.&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+F_n=
+\begin{bmatrix}
+I_n/2 &amp; D_n/2 \\
+I_n/2 &amp; -D_n/2
+\end{bmatrix}
+\begin{bmatrix}
+F_n/2&amp;O\\
+O&amp; F_n/2
+\end{bmatrix}
+P_n %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;The whole algorithm will iteratively compute \(log_2(n)\) stages until it reaches the bottom. In each stage, The only computation is the multiplication between the diagonal matrix and the half sized Fourier matrix, which is (\frac{n}{2}\) times of multiplications. So the whole algorithm will take \(\frac{1}{2}nlog_2n\) computation.&lt;/p&gt;
+
+&lt;p&gt;As for the multiplication of the permutation, there is an elegant way of addressing it. Write the number 0 to n-1 in binary,  and resort them while reversing the order of their bits. Below shows an example of n=8.&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{matrix}
+input&amp; binary&amp; reversed &amp; output\\
+0&amp; 000&amp; 000 &amp; 0\\ 
+1&amp; 001&amp; 100&amp; 4\\
+2&amp; 010&amp; 010&amp; 2\\
+3&amp; 011&amp; 110&amp; 6\\
+4&amp; 100&amp; 001&amp; 1\\
+5&amp; 101&amp; 101&amp; 5\\
+6&amp; 110&amp; 011&amp; 3\\
+7&amp; 111&amp; 111&amp; 7\\
+\end{matrix} %]]&gt;&lt;/script&gt;
+</description>
+      </item>
     
       <item>
         <title>二维格点随机游走问题</title>
@@ -204,7 +346,7 @@
 
 &lt;/div&gt;
 
-&lt;p&gt;鞍点的困难在于,对于一个特定的\(x\),我们不知道\(R(x)\)和那些中间的特征值\(\lambda_2,\cdots, \lambda_n\)的大小关系. 比如说我们想要让\(R(x)\)的最小值取到第\(j\)个特征值, 利用实对称矩阵的特征向量\(x_i\)相互正交的性质, 直接的想法是约束变量\(x\)取到与\(x_1,\cdots,x_{j-1}\)正交, 即\(x\)取值于子空间\(span{x_j,\cdots,x_n}\). 这样\(R(x)\)表达式中的\(y_1=\cdots=y_{j-1}=0\), Rayleigh 商也化为:&lt;/p&gt;
+&lt;p&gt;鞍点的困难在于,对于一个特定的\(x\),我们不知道\(R(x)\)和那些中间的特征值\(\lambda_2,\cdots, \lambda_n\)的大小关系. 比如说我们想要让\(R(x)\)的最小值取到第\(j\)个特征值, 利用实对称矩阵的特征向量\(x_i\)相互正交的性质, 直接的想法是约束变量\(x\)取到与\(x_1,\cdots,x_{j-1}\)正交, 即\(x\)取值于子空间\(span\{x_j,\cdots,x_n\}\). 这样\(R(x)\)表达式中的\(y_1=\cdots=y_{j-1}=0\), Rayleigh 商也化为:&lt;/p&gt;
 
 &lt;p&gt;\[\frac{\lambda_{j}y_j^2+\cdots+\lambda_ny_n^2}{y_j^2+\cdots+y_n^2}\]&lt;/p&gt;
 
@@ -228,7 +370,7 @@
 
 &lt;p&gt;\[R(x)=\frac{\lambda_1 \alpha^2+\lambda_2 \beta^2}{\alpha^2+\beta^2}\le \lambda_2\]&lt;/p&gt;
 
-&lt;p&gt;将上述定理推广, 即可得到要证的定理, 下面给出证明.&lt;/p&gt;
+&lt;p&gt;将上述定理推广, 即可得到&lt;em&gt;Courant Fischer&lt;/em&gt;定理, 下面给出证明.&lt;/p&gt;
 
 &lt;p&gt;&lt;em&gt;proof:&lt;/em&gt;&lt;/p&gt;
 
@@ -238,7 +380,7 @@
 
 &lt;p&gt;\[R(x)=\frac{\lambda_1c_1^2+\cdots+\lambda_{n-k+1}c_{n-k+1}^2}{c_1^2+\cdots+c_{n-k+1}^2}\le\lambda_{n-k+1}\]&lt;/p&gt;
 
-&lt;p&gt;容易验证当\(V_{k}=span{x_{n-k+1},\cdots, x_{n}}\)时, 上式取到最大值\(\lambda_{n-k+1}\).&lt;/p&gt;
+&lt;p&gt;容易验证当\(V_{k}=span\{x_{n-k+1},\cdots, x_{n}\}\)时, 上式取到最大值\(\lambda_{n-k+1}\).&lt;/p&gt;
 
 </description>
       </item>
