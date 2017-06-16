@@ -39,8 +39,6 @@ $$
 f(t)=\int_{-\infty}^{+\infty}F(\nu)e^{2\pi i\nu t}d\nu
 $$
 
-The vector \\(y\\) presents the discrete function series \\(f\\). By transferring \\(\nu\\) into 
-
 In the n order Fourier matrix, we have to compute 
 
 $$
