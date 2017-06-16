@@ -31,7 +31,7 @@ $$
 
 <!--more-->
 
-The vector \\(y\\) is the function to be expanded; it is seen in *frequency space* through the coefficients \\(c_k\\). This formula is actually called the inverse Fourier transform. It can be seen from \\(\\omega\\)(it has positive sign on \\(\omega\\)). Fourier transform is the one that computes the frequency expansion given the function value at each time step.
+The vector \\(y\\) is the function to be expanded and the matrix multiplied by the coefficients \\(c\\) is the Fourier matrix \\(F_n\\); it is seen in *frequency space* through the coefficients \\(c_k\\). This formula is actually called the inverse Fourier transform. It can be seen from \\(\\omega\\)(it has positive sign on \\(\omega\\)). Fourier transform is the one that computes the frequency expansion given the function value at each time step.
 
 Compare to the continuous form of Fourier transform:
 
@@ -39,7 +39,7 @@ $$
 f(t)=\int_{-\infty}^{+\infty}F(\nu)e^{2\pi i\nu t}d\nu
 $$
 
-In the n order Fourier matrix, we have to compute 
+In the case of n order Fourier matrix, we have to compute 
 
 $$
 y_j=\sum_{k=0}^{n-1}\omega^{jk}x_k, \quad j=0,1,\cdots,n-1
@@ -132,9 +132,9 @@ O& F_n/2
 P_n
 $$
 
-The whole algorithm will iteratively compute \\(log_2(n)\\) stages until it reaches the bottom. In each stage, The only computation is the multiplication between the diagonal matrix and the half sized Fourier matrix, which is \(\frac{n}{2}\\) times of multiplications. So the whole algorithm will take \\(\frac{1}{2}nlog_2n\\) computation.
+The whole algorithm will iteratively compute \\(log_2(n)\\) stages until it reaches the bottom. In each stage, The only computation is the multiplication between the diagonal matrix and the half sized Fourier matrix, which is \\(\frac{n}{2}\\) times of multiplications. So the complexity of the whole algorithm will be \\(\frac{1}{2}nlog_2n\\) .
 
-As for the multiplication of the permutation, there is an elegant way of addressing it. Write the number 0 to n-1 in binary,  and resort them while reversing the order of their bits. Below shows an example of n=8.
+As for the multiplication of the permutation, there is an elegant way of addressing it. Write the number 0 to n-1 in binary,  and rearrange them in order while reversing the order of their bits. Below shows an example of n=8.
 
 $$
 \begin{matrix}
