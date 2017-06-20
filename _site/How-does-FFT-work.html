@@ -4,7 +4,7 @@
     <!-- meta information -->
 <meta charset="utf-8">
 <meta name="description" 
-      content="Let’s first start with DFT (Discrete Fourier Transform)The vector \(y\) is the function to be expanded; it is seen in..." >
+      content="Let’s first start with DFT (Discrete Fourier Transform)The vector \(y\) is the function to be expanded and the matrix..." >
 <meta name="author" content="Haozhe Ji">
 
 <!-- Enable responsiveness on mobile devices-->
@@ -103,15 +103,13 @@ c_n
 
 <!--more-->
 
-<p>The vector \(y\) is the function to be expanded; it is seen in <em>frequency space</em> through the coefficients \(c_k\). This formula is actually called the inverse Fourier transform. It can be seen from \(\omega\)(it has positive sign on \(\omega\)). Fourier transform is the one that computes the frequency expansion given the function value at each time step.</p>
+<p>The vector \(y\) is the function to be expanded and the matrix multiplied by the coefficients \(c\) is the Fourier matrix \(F_n\); it is seen in <em>frequency space</em> through the coefficients \(c_k\). This formula is actually called the inverse Fourier transform. It can be seen from \(\omega\)(it has positive sign on \(\omega\)). Fourier transform is the one that computes the frequency expansion given the function value at each time step.</p>
 
 <p>Compare to the continuous form of Fourier transform:</p>
 
 <script type="math/tex; mode=display">f(t)=\int_{-\infty}^{+\infty}F(\nu)e^{2\pi i\nu t}d\nu</script>
 
-<p>The vector \(y\) presents the discrete function series \(f\). By transferring \(\nu\) into</p>
-
-<p>In the n order Fourier matrix, we have to compute</p>
+<p>In the case of n order Fourier matrix, we have to compute</p>
 
 <script type="math/tex; mode=display">y_j=\sum_{k=0}^{n-1}\omega^{jk}x_k, \quad j=0,1,\cdots,n-1</script>
 
@@ -193,9 +191,9 @@ O& F_n/2
 \end{bmatrix}
 P_n %]]></script>
 
-<p>The whole algorithm will iteratively compute \(log_2(n)\) stages until it reaches the bottom. In each stage, The only computation is the multiplication between the diagonal matrix and the half sized Fourier matrix, which is (\frac{n}{2}\) times of multiplications. So the whole algorithm will take \(\frac{1}{2}nlog_2n\) computation.</p>
+<p>The whole algorithm will iteratively compute \(log_2(n)\) stages until it reaches the bottom. In each stage, The only computation is the multiplication between the diagonal matrix and the half sized Fourier matrix, which is \(\frac{n}{2}\) times of multiplications. So the complexity of the whole algorithm will be \(\frac{1}{2}nlog_2n\) .</p>
 
-<p>As for the multiplication of the permutation, there is an elegant way of addressing it. Write the number 0 to n-1 in binary,  and resort them while reversing the order of their bits. Below shows an example of n=8.</p>
+<p>As for the multiplication of the permutation, there is an elegant way of addressing it. Write the number 0 to n-1 in binary,  and rearrange them in order while reversing the order of their bits. Below shows an example of n=8.</p>
 
 <script type="math/tex; mode=display">% <![CDATA[
 \begin{matrix}
@@ -220,6 +218,12 @@ input& binary& reversed & output\\
       <p class="pagination-description"></p>
     </li>
   
+   
+    <li>
+      <h4 class="pagination-title"><a href="/Incidence-Matrix">Incidence Matrix</a></h4>
+      <h5 class="pagination-date">2017-06-18 00:00:00 +0800</h5>
+      <p class="pagination-description"></p>
+    </li>
   
 </ul>
 

@@ -6,9 +6,178 @@
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
     <description></description>
     <language>en-us</language>
-    <pubDate>Fri, 16 Jun 2017 10:39:15 +0800</pubDate>
-    <lastBuildDate>Fri, 16 Jun 2017 10:39:15 +0800</lastBuildDate>
+    <pubDate>Tue, 20 Jun 2017 22:32:39 +0800</pubDate>
+    <lastBuildDate>Tue, 20 Jun 2017 22:32:39 +0800</lastBuildDate>
 
+    
+      <item>
+        <title>positive matrix</title>
+        <link>http://localhost:4000/positive-matrix</link>
+        <pubDate>Tue, 20 Jun 2017 00:00:00 +0800</pubDate>
+        <author></author>
+        <description>
+&lt;p&gt;Property of positive matrix \(A\)&lt;/p&gt;
+
+&lt;!--more--&gt;
+
+&lt;p&gt;(1) The spectral radius \(\rho (A)\) is an eigenvalue of A; the geometric and algebraic multiplicity is 1. (Let \(\sigma(A)\) be the set consisted of \(A\)’s eigenvalues, then \(\rho(A) = \max_{\lambda\in\sigma(A)}|\lambda|\).)&lt;/p&gt;
+
+&lt;p&gt;(2) The eigenvector \(x\) associated with the eigenvalue \(\rho (A)\) can be taken to have nonnegative entries; other eigenvectors cannot be taken to have nonnegative entries!&lt;/p&gt;
+
+&lt;p&gt;(3) If every entry of \(A\) is positive, then \(\rho(A)\) is a simple eigenvalue, that is strictly larger than the modulus of any other eigenvalues.&lt;/p&gt;
+
+&lt;p&gt;(4) If every entry of \(A\) is positive, then \(\lim_{m\to\infty}(\frac{A}{\rho(A)})^m\) exists and is a rank-one matrix; each of whose columns is proportional to the eigenvector x.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Corollary&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Let \(x\) be \(A\)’s P-F vector, i.e. \(Ax=\rho(A)x\). \(y\) be its left P-F vector, i.e.\(y^TA=\rho(A)y^T\), and they normalized to 1, i.e. \(x^Ty=1\). Then&lt;/p&gt;
+
+&lt;p&gt;\[\lim_{m\to\infty}(\frac{A}{\rho(A)})^m=xy^T\]&lt;/p&gt;
+
+&lt;p&gt;proof:&lt;/p&gt;
+
+&lt;p&gt;Exist \(S=(x, S’), (S^{-1})^T=(y, Z’)\), such that&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+(\frac{A}{\rho(A)})^m =S
+\begin{pmatrix}
+1&amp;0\\
+0&amp;(\rho(A)^{-1}B)^m
+\end{pmatrix}
+S^{-1}\\
+\to(x, S')
+\begin{pmatrix}
+1&amp;0\\
+0&amp;0_{n-1}
+\end{pmatrix}
+\begin{pmatrix}
+y^T\\Z'^T
+\end{pmatrix}=xy^T , \quad m\to \infty %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;(5) There is a unique vector \(x=[x_i]\in C^n\) such that \(Ax=\rho(A)x \) and \(\sum_ix_i=1\). Such a vector must be positive.&lt;/p&gt;
+
+&lt;h1 id=&quot;nonnegative-matrix&quot;&gt;Nonnegative matrix&lt;/h1&gt;
+
+&lt;p&gt;properties:&lt;/p&gt;
+
+&lt;p&gt;(1) Let \(A, B \in M_n\) and suppose that B is nonnegative. If \(|A|\le B\) (the absolute, not determinant), then \(\rho(A)\le\rho(|A|)\le \rho(B)\).&lt;/p&gt;
+
+&lt;p&gt;(2) Let \(A=[a_{ij}]\in M_n\) br nonnegative. Then&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\min_{1\le i\le n}\sum_{j=1}^na_{ij}\le\rho(A)\le\max_{1\le i\le n}\sum_{j=1}^{n}a_{ij}&lt;/script&gt;
+
+&lt;p&gt;The spectral radius of \(A\) is bounded by the minimum row sum and the maximum row sum. Similarly, \(\rho(A)\) is bounded by the minimum column sum and maximum column sum.&lt;/p&gt;
+
+&lt;p&gt;proof:&lt;/p&gt;
+
+&lt;p&gt;The definition of the matrix norm is given by:&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\|A\|_p=\max_{\|x\|_p=1}\|Ax\|_p, \quad \|x\|_p=(\sum_{i=1}^nx_i^p)^{1/p}&lt;/script&gt;
+
+&lt;p&gt;The general norm is given by Cauchy-Schwartz theorem.&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\|A\|\cdot \|x\|\ge \|Ax\|, \quad
+\|A\|\ge\frac{\|Ax\|}{\|x\|}&lt;/script&gt;
+
+&lt;p&gt;Specifically, we have:&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\|A\|_1=\max_{1\le j\le n}\sum_{i=1}^n|a_{ij}|\\
+\|A\|_{\infty}=\max_{1\le i\le n}\sum_{i=1}^n|a_{ij}|\\&lt;/script&gt;
+
+&lt;p&gt;Lemma: The eigenvalues of matrix A is no larger than the matrix norm, i.e. \(|\lambda|\le\|A\|\)&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;Ax=\lambda x\\
+|\lambda|\cdot\|x\|=\|Ax\|\le\|A\|\cdot\|x\|\\&lt;/script&gt;
+
+&lt;p&gt;The left inequality can be demonstrated this way.&lt;/p&gt;
+
+&lt;p&gt;Let \(\alpha=\min_{1\le i\le n}\sum_{j=1}^na_{ij}\). Define \(B=[b_{ij}]\), and \(b_{ij}=\alpha a_{ij}(\sum_{k=1}^na_{ik})^{-1}\). Then \(A\ge B\ge 0\), i.e. \(\rho(A)\ge \rho(B)\) and \(\sum_{j=1}^nb_{ij}=\alpha\) for all \(i=1,\cdots,n\), i.e. \(\rho(B)=\alpha\). Therefore,&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\min_{1\le i\le n}\sum_{j=1}^na_{ij}\le\rho(A)&lt;/script&gt;
+
+&lt;p&gt;(3) If \(A\in M_n\) is nonnegative, for nonnegative \(x\):&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\rho(A)=\max_{x\ge 0}\min_{1\le i\le n}\frac{(Ax)_i}{x_i}&lt;/script&gt;
+
+&lt;p&gt;proof:&lt;/p&gt;
+
+&lt;p&gt;From (2), 
+&lt;script type=&quot;math/tex&quot;&gt;\rho(A)\ge \min_{1\le u\le n}(Ax)_i/x_i.&lt;/script&gt;
+The maximum can be obtained when \(x\) satisfies \(Ax=\rho(A)x\)&lt;/p&gt;
+
+&lt;p&gt;(4) Suppose there is a positive vector \(x\) and a nonnegative real number \(\lambda\) such that either \(Ax=\lambda x\) or \(x^TA=\lambda x^T\). Then \(\lambda = \rho(A)\).&lt;/p&gt;
+
+&lt;p&gt;proof:&lt;/p&gt;
+
+&lt;p&gt;Suppose x is the corresponding eigenvector of \(\lambda\), y is the left eigenvector of \(\rho(A)\), then.&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;Ax=\lambda x, \quad y^TA=\rho(A)y^T\\
+\rho(A)y^Tx=y^TAx=\lambda y^Tx\\Thus\quad \rho(A)=\lambda.&lt;/script&gt;
+
+</description>
+      </item>
+    
+      <item>
+        <title>Incidence Matrix</title>
+        <link>http://localhost:4000/Incidence-Matrix</link>
+        <pubDate>Sun, 18 Jun 2017 00:00:00 +0800</pubDate>
+        <author></author>
+        <description>&lt;h3 id=&quot;定义&quot;&gt;定义&lt;/h3&gt;
+
+&lt;p&gt;(此定义不唯一) 每一行代表一条边, 每一列代表一个顶点, 在表征任意一条边的一行, 如果这条边从\(i\)出发,到达\(j\), 则给第\(i\)个元素赋-1, 第\(j\)个赋1, 其他赋0.&lt;/p&gt;
+
+&lt;!--more--&gt;
+
+&lt;h3 id=&quot;性质一&quot;&gt;性质一&lt;/h3&gt;
+
+&lt;p&gt;\(G=(V,E)\)为有向连通图 (只需任意顶点间有边相连), A为G的关联矩阵, 且\(|V|=n\), 则\(dimN(A)=1\).&lt;/p&gt;
+
+&lt;p&gt;若\(i,j\)相邻,则\(x_i=x_j=1\). 由邻接的传递性, 由G为连通图, 可知任意两点\(p,q\)均连通, 即\(x_p=x_q=1\).&lt;/p&gt;
+
+&lt;h3 id=&quot;推论&quot;&gt;推论&lt;/h3&gt;
+
+&lt;p&gt;\(G=(V,E)\)有\(k\)个连通分支, 则\(dimN(A)=k\).&lt;/p&gt;
+
+&lt;p&gt;将矩阵\(A\)重新排成\(k\)个分块对角矩阵的形式, 即\(A=diag(A_1,A_2,\cdots,A_k)\)&lt;/p&gt;
+
+&lt;p&gt;则对每一个分块矩阵,内部连通,其零空间维数皆为1.&lt;/p&gt;
+
+&lt;p&gt;研究方程\(Ax=b\)的解, 从A的四个基本子空间入手.&lt;/p&gt;
+
+&lt;h3 id=&quot;na&quot;&gt;\(N(A)\)&lt;/h3&gt;
+
+&lt;p&gt;令\(b\)为边上的电势差. 每个节点等电位, 就是使\(b=0\)的条件.&lt;/p&gt;
+
+&lt;h3 id=&quot;ca&quot;&gt;\(C(A)\)&lt;/h3&gt;
+
+&lt;p&gt;任意给定节点电位, 得到边上电势降的所有情况就组成了列空间. \(KVL\)定律给出了对边上电势降的约束, 即任意环路上电势降代数和为零. 因此独立环路的个数就是对列空间约束的自由度的数目.&lt;/p&gt;
+
+&lt;p&gt;对于m条边, n个顶点的连通图, 独立环路的个数为\(m-n+1\).* 因此, 列空间的自由度数目为\(m-(m-n+1)=n-1\), 即为A的秩.&lt;/p&gt;
+
+&lt;h3 id=&quot;nat&quot;&gt;\(N(A^T)\)&lt;/h3&gt;
+
+&lt;p&gt;左零空间是使节点处电流代数和为零的边上电流所组成的空间, 由\(KCL\)约束. 总共有\(n\)个节点, 而独立的节点方程个数只有\(n-1\)个, 因此其维度为\(m-(n-1)=m-n+1\)与C(A)互为\(R^m\)的正交补.&lt;/p&gt;
+
+&lt;p&gt;左零空间为C(A)关于\(R^m\)的正交补, 因此垂直于由独立环路约束所确定的超平面. 其物理意义为不存在外加电源时的解.&lt;/p&gt;
+
+&lt;h3 id=&quot;cat&quot;&gt;\(C(A^T)\)&lt;/h3&gt;
+
+&lt;p&gt;Rows are dependent when edges form a loop. Independent rows come from a tree. 因此行空间的基可通过选取该图的一个生成树获得. 通过与N(A)的正交补性质可快速判断.&lt;/p&gt;
+
+&lt;p&gt;任意给定边上的电流, 得到节点的电流代数和的所有情况组成行空间. 没有外界电流输入的节点, 电流代数和为零, 所有节点总的电流代数和应该为0.(电流连续性)&lt;/p&gt;
+
+&lt;h3 id=&quot;综上所述&quot;&gt;综上所述&lt;/h3&gt;
+
+&lt;p&gt;\(N(A^T)\)的基可通过m-n+1个独立环路构造(m维);&lt;/p&gt;
+
+&lt;p&gt;\(C(A^T)\)的基可通过生成子树的n-1条边构造(n维);&lt;/p&gt;
+
+&lt;p&gt;\(C(A)\)的基可通过n-1个独立节点来构造(m维);&lt;/p&gt;
+
+&lt;p&gt;\(N(A)\)的基就是\(\vec{e}\), 可通过对每个节点整体提升电势构造(n维).&lt;/p&gt;
+
+</description>
+      </item>
     
       <item>
         <title>How does FFT work?</title>
@@ -43,15 +212,13 @@ c_n
 
 &lt;!--more--&gt;
 
-&lt;p&gt;The vector \(y\) is the function to be expanded; it is seen in &lt;em&gt;frequency space&lt;/em&gt; through the coefficients \(c_k\). This formula is actually called the inverse Fourier transform. It can be seen from \(\omega\)(it has positive sign on \(\omega\)). Fourier transform is the one that computes the frequency expansion given the function value at each time step.&lt;/p&gt;
+&lt;p&gt;The vector \(y\) is the function to be expanded and the matrix multiplied by the coefficients \(c\) is the Fourier matrix \(F_n\); it is seen in &lt;em&gt;frequency space&lt;/em&gt; through the coefficients \(c_k\). This formula is actually called the inverse Fourier transform. It can be seen from \(\omega\)(it has positive sign on \(\omega\)). Fourier transform is the one that computes the frequency expansion given the function value at each time step.&lt;/p&gt;
 
 &lt;p&gt;Compare to the continuous form of Fourier transform:&lt;/p&gt;
 
 &lt;script type=&quot;math/tex; mode=display&quot;&gt;f(t)=\int_{-\infty}^{+\infty}F(\nu)e^{2\pi i\nu t}d\nu&lt;/script&gt;
 
-&lt;p&gt;The vector \(y\) presents the discrete function series \(f\). By transferring \(\nu\) into&lt;/p&gt;
-
-&lt;p&gt;In the n order Fourier matrix, we have to compute&lt;/p&gt;
+&lt;p&gt;In the case of n order Fourier matrix, we have to compute&lt;/p&gt;
 
 &lt;script type=&quot;math/tex; mode=display&quot;&gt;y_j=\sum_{k=0}^{n-1}\omega^{jk}x_k, \quad j=0,1,\cdots,n-1&lt;/script&gt;
 
@@ -133,9 +300,9 @@ O&amp; F_n/2
 \end{bmatrix}
 P_n %]]&gt;&lt;/script&gt;
 
-&lt;p&gt;The whole algorithm will iteratively compute \(log_2(n)\) stages until it reaches the bottom. In each stage, The only computation is the multiplication between the diagonal matrix and the half sized Fourier matrix, which is (\frac{n}{2}\) times of multiplications. So the whole algorithm will take \(\frac{1}{2}nlog_2n\) computation.&lt;/p&gt;
+&lt;p&gt;The whole algorithm will iteratively compute \(log_2(n)\) stages until it reaches the bottom. In each stage, The only computation is the multiplication between the diagonal matrix and the half sized Fourier matrix, which is \(\frac{n}{2}\) times of multiplications. So the complexity of the whole algorithm will be \(\frac{1}{2}nlog_2n\) .&lt;/p&gt;
 
-&lt;p&gt;As for the multiplication of the permutation, there is an elegant way of addressing it. Write the number 0 to n-1 in binary,  and resort them while reversing the order of their bits. Below shows an example of n=8.&lt;/p&gt;
+&lt;p&gt;As for the multiplication of the permutation, there is an elegant way of addressing it. Write the number 0 to n-1 in binary,  and rearrange them in order while reversing the order of their bits. Below shows an example of n=8.&lt;/p&gt;
 
 &lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
 \begin{matrix}
