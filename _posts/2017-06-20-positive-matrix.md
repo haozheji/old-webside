@@ -127,7 +127,4 @@ $$
 Ax=\lambda x, \quad y^TA=\rho(A)y^T\\
 \rho(A)y^Tx=y^TAx=\lambda y^Tx\\Thus\quad \rho(A)=\lambda.
 $$
-
-
-
 {% endraw %}
