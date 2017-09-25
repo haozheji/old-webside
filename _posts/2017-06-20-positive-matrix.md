@@ -3,7 +3,7 @@ layout: post
 title: positive matrix
 ---
 
-{% raw %}
+{%raw%}
 
 Property of positive matrix \\(A\\)
 
