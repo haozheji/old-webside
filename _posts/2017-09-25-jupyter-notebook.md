@@ -11,7 +11,7 @@ title: 在远程服务器登录jupyter notebook
 $ jupyter notebook --generate-config
 ```
 
-<!--readmore-->
+<!--more-->
 
 ## 2.生成登录密码
 
