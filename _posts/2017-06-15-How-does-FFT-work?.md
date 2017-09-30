@@ -5,6 +5,7 @@ title: How does FFT work?
 
 Let's first start with DFT (Discrete Fourier Transform)
 
+<!--more-->
 
 {% raw %}
 
@@ -33,7 +34,6 @@ c_n
 \end{bmatrix},\quad \omega=e^{\frac{2\pi i}{n}}
 $$
 
-<!--more-->
 
 The vector \\(y\\) is the function to be expanded and the matrix multiplied by the coefficients \\(c\\) is the Fourier matrix \\(F_n\\); it is seen in *frequency space* through the coefficients \\(c_k\\). This formula is actually called the inverse Fourier transform. It can be seen from \\(\\omega\\)(it has positive sign on \\(\omega\\)). Fourier transform is the one that computes the frequency expansion given the function value at each time step.
 
