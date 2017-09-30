@@ -12,7 +12,7 @@ Elapsed: -
 
 An HTTP error occurred when trying to retrieve this URL.
 HTTP errors are often intermittent, and a simple retry will get you on your way.
-ConnectionError(MaxRetryError("HTTPSConnectionPool(host='repo.continuum.io', port=443): Max retries exceeded with url: /pkgs/free/linux-64/repodata.json.bz2 (Caused by NewConnectionError('<requests.packages.urllib3.connection.VerifiedHTTPSConnection object at 0x7f8f22380910>: Failed to establish a new connection: [Errno 101] Network is unreachable',))",),)
+ConnectionError...
 ```
 之前在服务器端的conda配置了代理,所以怀疑本机上也是代理的问题.
 之前用meow设置了全局代理,应该包括bash也是.所以应该要让conda越过代理(其实感觉bash开代理意义不大).
