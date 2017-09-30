@@ -9,7 +9,6 @@ Let's first start with DFT (Discrete Fourier Transform)
 
 {% raw %}
 
-
 $$
 \begin{bmatrix}
 y_1\\\
