@@ -5,7 +5,11 @@ title: How does FFT work?
 
 Let's first start with DFT (Discrete Fourier Transform)
 
-\\[
+
+{% raw %}
+
+
+$$
 \begin{bmatrix}
 y_1\\\
 y_2\\\
@@ -27,7 +31,7 @@ c_3\\\
 \vdots\\\
 c_n
 \end{bmatrix},\quad \omega=e^{\frac{2\pi i}{n}}
-\\]
+$$
 
 <!--more-->
 
@@ -51,13 +55,13 @@ For the first m entries of \\(y\\), we split the sum into even and odd parts.
 \\[y_j=\sum_{k=0}^{n-1}\omega_n^{jk}c_k=\sum_{k=0}^{n/2-1}\omega_n^{2jk}c_{2k}+\sum_{k=0}^{n/2-1}\omega_n^{j(2k+1)}c_{2k+1}, \quad j=0,1,\cdots, n/2-1\\]
 The even c's go into \\(c'=(c_0,c_2,\cdots)\\) and the odd c's go into \\(c''=(c_1,c_3,\cdots)\\). Set \\(y'=F_mc',y'\'=F_mc''\\). Then using \\(\omega_m=\omega_n^2\\), we can transform it into the combintion of \\(y' and y''\\).
 
-\\[
+$$
 LHS=\sum_{k=0}^{m-1}\omega_m^{jk}c'_k + \omega_n^j \sum_{k=0}^{m-1}\omega_m^{jk}c''_k=y'_j+(\omega_n)^jy''_j
-\\]
+$$
 
 For \\(j\ge m\\), Noticing that \\(\omega_n^m=-1\\) we have:
 
-\\[
+$$
 \begin{equation} 
 \begin{split}
 y_{j+m} & = \sum_{k=0}^{n-1}\omega_n^{(j+m)k}c_{k} \\
@@ -66,20 +70,20 @@ y_{j+m} & = \sum_{k=0}^{n-1}\omega_n^{(j+m)k}c_{k} \\
 & = y'_j - (\omega_n)^j y''_j 
 \end{split}
 \end{equation}
-\\]
+$$
 
 So here we are, the essential expansion in this recursion.
 
-\\[
+$$
 \begin{align}
 y_j=y'_j+\omega_n^jy''_j, \quad j=0,1,\cdots,m-1 \\
 y_{j+m}=y'_j-\omega_n^jy''_j, \quad j=0,1,\cdots,m-1
 \end{align}
-\\]
+$$
 
 The equations can be written in matrix expression.
 
-\\[
+$$
 y=
 \begin{bmatrix}
 I_m & D_m \\
@@ -89,11 +93,11 @@ I_m & -D_m
 y'\\
 y''
 \end{bmatrix}, \quad D_m=diag(1,\omega,\cdots, \omega^{m-1})
-\\]
+$$
 
 Remember the definition of \\(y' and y''\\).
 
-\\[
+$$
 \begin{bmatrix}
 y'\\y''
 \end{bmatrix}=
@@ -104,22 +108,22 @@ O&F_m
 \begin{bmatrix}
 c'\\c''
 \end{bmatrix}
-\\]
+$$
 
 We are nearly there; the last matrix is an 'even-odd' permutation that separates the incoming vector \\(c\\) into its even and odd parts \\(c'=(c_0,c_2,\cdots,c_{n-2}) and c''=(c_1, c_3,\cdots,c_{n-1})\\). For a direct look, we give the example of a 4-order even-odd permutation matrix:
 
-\\[
+$$
 P_4=\begin{bmatrix}
 1 &&&\\
 &&1&\\
 &1&&\\
 &&&1
 \end{bmatrix}
-\\]
+$$
 
 So one recursion of the FFT can be written as the multiplication of three matrix.
 
-\\[
+$$
 F_n=
 \begin{bmatrix}
 I_n/2 & D_n/2 \\
@@ -130,13 +134,13 @@ F_n/2&O\\
 O& F_n/2
 \end{bmatrix}
 P_n
-\\]
+$$
 
 The whole algorithm will iteratively compute \\(log_2(n)\\) stages until it reaches the bottom. In each stage, The only computation is the multiplication between the diagonal matrix and the half sized Fourier matrix, which is \\(\frac{n}{2}\\) times of multiplications. So the complexity of the whole algorithm will be \\(\frac{1}{2}nlog_2n\\) .
 
 As for the multiplication of the permutation, there is an elegant way of addressing it. Write the number 0 to n-1 in binary,  and rearrange them in order while reversing the order of their bits. Below shows an example of n=8.
 
-\\[
+$$
 \begin{matrix}
 input& binary& reversed & output\\
 0& 000& 000 & 0\\ 
@@ -148,4 +152,9 @@ input& binary& reversed & output\\
 6& 110& 011& 3\\
 7& 111& 111& 7\\
 \end{matrix}
-\\]
+$$
+
+
+
+
+{% endraw %}
