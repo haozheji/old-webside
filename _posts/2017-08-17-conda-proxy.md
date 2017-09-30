@@ -3,6 +3,9 @@ layout: post
 title: conda proxyerror 解决办法
 ---
 长时间没在本机上用conda安装包了,最近一段时间想装一些东西,发现总是报httperror的错误.
+
+<!--more-->
+
 ```bash
 CondaHTTPError: HTTP 000 CONNECTION FAILED for url <https://repo.continuum.io/pkgs/free/linux-64/repodata.json.bz2>
 Elapsed: -
