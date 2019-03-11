@@ -31,7 +31,7 @@ markdown: kramdown
 #pagniate: 5
 #pagniate_path: "/pages:num/"
 
-mathjax: false
+mathjax: true
 
 
 plugins:
@@ -39,7 +39,6 @@ plugins:
 paginate: 5
 paginate_path: "/pages:num/"
 
-mathjax: false
 
 excerpt_separator: <!-- more -->
 
