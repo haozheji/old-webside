@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 在远程服务器登录jupyter notebook
+title: 远程登录jupyter notebook
 categories: Tricks
 tags: [jupyter notebook]
 ---
