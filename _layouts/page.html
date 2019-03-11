@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="{{ site.lang | default: "en-US" }}">
+
+  {% include head.html %}
+
+<body>
+    {% include {{ site.baseurl }}header.html %}
+  
+    {{ content }}
+
+    {% include {{ site.baseurl }}footer.html %}
+
+    <a href="#top" class="back-to-top">^</a>
+</body>
+</html>
