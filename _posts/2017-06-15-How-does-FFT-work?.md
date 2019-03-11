@@ -8,7 +8,7 @@ mathjax: true
 
 Let's first start with DFT (Discrete Fourier Transform)
 
-<!--more-->
+<!-- more -->
 
 {% raw %}
 
