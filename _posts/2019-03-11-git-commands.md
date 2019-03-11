@@ -9,8 +9,8 @@ tags: git
 
 -  first thing to do after installing git
 
-`git config --global user.name "Haozhe Ji"`
-`git config --global user.email 1395082425@qq.com`
+`git config --global user.name "my name"`
+`git config --global user.email user@email.com`
 
 -  optionally setup editor:
 
