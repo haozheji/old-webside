@@ -35,6 +35,8 @@
     });
   </script>
   
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+  
 
   <!-- code highlighting-->
   <link rel="stylesheet" href="/lib/highlight/styles/hybrid.css">
@@ -106,119 +108,6 @@
       
       <article class="post-preview">
         <h1 class="post-title">
-          <a href="/math/two-dimension-random-walk.html">二维格点随机游走问题</a>
-        </h1>
-
-        <div class="post-info">
-          <span class="post-date">03 Jun 2017</span>
-           | 
-            <span class="fa fa-folder-open" aria-hidden="true">
-            
-              <a class="post-categories" href="/categories.html#Math">Math</a>
-            
-            </span>
-          
-           | 
-            <span class="fa fa-tag" aria-hidden="true">
-            
-              <a class="post-tags" href="/tags.html#probability theory">probability theory</a>
-            
-            </span>
-          
-        </div>
-
-        <div class="post-excerpt">
-          <p>一个粒子在二维空间中作随机运动，方向可以是上，下，左，右四种，且各方向等概，每一步步长为1. 假定从原点出发，以第n步时粒子所在位置到原点的距离作为半径画圆，计算这个圆的面积的期望。</p>
-
-<!--more-->
-
-<p>首先列出期望的两个性质：</p>
-
-<h3 id="性质一">性质一</h3>
-
-<p>任意函数(\phi (x))，(X)为随机变量（以下简称(r.v.)），定义一个新的随机变量(\phi (X)). 如果(\phi (X))具有有限的期望值，则：</p>
-
-<p>[E(\phi (X))=\sum_k \phi (x_k)f(x_k)]</p>
-
-<p>此处的级数绝对收敛当且仅当(E(\phi (X)))存在.</p>
-
-<h3 id="性质二">性质二</h3>
-
-<p>如果(X_1,X_2,\cdots ,X_n)都是具有有限期望值的(r.v.)，则它们的和的期望存在，且有：</p>
-
-<p>[E(X_1+X_2+\cdots+X_n)=E(X_1)+E(X_2)+\cdots+E(X_n)]</p>
-
-<p>这一性质对(r.v.)之间没有要求，也称为随机变量的线性性。</p>
-
-<p><a href="">William Feller</a>在其 <em>An Introduction to Probability Theory and Its Application</em> 一书中给出了使用联合分布的证明。</p>
-
-<p>只需考虑(X,Y)两个随机变量。</p>
-
-<p>[E(X+Y)=\sum_{j,k}(x_j+y_k)P(X=x_j,Y=y_k)=\sum_{j,k}x_j P(X=x_j,Y=y_k)+\sum_{j,k}y_k P(X=x_j,Y=y_k)]</p>
-
-<p>可以得到(X)的边缘分布:(P(X=x_j)=\sum_kP(X=x_j,Y=y_k))，(Y)同理。</p>
-
-<p>即得到：[L.H.S=\sum_jx_jP(X=x_j)+\sum_ky_kP(Y=y_k)=E(X)+E(Y)]</p>
-
-<p><strong>直接计算失败后，从递归的角度考虑得到了答案。递归的方法从第三部分开始。</strong></p>
-
-<hr />
-
-<p>​	回到本题目，表征粒子运动的随机变量为它的坐标((X,Y))，原题等价于求(X^2+Y^2)的期望。利用期望的第二个性质，可以分别求(E(X^2))和(E(Y^2))，再将它们相加得到结果。由于对称性，实际上只需求(E(X^2))。</p>
-
-<p>考虑粒子横坐标(r.v.)的分布(P(X=k)).需要注意的是粒子在横轴上移动的步数也是(r.v.)（介于0到n之间）设为(X’)。当横轴坐标为k，移动步数为m时，有：</p>
-
-<p>[P(X=k)=\sum_{m\ge 0}^nP(X=k, X’=m)]</p>
-
-<p><strong>上述写法其实有点问题，m并不能取到0～n中所有的值，因为粒子的运动是离散的</strong></p>
-
-<p>假设粒子在横轴上沿着正方向移动了a个单位，负方向移动了b个单位则根据(a+b=m,a-b=k)可解出此情况下正方向移动的单位为(\frac{m+k}{2})（需满足为整数）. 由于m步中每一步有两种选法，样本空间的大小为(2^m)；而m次中选了a次沿正向移动的情况有(\binom{m}{\frac{m+k}{2}})种，故：</p>
-
-<p>[P(X=k,X’=m)=\frac{\binom{m}{\frac{m+k}{2}}}{2^m}]</p>
-
-<p>得到计算(E(X^2))的总的表达式为：(由于对称性)</p>
-
-<p>[E(X^2)=2\sum_{k=0}^nk^2\sum_{m\ge 0}^nP(X=k,X’=m)]</p>
-
-<p>两个求和并非独立，第二个求和依赖于k的值。</p>
-
-<hr />
-
-<p>​	上述方法计算过于复杂，弃坑了。受到启发尝试使用递归的方法解决，发现出奇的简单。（递归大法好！）先列出走n步时的期望，以下标(n)记。</p>
-
-<p>[E_n(X^2+Y^2)=\sum (x^2+y^2)P(X=x,Y=y)]</p>
-
-<p>设此时到达((x,y))。再走一步时，比如说横轴正方向再走一步到达((x+1,y))概率为：</p>
-
-<p>[P(X=x+1,Y=y)=P(X=x+1,Y=y|X=x,Y=y)P(X=x,Y=y)=\frac{1}{4}P(X=x,Y=y)]</p>
-
-<p>同理对剩下的三个方向有类似的结果，则可以得到走(n+1)步时的所求期望：</p>
-
-<p>[E_{n+1}(X^2+Y^2)=\frac{1}{4}\sum {[(x+1)^2+y^2]+[x^2+(y+1)^2]+[(x-1)^2+y^2]+[x^2+(y-1)^2]} P(X=x,Y=y)]</p>
-
-<p>化简得到：</p>
-
-<p>[E_{n+1}(X^2+Y^2)=\sum (x^2+y^2+1)P(X=x,Y=y)=E_n(X^2+Y^2)+\sum P(X=x,Y=y)]</p>
-
-<p>后一项就是(X,Y)联合分布概率的归一，等于1！再根据边界条件(E(0)=0)得到</p>
-
-<p>[E_{n}(X^2+Y^2)=n]</p>
-
-<p>也就是说离散二维随机游走的距离平方的期望值就等于步数的大小！连续的情况其实也是类似，<a href="https://en.wikipedia.org/wiki/Albert_Einstein">A.Einstein</a>曾经给出过布朗运动扩散的方均距离与时间的关系，即：</p>
-
-<p>[\bar{l^2} \propto t]</p>
-
-
-        </div>
-
-        <div class="post-readmore">
-          <a class="read-more" href="/math/two-dimension-random-walk.html">Read More</a>
-        </div>
-      </article>
-      <hr />
-      
-      <article class="post-preview">
-        <h1 class="post-title">
           <a href="/math/toss-coin-problem.html">抛硬币先后手对胜率的影响</a>
         </h1>
 
@@ -241,31 +130,8 @@
         </div>
 
         <div class="post-excerpt">
-          <p>(A)，(B)两人分别轮流抛一枚非公平硬币，正面朝上的概率是(p)，最先掷得正面朝上者胜出，假定(A)先抛，求先手胜出的概率。
-<!--more--></p>
+          <p>(A)，(B)两人分别轮流抛一枚非公平硬币，正面朝上的概率是(p)，最先掷得正面朝上者胜出，假定(A)先抛，求先手胜出的概率。</p>
 
-<p>可以证明，对于任意(p&gt;0),先手获胜的概率都是大于(\frac{1}{2})的。
-甚至当硬币是公平的时候（(p=0.5)）先手获胜的概率仍然比二分之一要大。
-在一种很极端的情况下，双方获胜概率趋近于相同，那就是硬币正面朝上的概率要趋于零（一个没有正面的硬币）！而此时双方都不可能获胜，这样的讨论在现实中也就失去了意义。</p>
-
-<p>下面先给出我的证明：
-设(A)胜出的概率为(P(A)),(B)胜出的概率为(P(B))，定义先手胜出的概率为(P(win^{1st})),在题目的条件下，(A)先手所以(P(A)=P(win^{1st}))
-假设(A)第一次抛出了反面，我们就可以说(B)与(A)站在了同一起跑线上。在这种条件下(B)获胜的概率也就是我们所求的先手获胜概率。
-由于(A)和(B)抛掷硬币是独立的，(A)第一次投出反面的情况下(B)获胜的概率为：
-[(1-p)P(win^{1st})=(1-p)P(A)]
-这个概率也等价于(A)没有获胜的概率，即(P(\bar{A})).
-因此有：
-[(1-p)P(A)=1-P(A)]
-解出：[P(A)=\frac{1}{2-p}]</p>
-
-<p>这道题也可以用几何分布的模型来计算。
-几何分布定义为在伯努利试验中，得到一次成功所需要的试验次数\(X\)。
-若每次试验成功概率为(p)，那么(k)次试验中，第(k)次才得到成功的概率是：
-[P(X=k)=(1-p)^{k-1}p]
-在这题中若先抛者（也就是(A)）第(k)次抛掷硬币正面向上，意味着两人在之前交替的(2(n-1))次中都抛出了反面，因此：
-[P(A)=\sum_{k=1}^{\infty}P(A_k)=\sum_{k=1}^{\infty}(1-p)^{2(n-1)}p=\frac{p}{1-(1-p)^2}=\frac{1}{2-p}]</p>
-
-<p>对于这样一个看似周期性的过程，结果却与直觉相悖。由此观之，先手确实有着“得天独厚”的优势。</p>
 
         </div>
 
@@ -302,79 +168,6 @@
           <p>对$n$阶实对称矩阵$A$有特征值$\lambda_1\le \lambda_2\le \cdots\le \lambda_{n}$，对应特征向量$x_1,x_2,\cdots ,x_n$，则对任意$k$维子空间$V_k$，有：</p>
 
 <script type="math/tex; mode=display">\lambda_{n-k+1}=\max_{V_k}\min_{x\in V_k}\frac{x^TAx}{x^Tx}</script>
-
-<!--more-->
-
-<p>这个定理得到在不同约束下的<em>Rayleigh</em>商的极值。笔者最欣赏的证明出自于 <a href="http://www-math.mit.edu/~gs/">Gilbert Strang </a>的 <em>Linear Algebra and Its Application</em>，循序渐进由浅入深，为读者展现了解决问题的思考过程，读来颇有收获。在此整理一下，附上一些自己的理解。</p>
-
-<div align="center">
-<img src="/img/cupcakematrix.jpg" alt="cupcake matrix" />
-<p>Gilbert Strang and his favourite -1, 2, -1 matrix</p>
-</div>
-
-<h3 id="lemma-1"><em>Lemma 1</em></h3>
-
-<p><em>Rayleigh’s Principle:</em></p>
-
-<script type="math/tex; mode=display">\lambda_1\le R(x)=\frac{x^TAx}{x^Tx}\le \lambda_n</script>
-
-<p>当$x=x_1$时取到最小值；当$x=x_n$时取到最大值。</p>
-
-<p><em>proof:</em></p>
-
-<p>先从几何上理解一下Rayleigh商的含义，以最小化$R(x)$为例。令分子等于1得到$n$维超椭球的方程，这时候问题转变为最大化分母$x^Tx=||x||^2$。也就是找到一个方向（轴）使得在这个方向上超椭球面上的点到原点的距离最大（最长轴）。显然，沿着最长主轴(major axis)的方向就能得到$R(x)$的最小值，这个方向也很好通过$A$的相似对角化确定。</p>
-
-<script type="math/tex; mode=display">R(x)=\frac{(Qy)^TA(Qy)}{(Qy)^T(Qy)}=\frac{y^T\Lambda y}{y^Ty}=\frac{\lambda_1y_1^2+\cdots +\lambda_ny_n^2}{y_1^2+\cdots +y_n^2}</script>
-
-<p>$Q$为正交阵，等价于进行有限次旋转和镜射，可以理解为将$x$在自然基下的坐标换到了$A$的特征向量基下。（注意上式中$y_i$表示坐标）由分子可以看出超椭球的主轴长度反比于$\frac{1}{\sqrt \lambda}$, 因此最长主轴方向就是$x_1$的方向，在$A$ 特征向量的基下坐标为$y_1=1,y_2=0,\cdots ,y_n=0$.也可以利用不等式：</p>
-
-<script type="math/tex; mode=display">\lambda_1(y_1^2+\cdots +y_n^2)\le \lambda_1y_1^2+\cdots\lambda_ny_n^2</script>
-
-<p>类似地可以求出在$x_n$方向上，$R(x)$取到极大值。实际上除了边界的特征向量为极值点, 中间的特征向量则是$R(x)$的鞍点(saddle points)。一个典型的鞍点：</p>
-
-<div align="center">
-
-<img src="/img/z=x^2-y^2.png" alt="z=x^2-y^2" style="zoom:70%" />
-
-<p>saddle point of z=x^2-y^2</p>
-
-</div>
-
-<p>鞍点的困难在于,对于一个特定的$x$,我们不知道$R(x)$和那些中间的特征值$\lambda_2,\cdots, \lambda_n$的大小关系. 比如说我们想要让$R(x)$的最小值取到第$j$个特征值, 利用实对称矩阵的特征向量$x_i$相互正交的性质, 直接的想法是约束变量$x$取到与$x_1,\cdots,x_{j-1}$正交, 即$x$取值于子空间$span\{x_j,\cdots,x_n\}$. 这样$R(x)$表达式中的$y_1=\cdots=y_{j-1}=0$, Rayleigh 商也化为:</p>
-
-<script type="math/tex; mode=display">\frac{\lambda_{j}y_j^2+\cdots+\lambda_ny_n^2}{y_j^2+\cdots+y_n^2}</script>
-
-<p>上式取到当(y_j=1)时取到最小值(\lambda_j).总结成引理二.</p>
-
-<h3 id="lemma-2"><em>Lemma 2</em></h3>
-
-<p>[\lambda_j=\min R(x), \quad given\quad x^Tx_1=\cdots=x^Tx_{j-1}=0]</p>
-
-<p>大部分时候(A)的特征向量是未知的, 也就是上述引理的约束不知道. 比如说我们考虑在不知道(x_1)的情况下得到(R(x))和(\lambda_2)的关系. 这时我们使用任意一个向量(z)来代替(x_1). 当它们相等时, (R(x))就能取到最小值(\lambda_2), 事实上就算在它们不相等的情况下, 我们可以得到:</p>
-
-<p>[\lambda_2 = \max_z \min_{x^Tz=0}R(x)]</p>
-
-<p>或用(z)的正交补(V_{n-1})写作:</p>
-
-<p>[\lambda_2= \max_{V_{n-1}} \min_{x \in V_{n-1}}R(x)]</p>
-
-<p><em>proof:</em></p>
-
-<p>任意给定(z), 存在(\alpha, \beta\neq 0) 使得(x=\alpha x_1+\beta x_2)与(z)正交. 一定存在这样的(\alpha, \beta)的原因是, 正交条件只给这两个变量施加了一个约束, 它们还保留一个自由度. 对任意满足该条件的组合:</p>
-
-<p>[R(x)=\frac{\lambda_1 \alpha^2+\lambda_2 \beta^2}{\alpha^2+\beta^2}\le \lambda_2]</p>
-
-<p>将上述定理推广, 即可得到<em>Courant Fischer</em>定理, 下面给出证明.</p>
-
-<p><em>proof:</em></p>
-
-<p>对任意子空间(V_{k}\in \Re^n), 取\(x \in V_{k}). 考虑(V_{k})的正交补(W_{n-k}), 取定(W_{n-k})的一组基(w_1,\cdots, w_{n-k}), (x)应满足分别垂直于这(n-k)个向量, 相当于对向量(x)施加了(n-k)个约束. 因此为了保证有解,在下面构造(x)的时候取了(n-k+1)个自由度.</p>
-
-<p>根据上述论述, 存在(c_1,c_2,\cdots, c_{n-k+1})使得(x=c_1 x_1+\cdots  c_{n-k+1}x_{n-k+1}), 此时:</p>
-
-<p>[R(x)=\frac{\lambda_1c_1^2+\cdots+\lambda_{n-k+1}c_{n-k+1}^2}{c_1^2+\cdots+c_{n-k+1}^2}\le\lambda_{n-k+1}]</p>
-
-<p>容易验证当(V_{k}=span\{x_{n-k+1},\cdots, x_{n}\})时, 上式取到最大值(\lambda_{n-k+1}).</p>
 
 
         </div>
@@ -487,7 +280,7 @@
   <nav class="site-state">
     <div class="site-state-item">
       <a href="/archives.html">
-        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-count">8</span>
         <span>Posts</span>
       </a>
     </div>
@@ -526,7 +319,7 @@
     
       <li class="list-group-item">
         <a href="/categories.html#Math">Math</a>
-        <span class="badge">5</span>
+        <span class="badge">4</span>
       </li>
     
       <li class="list-group-item">
@@ -555,7 +348,7 @@
     
       <li class="list-group-item">
         <a href="/tags.html#linear algebra"> linear algebra</a>
-        <span class="badge">3</span>
+        <span class="badge">2</span>
       </li>
     
       <li class="list-group-item">
@@ -589,7 +382,7 @@
 
     <footer class="footer">
   <div class="copyright">
-      Copyright &copy; <time datetime="2019-03-11T18:58:32+08:00">2019</time> <a href="http://localhost:4000">Haozhe Ji</a> | Powered by <a href="https://github.com/jekyll/jekyll">Jekyll</a> | Designed by <a href="https://github.com/lszero">lszero</a>
+      &copy; <a href="http://localhost:4000">Haozhe Ji</a>  <time datetime="2019-03-11T20:58:09+08:00">2019</time> | Powered by <a href="https://github.com/jekyll/jekyll">Jekyll</a> & <a href="https://github.com/lszero">lszero</a>
   </div>
 </footer>
 
