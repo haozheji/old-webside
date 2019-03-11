@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+  <title>
+    
+      抛硬币先后手对胜率的影响 &middot; Haozhe Ji's Blog
+    
+  </title>
+
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="/assets/bootstrap-3.3.7-dist/css/bootstrap.min.css">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="/assets/font-awesome/css/font-awesome.min.css">
+  <!-- My CSS -->
+  <link rel="stylesheet" href="/assets/main.css">
+
+  <!-- MathJax -->
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      TeX: {
+        equationNumbers: {
+          autoNumber: "AMS"
+        }
+      },
+      tex2jax: {
+        inlineMath: [ ['$','$'] , ['\(', '\)']],
+        displayMath: [ ['$$','$$'] , ['\[', '\]']],
+        processEscapes: true,
+      }
+    });
+  </script>
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+  
+
+  <!-- code highlighting-->
+  <link rel="stylesheet" href="/lib/highlight/styles/hybrid.css">
+  <script src="/lib/highlight/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <script>hljs.configure({ ignore: ['text'] });</script>
+  
+  <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+</head>
+
+
+<body>
+    <header class="header">
+  <!-- Navigation -->
+  <nav class="navbar navbar-default .navbar-static-top">
+    <div class="container">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/" style="color:#333">Haozhe Ji's Blog</a>
+        <p class="navbar-text">窓の外の景色</p>
+      </div>
+
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav navbar-right">
+          <li class="nav-search">
+            <form class="navbar-form navbar-left" role="search" id="search-form">
+              <div class="input-group">
+                  <span class="input-group-btn">
+                    <button class="btn btn-default" type="submit" style="color:#777">Go!</button>
+                  </span>
+                  <input type="text" id="search-input" class="form-control" placeholder="Search">
+                  
+              </div>
+            </form>
+          </li>
+          <li>
+            <a href="/archives.html">Archives</a>
+          </li>
+          <li>
+            <a href="/categories.html">Categories</a>
+          </li>
+          <li>
+            <a href="/tags.html">Tags</a>
+          </li>
+          <li>
+            <a href="/about.html">About</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+
+  
+    <div class="container">
+  <div class="row-fluid main">
+    <div class="col-md-9 content">
+      <article class="post">
+        <h1 class="post-title">抛硬币先后手对胜率的影响</h1>
+
+        <div class="post-info">
+          <span class="post-date">19 May 2017</span>
+           | 
+            <span class="fa fa-folder-open" aria-hidden="true">
+            
+              <a class="post-categories" href="/categories.html#Math">Math</a>
+            
+            </span>
+          
+           | 
+            <span class="fa fa-tag" aria-hidden="true">
+            
+              <a class="post-tags" href="/tags.html#probability theory">probability theory</a>
+            
+            </span>
+          
+        </div>
+
+        <hr>
+        <div class="post-content">
+          <p>(A)，(B)两人分别轮流抛一枚非公平硬币，正面朝上的概率是(p)，最先掷得正面朝上者胜出，假定(A)先抛，求先手胜出的概率。
+<!--more--></p>
+
+<p>可以证明，对于任意(p&gt;0),先手获胜的概率都是大于(\frac{1}{2})的。
+甚至当硬币是公平的时候（(p=0.5)）先手获胜的概率仍然比二分之一要大。
+在一种很极端的情况下，双方获胜概率趋近于相同，那就是硬币正面朝上的概率要趋于零（一个没有正面的硬币）！而此时双方都不可能获胜，这样的讨论在现实中也就失去了意义。</p>
+
+<p>下面先给出我的证明：
+设(A)胜出的概率为(P(A)),(B)胜出的概率为(P(B))，定义先手胜出的概率为(P(win^{1st})),在题目的条件下，(A)先手所以(P(A)=P(win^{1st}))
+假设(A)第一次抛出了反面，我们就可以说(B)与(A)站在了同一起跑线上。在这种条件下(B)获胜的概率也就是我们所求的先手获胜概率。
+由于(A)和(B)抛掷硬币是独立的，(A)第一次投出反面的情况下(B)获胜的概率为：
+[(1-p)P(win^{1st})=(1-p)P(A)]
+这个概率也等价于(A)没有获胜的概率，即(P(\bar{A})).
+因此有：
+[(1-p)P(A)=1-P(A)]
+解出：[P(A)=\frac{1}{2-p}]</p>
+
+<p>这道题也可以用几何分布的模型来计算。
+几何分布定义为在伯努利试验中，得到一次成功所需要的试验次数\(X\)。
+若每次试验成功概率为(p)，那么(k)次试验中，第(k)次才得到成功的概率是：
+[P(X=k)=(1-p)^{k-1}p]
+在这题中若先抛者（也就是(A)）第(k)次抛掷硬币正面向上，意味着两人在之前交替的(2(n-1))次中都抛出了反面，因此：
+[P(A)=\sum_{k=1}^{\infty}P(A_k)=\sum_{k=1}^{\infty}(1-p)^{2(n-1)}p=\frac{p}{1-(1-p)^2}=\frac{1}{2-p}]</p>
+
+<p>对于这样一个看似周期性的过程，结果却与直觉相悖。由此观之，先手确实有着“得天独厚”的优势。</p>
+
+        </div>
+        <br><br>
+      </article>
+
+      <nav class="post-pagination">
+        
+        <a href="/math/courant-fischer-prove.html" class="btn previous" title="Courant Fischer定理的证明">&larr; Courant Fischer定理的证明</a>
+        
+        
+        <a href="/math/two-dimension-random-walk.html" class="btn next" title="二维格点随机游走问题">二维格点随机游走问题 &rarr;</a>
+        
+      </nav>
+
+      <hr>
+
+      
+      <aside class="related">
+        <h3>Related Posts</h3>
+        <ul class="related-posts">
+          
+            <li>
+              <a href="/introduction/git-commands.html">
+                Git commands in a nut shell
+                <small><time datetime="2019-03-11T00:00:00+08:00">11 Mar 2019</time></small>
+              </a>
+            </li>
+          
+            <li>
+              <a href="/tricks/jupyter-notebook.html">
+                在远程服务器登录jupyter notebook
+                <small><time datetime="2017-09-25T00:00:00+08:00">25 Sep 2017</time></small>
+              </a>
+            </li>
+          
+            <li>
+              <a href="/tricks/conda-proxy.html">
+                conda proxyerror 解决办法
+                <small><time datetime="2017-08-17T00:00:00+08:00">17 Aug 2017</time></small>
+              </a>
+            </li>
+          
+        </ul>
+      </aside>
+      
+
+    </div>
+    
+    <div class="col-md-3 post-sidebar">
+      <div class="sidebar-content" id="sidebar">
+  <nav class="header-list-sidebar">
+    <ul id="sideNav" class="nav headers-sidenav">
+        <!-- code will be generated in TOC.js -->
+    </ul>
+  </nav>
+</div>
+    </div>
+  </div>
+</div>
+
+
+    <footer class="footer">
+  <div class="copyright">
+      Copyright &copy; <time datetime="2019-03-11T18:58:32+08:00">2019</time> <a href="http://localhost:4000">Haozhe Ji</a> | Powered by <a href="https://github.com/jekyll/jekyll">Jekyll</a> | Designed by <a href="https://github.com/lszero">lszero</a>
+  </div>
+</footer>
+
+
+    <a href="#top" class="back-to-top">^</a>
+
+<!--      -->
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="/assets/js/jquery-1.12.4.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="/assets/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+    <!-- TOC -->
+    <script src="/assets/js/toc/TOC.js"></script>
+
+    <script>$("#search-form").submit(function(event){
+      var query = document.getElementById("search-input").value;
+      window.open("http://google.com/search?q=" + query + "%20site:" + "");
+    });</script>
+  </body>
+</html>

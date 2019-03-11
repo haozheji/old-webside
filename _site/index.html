@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+  <title>
+    
+      Haozhe Ji's Blog &middot; 
+    
+  </title>
+
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="/assets/bootstrap-3.3.7-dist/css/bootstrap.min.css">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="/assets/font-awesome/css/font-awesome.min.css">
+  <!-- My CSS -->
+  <link rel="stylesheet" href="/assets/main.css">
+
+  <!-- MathJax -->
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      TeX: {
+        equationNumbers: {
+          autoNumber: "AMS"
+        }
+      },
+      tex2jax: {
+        inlineMath: [ ['$','$'] , ['\(', '\)']],
+        displayMath: [ ['$$','$$'] , ['\[', '\]']],
+        processEscapes: true,
+      }
+    });
+  </script>
+  
+
+  <!-- code highlighting-->
+  <link rel="stylesheet" href="/lib/highlight/styles/hybrid.css">
+  <script src="/lib/highlight/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <script>hljs.configure({ ignore: ['text'] });</script>
+  
+  <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+</head>
+
+
+<body>
+    <header class="header">
+  <!-- Navigation -->
+  <nav class="navbar navbar-default .navbar-static-top">
+    <div class="container">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/" style="color:#333">Haozhe Ji's Blog</a>
+        <p class="navbar-text">窓の外の景色</p>
+      </div>
+
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav navbar-right">
+          <li class="nav-search">
+            <form class="navbar-form navbar-left" role="search" id="search-form">
+              <div class="input-group">
+                  <span class="input-group-btn">
+                    <button class="btn btn-default" type="submit" style="color:#777">Go!</button>
+                  </span>
+                  <input type="text" id="search-input" class="form-control" placeholder="Search">
+                  
+              </div>
+            </form>
+          </li>
+          <li>
+            <a href="/archives.html">Archives</a>
+          </li>
+          <li>
+            <a href="/categories.html">Categories</a>
+          </li>
+          <li>
+            <a href="/tags.html">Tags</a>
+          </li>
+          <li>
+            <a href="/about.html">About</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+
+  
+    <div class="container">
+  <div class="row-fluid main">
+    <div class="col-md-9 content main-posts-preview">
+      
+      <article class="post-preview">
+        <h1 class="post-title">
+          <a href="/introduction/git-commands.html">Git commands in a nut shell</a>
+        </h1>
+
+        <div class="post-info">
+          <span class="post-date">11 Mar 2019</span>
+           | 
+            <span class="fa fa-folder-open" aria-hidden="true">
+            
+              <a class="post-categories" href="/categories.html#Introduction">Introduction</a>
+            
+            </span>
+          
+           | 
+            <span class="fa fa-tag" aria-hidden="true">
+            
+              <a class="post-tags" href="/tags.html#git">git</a>
+            
+            </span>
+          
+        </div>
+
+        <div class="post-excerpt">
+          <h2 id="first-time-setup">First-time Setup</h2>
+
+<ul>
+  <li>first thing to do after installing git</li>
+</ul>
+
+<p><code class="highlighter-rouge">git config --global user.name "Haozhe Ji"</code>
+<code class="highlighter-rouge">git config --global user.email 1395082425@qq.com</code></p>
+
+<ul>
+  <li>optionally setup editor:</li>
+</ul>
+
+<p><code class="highlighter-rouge">git config --global core.editor vim</code></p>
+
+<ul>
+  <li>check out setting</li>
+</ul>
+
+<p><code class="highlighter-rouge">git config --list</code></p>
+
+
+        </div>
+
+        <div class="post-readmore">
+          <a class="read-more" href="/introduction/git-commands.html">Read More</a>
+        </div>
+      </article>
+      <hr />
+      
+      <article class="post-preview">
+        <h1 class="post-title">
+          <a href="/tricks/jupyter-notebook.html">在远程服务器登录jupyter notebook</a>
+        </h1>
+
+        <div class="post-info">
+          <span class="post-date">25 Sep 2017</span>
+           | 
+            <span class="fa fa-folder-open" aria-hidden="true">
+            
+              <a class="post-categories" href="/categories.html#Tricks">Tricks</a>
+            
+            </span>
+          
+           | 
+            <span class="fa fa-tag" aria-hidden="true">
+            
+              <a class="post-tags" href="/tags.html#jupyter notebook">jupyter notebook</a>
+            
+            </span>
+          
+        </div>
+
+        <div class="post-excerpt">
+          <h1 id="服务器端">服务器端</h1>
+
+<h2 id="1生成配置文件">1.生成配置文件</h2>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>jupyter notebook <span class="nt">--generate-config</span>
+</code></pre></div></div>
+
+<!--more-->
+
+<h2 id="2生成登录密码">2.生成登录密码</h2>
+
+<p>进入ipython</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">notebook.auth</span> <span class="kn">import</span> <span class="n">passwd</span>
+<span class="n">passwd</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p>会生成一个密钥’sha1…’ 复制下来.</p>
+
+<h2 id="3修改配置文件">3.修改配置文件</h2>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>c.NotebookApp.ip='localhost' 设置本地端口可访问
+c.NotebookApp.password = u'sha:ce...刚才复制的那个密文'
+c.NotebookApp.open_browser = False # 禁止自动打开浏览器
+c.NotebookApp.port =8888 #随便指定一个端口
+</code></pre></div></div>
+
+<h2 id="4启动jupyter-notebook">4.启动jupyter notebook</h2>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>jupyter notebook
+</code></pre></div></div>
+
+<h1 id="本地端">本地端</h1>
+
+<h2 id="1端口映射">1.端口映射</h2>
+
+<p>*为了更方便使用,在使用ssh登录服务器时进行端口映射</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ssh user@remote_server_ip <span class="nt">-L</span> 1024 127.0.0.1:8888
+</code></pre></div></div>
+
+<p>例如将服务器的本地端口8888映射到本机的1024端口</p>
+
+<h2 id="2远程登录jupyter-notebook">2.远程登录jupyter notebook</h2>
+
+<p>在本机浏览器登录127.0.0.1:1024,并输入在服务器设定的明文密码.</p>
+
+        </div>
+
+        <div class="post-readmore">
+          <a class="read-more" href="/tricks/jupyter-notebook.html">Read More</a>
+        </div>
+      </article>
+      <hr />
+      
+      <article class="post-preview">
+        <h1 class="post-title">
+          <a href="/tricks/conda-proxy.html">conda proxyerror 解决办法</a>
+        </h1>
+
+        <div class="post-info">
+          <span class="post-date">17 Aug 2017</span>
+           | 
+            <span class="fa fa-folder-open" aria-hidden="true">
+            
+              <a class="post-categories" href="/categories.html#Tricks">Tricks</a>
+            
+            </span>
+          
+           | 
+            <span class="fa fa-tag" aria-hidden="true">
+            
+              <a class="post-tags" href="/tags.html#conda">conda</a>
+            
+            </span>
+          
+        </div>
+
+        <div class="post-excerpt">
+          <p>长时间没在本机上用conda安装包了,最近一段时间想装一些东西,发现总是报httperror的错误.</p>
+
+<!--more-->
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>CondaHTTPError: HTTP 000 CONNECTION FAILED <span class="k">for </span>url &lt;https://repo.continuum.io/pkgs/free/linux-64/repodata.json.bz2&gt;
+Elapsed: -
+
+An HTTP error occurred when trying to retrieve this URL.
+HTTP errors are often intermittent, and a simple retry will get you on your way.
+ConnectionError...
+</code></pre></div></div>
+<p>之前在服务器端的conda配置了代理,所以怀疑本机上也是代理的问题.
+之前用meow设置了全局代理,应该包括bash也是.所以应该要让conda越过代理(其实感觉bash开代理意义不大).
+找到一篇相关问题的贴<a href="https://github.com/ContinuumIO/anaconda-issues/issues/1326">https://github.com/ContinuumIO/anaconda-issues/issues/1326</a>,但我的问题没有详细说是proxyerror,估计因为不是conda内部的代理的缘故.
+有一个解决方法是在bash设置环境变量:</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">set </span><span class="nv">NO_PROXY</span><span class="o">=</span>continuum.io,anaconda.org
+</code></pre></div></div>
+<p>不过这个方法好像不能永久有效(?)</p>
+
+        </div>
+
+        <div class="post-readmore">
+          <a class="read-more" href="/tricks/conda-proxy.html">Read More</a>
+        </div>
+      </article>
+      <hr />
+      
+      <article class="post-preview">
+        <h1 class="post-title">
+          <a href="/math/Incidence-Matrix.html">Incidence Matrix</a>
+        </h1>
+
+        <div class="post-info">
+          <span class="post-date">18 Jun 2017</span>
+           | 
+            <span class="fa fa-folder-open" aria-hidden="true">
+            
+              <a class="post-categories" href="/categories.html#Math">Math</a>
+            
+            </span>
+          
+           | 
+            <span class="fa fa-tag" aria-hidden="true">
+            
+              <a class="post-tags" href="/tags.html#linear algebra">linear algebra</a>
+            
+            </span>
+          
+        </div>
+
+        <div class="post-excerpt">
+          <h3 id="定义">定义</h3>
+
+<p>(此定义不唯一) 每一行代表一条边, 每一列代表一个顶点, 在表征任意一条边的一行, 如果这条边从(i)出发,到达(j), 则给第(i)个元素赋-1, 第(j\)个赋1, 其他赋0.</p>
+
+<!--more-->
+
+<h3 id="性质一">性质一</h3>
+
+<p>(G=(V,E))为有向连通图 (只需任意顶点间有边相连), A为G的关联矩阵, 且(|V|=n\), 则(dimN(A)=1\).</p>
+
+<p>若(i,j)相邻,则(x_i=x_j=1\). 由邻接的传递性, 由G为连通图, 可知任意两点\(p,q\)均连通, 即(x_p=x_q=1\).</p>
+
+<h3 id="推论">推论</h3>
+
+<p>(G=(V,E))有(k\)个连通分支, 则(dimN(A)=k\).</p>
+
+<p>将矩阵(A)重新排成(k\)个分块对角矩阵的形式, 即(A=diag(A_1,A_2,\cdots,A_k)\)</p>
+
+<p>则对每一个分块矩阵,内部连通,其零空间维数皆为1.</p>
+
+<p>研究方程(Ax=b)的解, 从A的四个基本子空间入手.</p>
+
+<h3 id="na">(N(A))</h3>
+
+<p>令(b)为边上的电势差. 每个节点等电位, 就是使(b=0\)的条件.</p>
+
+<h3 id="ca">(C(A))</h3>
+
+<p>任意给定节点电位, 得到边上电势降的所有情况就组成了列空间. (KVL)定律给出了对边上电势降的约束, 即任意环路上电势降代数和为零. 因此独立环路的个数就是对列空间约束的自由度的数目.</p>
+
+<p>对于m条边, n个顶点的连通图, 独立环路的个数为(m-n+1).* 因此, 列空间的自由度数目为(m-(m-n+1)=n-1\), 即为A的秩.</p>
+
+<h3 id="nat">(N(A^T))</h3>
+
+<p>左零空间是使节点处电流代数和为零的边上电流所组成的空间, 由(KCL)约束. 总共有(n\)个节点, 而独立的节点方程个数只有(n-1\)个, 因此其维度为(m-(n-1)=m-n+1\)与C(A)互为(R^m\)的正交补.</p>
+
+<p>左零空间为C(A)关于(R^m)的正交补, 因此垂直于由独立环路约束所确定的超平面. 其物理意义为不存在外加电源时的解.</p>
+
+<h3 id="cat">(C(A^T))</h3>
+
+<p>Rows are dependent when edges form a loop. Independent rows come from a tree. 因此行空间的基可通过选取该图的一个生成树获得. 通过与N(A)的正交补性质可快速判断.</p>
+
+<p>任意给定边上的电流, 得到节点的电流代数和的所有情况组成行空间. 没有外界电流输入的节点, 电流代数和为零, 所有节点总的电流代数和应该为0.(电流连续性)</p>
+
+<h3 id="综上所述">综上所述</h3>
+
+<p>(N(A^T))的基可通过m-n+1个独立环路构造(m维);</p>
+
+<p>(C(A^T))的基可通过生成子树的n-1条边构造(n维);</p>
+
+<p>(C(A))的基可通过n-1个独立节点来构造(m维);</p>
+
+<p>(N(A))的基就是(\vec{e}\), 可通过对每个节点整体提升电势构造(n维).</p>
+
+
+        </div>
+
+        <div class="post-readmore">
+          <a class="read-more" href="/math/Incidence-Matrix.html">Read More</a>
+        </div>
+      </article>
+      <hr />
+      
+      <article class="post-preview">
+        <h1 class="post-title">
+          <a href="/math/How-does-FFT-work.html">How does FFT work?</a>
+        </h1>
+
+        <div class="post-info">
+          <span class="post-date">15 Jun 2017</span>
+           | 
+            <span class="fa fa-folder-open" aria-hidden="true">
+            
+              <a class="post-categories" href="/categories.html#Math">Math</a>
+            
+            </span>
+          
+           | 
+            <span class="fa fa-tag" aria-hidden="true">
+            
+              <a class="post-tags" href="/tags.html#linear algebra">linear algebra</a>
+            
+            </span>
+          
+        </div>
+
+        <div class="post-excerpt">
+          <p>Let’s first start with DFT (Discrete Fourier Transform)</p>
+
+<!--more-->
+
+<script type="math/tex; mode=display">% <![CDATA[
+\begin{bmatrix}
+y_1\\\
+y_2\\\
+y_3\\\
+\vdots\\\
+y_n
+\end{bmatrix}=
+\begin{bmatrix}
+1 & 1 & 1 & \cdots & 1 \\\
+1 &  \omega & \omega^2 &\cdots & \omega^{n-1} \\\
+1 & \omega^2 & \omega^4 & \cdots & \omega^{2n-2} \\\
+\vdots & \vdots & \vdots & \ddots & \vdots \\\
+1 & \omega^{n-1} &\omega^{2n-2} & \cdots & \omega^{(n-1)^2}
+\end{bmatrix}
+\begin{bmatrix}
+c_1\\\
+c_2\\\
+c_3\\\
+\vdots\\\
+c_n
+\end{bmatrix},\quad \omega=e^{\frac{2\pi i}{n}} %]]></script>
+
+<p>The vector (y) is the function to be expanded and the matrix multiplied by the coefficients (c) is the Fourier matrix (F_n); it is seen in <em>frequency space</em> through the coefficients (c_k). This formula is actually called the inverse Fourier transform. It can be seen from (\omega)(it has positive sign on (\omega)). Fourier transform is the one that computes the frequency expansion given the function value at each time step.</p>
+
+<p>Compare to the continuous form of Fourier transform:</p>
+
+<script type="math/tex; mode=display">f(t)=\int_{-\infty}^{+\infty}F(\nu)e^{2\pi i\nu t}d\nu</script>
+
+<p>In the case of n order Fourier matrix, we have to compute</p>
+
+<script type="math/tex; mode=display">y_j=\sum_{k=0}^{n-1}\omega^{jk}x_k, \quad j=0,1,\cdots,n-1</script>
+
+<p>The complexity is (O(n^2)). The idea of FFT is to recursively compute the half size matrix (i.e. (F_{n/2}, F_{n/4}, \cdots)) and the complexity can be reduced to (O(nlog(n))).
+The link between the origin matrix and its half sized counterpart is the property of complex number. Suppose (m=\frac{n}{2}), then (\omega_m=\omega_n^2)</p>
+
+<p>For the first m entries of (y), we split the sum into even and odd parts.</p>
+
+<p>[y_j=\sum_{k=0}^{n-1}\omega_n^{jk}c_k=\sum_{k=0}^{n/2-1}\omega_n^{2jk}c_{2k}+\sum_{k=0}^{n/2-1}\omega_n^{j(2k+1)}c_{2k+1}, \quad j=0,1,\cdots, n/2-1]</p>
+
+<p>The even c’s go into (c’=(c_0,c_2,\cdots)) and the odd c’s go into (c’’=(c_1,c_3,\cdots)). Set (y’=F_mc’,y’'=F_mc’’). Then using (\omega_m=\omega_n^2), we can transform it into the combintion of (y’ and y’’).</p>
+
+<script type="math/tex; mode=display">LHS=\sum_{k=0}^{m-1}\omega_m^{jk}c'_k + \omega_n^j \sum_{k=0}^{m-1}\omega_m^{jk}c''_k=y'_j+(\omega_n)^jy''_j</script>
+
+<p>For (j\ge m), Noticing that (\omega_n^m=-1) we have:</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+\begin{equation} 
+\begin{split}
+y_{j+m} & = \sum_{k=0}^{n-1}\omega_n^{(j+m)k}c_{k} \\
+& = \sum_{k=0}^{n/2-1}(-1)^{2k}\omega_n^{2jk}c_{2k}+\sum_{k=0}^{n/2-1}(-1)^{(2k+1)}\omega_n^{j(2k+1)}c_{2k+1} \\
+& =\sum_{k=0}^{m-1}\omega_m^{jk}c'_k - \omega_n^j \sum_{k=0}^{m-1}\omega_m^{jk}c''_k \\
+& = y'_j - (\omega_n)^j y''_j 
+\end{split}
+\end{equation} %]]></script>
+
+<p>So here we are, the essential expansion in this recursion.</p>
+
+<script type="math/tex; mode=display">\begin{align}
+y_j=y'_j+\omega_n^jy''_j, \quad j=0,1,\cdots,m-1 \\
+y_{j+m}=y'_j-\omega_n^jy''_j, \quad j=0,1,\cdots,m-1
+\end{align}</script>
+
+<p>The equations can be written in matrix expression.</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+y=
+\begin{bmatrix}
+I_m & D_m \\
+I_m & -D_m
+\end{bmatrix}
+\begin{bmatrix}
+y'\\
+y''
+\end{bmatrix}, \quad D_m=diag(1,\omega,\cdots, \omega^{m-1}) %]]></script>
+
+<p>Remember the definition of (y’ and y’’).</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+\begin{bmatrix}
+y'\\y''
+\end{bmatrix}=
+\begin{bmatrix}
+F_m &O\\
+O&F_m
+\end{bmatrix}
+\begin{bmatrix}
+c'\\c''
+\end{bmatrix} %]]></script>
+
+<p>We are nearly there; the last matrix is an ‘even-odd’ permutation that separates the incoming vector (c) into its even and odd parts (c’=(c_0,c_2,\cdots,c_{n-2}) and c’’=(c_1, c_3,\cdots,c_{n-1})). For a direct look, we give the example of a 4-order even-odd permutation matrix:</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+P_4=\begin{bmatrix}
+1 &&&\\
+&&1&\\
+&1&&\\
+&&&1
+\end{bmatrix} %]]></script>
+
+<p>So one recursion of the FFT can be written as the multiplication of three matrix.</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+F_n=
+\begin{bmatrix}
+I_n/2 & D_n/2 \\
+I_n/2 & -D_n/2
+\end{bmatrix}
+\begin{bmatrix}
+F_n/2&O\\
+O& F_n/2
+\end{bmatrix}
+P_n %]]></script>
+
+<p>The whole algorithm will iteratively compute (log_2(n)) stages until it reaches the bottom. In each stage, The only computation is the multiplication between the diagonal matrix and the half sized Fourier matrix, which is (\frac{n}{2}) times of multiplications. So the complexity of the whole algorithm will be (\frac{1}{2}nlog_2n) .</p>
+
+<p>As for the multiplication of the permutation, there is an elegant way of addressing it. Write the number 0 to n-1 in binary,  and rearrange them in order while reversing the order of their bits. Below shows an example of n=8.</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+\begin{matrix}
+input& binary& reversed & output\\
+0& 000& 000 & 0\\ 
+1& 001& 100& 4\\
+2& 010& 010& 2\\
+3& 011& 110& 6\\
+4& 100& 001& 1\\
+5& 101& 101& 5\\
+6& 110& 011& 3\\
+7& 111& 111& 7\\
+\end{matrix} %]]></script>
+
+
+        </div>
+
+        <div class="post-readmore">
+          <a class="read-more" href="/math/How-does-FFT-work.html">Read More</a>
+        </div>
+      </article>
+      <hr />
+      
+
+      
+      <nav aria-label="Page navigation">
+        <ul class="pagination">
+          
+            <li><span>&laquo;</span></li>
+          
+
+          
+            
+              <li class="active"><a>1</a></li>
+            
+          
+            
+              <li><a href="/pages2/">2</a></li>
+            
+          
+
+          
+            <li><a href="/pages2/">&raquo;</a></li>
+          
+        </ul>
+      </nav>
+      
+    </div>
+
+    <div class="col-md-3 main-sidebar">
+      <div class="sidebar-content" id="sidebar">
+  <div class="author-avatar">
+    <img src="/assets/img/author_avatar.jpg" alt="lszero">
+  </div>
+
+  <div class="brief-intro">
+    <div class="author-name">
+      Haozhe Ji
+    </div>
+    <div class="author-bio">
+      exHFer/THU-EE/NLP enthusiast
+
+    </div>
+  </div>
+
+  <nav class="site-state">
+    <div class="site-state-item">
+      <a href="/archives.html">
+        <span class="site-state-item-count">9</span>
+        <span>Posts</span>
+      </a>
+    </div>
+    <div class="site-state-item">
+      <a href="/categories.html">
+        <span class="site-state-item-count">3</span>
+        <span>Categories</span>
+      </a>
+    </div>
+    <div class="site-state-item">
+      <a href="/tags.html">
+        <span class="site-state-item-count">6</span>
+        <span>Tags</span>
+      </a>
+    </div>
+  </nav>
+
+  <div class="social-icons">
+    <a href="https://github.com/cdjhz" class="btn" title="Github" target="_blank"><i class="fa fa-fw fa-github fa-2x" aria-hidden="true"></i></a>
+    <!--<a href="" class="btn" title="Weibo" target="_blank"><i class="fa fa-fw fa-weibo fa-2x" aria-hidden="true"></i></a>
+    <a href="" class="btn" title="Zhihu" target="_blank"><span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x"></i><i class="fa fa-stack-1x fa-inverse"><strong>知</strong></i></span></a>-->
+    <a href="https://twitter.com/cdjhz" class="btn" title="Twitter" target="_blank"><i class="fa fa-twitter-square fa-2x" aria-hidden="true"></i></a>
+    <!--<a href="" class="btn" title="Lofter" target="_blank"><span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x"></i><i class="fa fa-stack-1x fa-inverse"><strong>L</strong></i></span></a>-->
+  </div>
+
+  <hr />
+
+  <nav class="category-list list-group">
+    <h3 class="sidebar-title">Categories</h3>
+    <ul class="list-group">
+    
+      <li class="list-group-item">
+        <a href="/categories.html#Tricks">Tricks</a>
+        <span class="badge">3</span>
+      </li>
+    
+      <li class="list-group-item">
+        <a href="/categories.html#Math">Math</a>
+        <span class="badge">5</span>
+      </li>
+    
+      <li class="list-group-item">
+        <a href="/categories.html#Introduction">Introduction</a>
+        <span class="badge">1</span>
+      </li>
+    
+    </ul>
+  </nav>
+
+  <hr />
+
+  <nav class="tags-list">
+    <h3 class="sidebar-title">Tags</h3>
+    <ul class="list-group">
+    
+      <li class="list-group-item">
+        <a href="/tags.html#git"> git</a>
+        <span class="badge">2</span>
+      </li>
+    
+      <li class="list-group-item">
+        <a href="/tags.html#ssh"> ssh</a>
+        <span class="badge">1</span>
+      </li>
+    
+      <li class="list-group-item">
+        <a href="/tags.html#linear algebra"> linear algebra</a>
+        <span class="badge">3</span>
+      </li>
+    
+      <li class="list-group-item">
+        <a href="/tags.html#probability theory"> probability theory</a>
+        <span class="badge">2</span>
+      </li>
+    
+      <li class="list-group-item">
+        <a href="/tags.html#conda"> conda</a>
+        <span class="badge">1</span>
+      </li>
+    
+      <li class="list-group-item">
+        <a href="/tags.html#jupyter notebook"> jupyter notebook</a>
+        <span class="badge">1</span>
+      </li>
+    
+    </ul>
+  </nav>
+
+  <hr />
+
+</div>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+    <footer class="footer">
+  <div class="copyright">
+      Copyright &copy; <time datetime="2019-03-11T18:58:32+08:00">2019</time> <a href="http://localhost:4000">Haozhe Ji</a> | Powered by <a href="https://github.com/jekyll/jekyll">Jekyll</a> | Designed by <a href="https://github.com/lszero">lszero</a>
+  </div>
+</footer>
+
+
+    <a href="#top" class="back-to-top">^</a>
+
+<!--      -->
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="/assets/js/jquery-1.12.4.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="/assets/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+    <!-- TOC -->
+    <script src="/assets/js/toc/TOC.js"></script>
+
+    <script>$("#search-form").submit(function(event){
+      var query = document.getElementById("search-input").value;
+      window.open("http://google.com/search?q=" + query + "%20site:" + "");
+    });</script>
+  </body>
+</html>

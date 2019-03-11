@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+  <title>
+    
+      Incidence Matrix &middot; Haozhe Ji's Blog
+    
+  </title>
+
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="/assets/bootstrap-3.3.7-dist/css/bootstrap.min.css">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="/assets/font-awesome/css/font-awesome.min.css">
+  <!-- My CSS -->
+  <link rel="stylesheet" href="/assets/main.css">
+
+  <!-- MathJax -->
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      TeX: {
+        equationNumbers: {
+          autoNumber: "AMS"
+        }
+      },
+      tex2jax: {
+        inlineMath: [ ['$','$'] , ['\(', '\)']],
+        displayMath: [ ['$$','$$'] , ['\[', '\]']],
+        processEscapes: true,
+      }
+    });
+  </script>
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+  
+
+  <!-- code highlighting-->
+  <link rel="stylesheet" href="/lib/highlight/styles/hybrid.css">
+  <script src="/lib/highlight/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <script>hljs.configure({ ignore: ['text'] });</script>
+  
+  <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+</head>
+
+
+<body>
+    <header class="header">
+  <!-- Navigation -->
+  <nav class="navbar navbar-default .navbar-static-top">
+    <div class="container">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/" style="color:#333">Haozhe Ji's Blog</a>
+        <p class="navbar-text">窓の外の景色</p>
+      </div>
+
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav navbar-right">
+          <li class="nav-search">
+            <form class="navbar-form navbar-left" role="search" id="search-form">
+              <div class="input-group">
+                  <span class="input-group-btn">
+                    <button class="btn btn-default" type="submit" style="color:#777">Go!</button>
+                  </span>
+                  <input type="text" id="search-input" class="form-control" placeholder="Search">
+                  
+              </div>
+            </form>
+          </li>
+          <li>
+            <a href="/archives.html">Archives</a>
+          </li>
+          <li>
+            <a href="/categories.html">Categories</a>
+          </li>
+          <li>
+            <a href="/tags.html">Tags</a>
+          </li>
+          <li>
+            <a href="/about.html">About</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+
+  
+    <div class="container">
+  <div class="row-fluid main">
+    <div class="col-md-9 content">
+      <article class="post">
+        <h1 class="post-title">Incidence Matrix</h1>
+
+        <div class="post-info">
+          <span class="post-date">18 Jun 2017</span>
+           | 
+            <span class="fa fa-folder-open" aria-hidden="true">
+            
+              <a class="post-categories" href="/categories.html#Math">Math</a>
+            
+            </span>
+          
+           | 
+            <span class="fa fa-tag" aria-hidden="true">
+            
+              <a class="post-tags" href="/tags.html#linear algebra">linear algebra</a>
+            
+            </span>
+          
+        </div>
+
+        <hr>
+        <div class="post-content">
+          <h3 id="定义">定义</h3>
+
+<p>(此定义不唯一) 每一行代表一条边, 每一列代表一个顶点, 在表征任意一条边的一行, 如果这条边从(i)出发,到达(j), 则给第(i)个元素赋-1, 第(j\)个赋1, 其他赋0.</p>
+
+<!--more-->
+
+<h3 id="性质一">性质一</h3>
+
+<p>(G=(V,E))为有向连通图 (只需任意顶点间有边相连), A为G的关联矩阵, 且(|V|=n\), 则(dimN(A)=1\).</p>
+
+<p>若(i,j)相邻,则(x_i=x_j=1\). 由邻接的传递性, 由G为连通图, 可知任意两点\(p,q\)均连通, 即(x_p=x_q=1\).</p>
+
+<h3 id="推论">推论</h3>
+
+<p>(G=(V,E))有(k\)个连通分支, 则(dimN(A)=k\).</p>
+
+<p>将矩阵(A)重新排成(k\)个分块对角矩阵的形式, 即(A=diag(A_1,A_2,\cdots,A_k)\)</p>
+
+<p>则对每一个分块矩阵,内部连通,其零空间维数皆为1.</p>
+
+<p>研究方程(Ax=b)的解, 从A的四个基本子空间入手.</p>
+
+<h3 id="na">(N(A))</h3>
+
+<p>令(b)为边上的电势差. 每个节点等电位, 就是使(b=0\)的条件.</p>
+
+<h3 id="ca">(C(A))</h3>
+
+<p>任意给定节点电位, 得到边上电势降的所有情况就组成了列空间. (KVL)定律给出了对边上电势降的约束, 即任意环路上电势降代数和为零. 因此独立环路的个数就是对列空间约束的自由度的数目.</p>
+
+<p>对于m条边, n个顶点的连通图, 独立环路的个数为(m-n+1).* 因此, 列空间的自由度数目为(m-(m-n+1)=n-1\), 即为A的秩.</p>
+
+<h3 id="nat">(N(A^T))</h3>
+
+<p>左零空间是使节点处电流代数和为零的边上电流所组成的空间, 由(KCL)约束. 总共有(n\)个节点, 而独立的节点方程个数只有(n-1\)个, 因此其维度为(m-(n-1)=m-n+1\)与C(A)互为(R^m\)的正交补.</p>
+
+<p>左零空间为C(A)关于(R^m)的正交补, 因此垂直于由独立环路约束所确定的超平面. 其物理意义为不存在外加电源时的解.</p>
+
+<h3 id="cat">(C(A^T))</h3>
+
+<p>Rows are dependent when edges form a loop. Independent rows come from a tree. 因此行空间的基可通过选取该图的一个生成树获得. 通过与N(A)的正交补性质可快速判断.</p>
+
+<p>任意给定边上的电流, 得到节点的电流代数和的所有情况组成行空间. 没有外界电流输入的节点, 电流代数和为零, 所有节点总的电流代数和应该为0.(电流连续性)</p>
+
+<h3 id="综上所述">综上所述</h3>
+
+<p>(N(A^T))的基可通过m-n+1个独立环路构造(m维);</p>
+
+<p>(C(A^T))的基可通过生成子树的n-1条边构造(n维);</p>
+
+<p>(C(A))的基可通过n-1个独立节点来构造(m维);</p>
+
+<p>(N(A))的基就是(\vec{e}\), 可通过对每个节点整体提升电势构造(n维).</p>
+
+
+        </div>
+        <br><br>
+      </article>
+
+      <nav class="post-pagination">
+        
+        <a href="/math/How-does-FFT-work.html" class="btn previous" title="How does FFT work?">&larr; How does FFT work?</a>
+        
+        
+        <a href="/tricks/conda-proxy.html" class="btn next" title="conda proxyerror 解决办法">conda proxyerror 解决办法 &rarr;</a>
+        
+      </nav>
+
+      <hr>
+
+      
+      <aside class="related">
+        <h3>Related Posts</h3>
+        <ul class="related-posts">
+          
+            <li>
+              <a href="/introduction/git-commands.html">
+                Git commands in a nut shell
+                <small><time datetime="2019-03-11T00:00:00+08:00">11 Mar 2019</time></small>
+              </a>
+            </li>
+          
+            <li>
+              <a href="/tricks/jupyter-notebook.html">
+                在远程服务器登录jupyter notebook
+                <small><time datetime="2017-09-25T00:00:00+08:00">25 Sep 2017</time></small>
+              </a>
+            </li>
+          
+            <li>
+              <a href="/tricks/conda-proxy.html">
+                conda proxyerror 解决办法
+                <small><time datetime="2017-08-17T00:00:00+08:00">17 Aug 2017</time></small>
+              </a>
+            </li>
+          
+        </ul>
+      </aside>
+      
+
+    </div>
+    
+    <div class="col-md-3 post-sidebar">
+      <div class="sidebar-content" id="sidebar">
+  <nav class="header-list-sidebar">
+    <ul id="sideNav" class="nav headers-sidenav">
+        <!-- code will be generated in TOC.js -->
+    </ul>
+  </nav>
+</div>
+    </div>
+  </div>
+</div>
+
+
+    <footer class="footer">
+  <div class="copyright">
+      Copyright &copy; <time datetime="2019-03-11T18:58:32+08:00">2019</time> <a href="http://localhost:4000">Haozhe Ji</a> | Powered by <a href="https://github.com/jekyll/jekyll">Jekyll</a> | Designed by <a href="https://github.com/lszero">lszero</a>
+  </div>
+</footer>
+
+
+    <a href="#top" class="back-to-top">^</a>
+
+<!--      -->
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="/assets/js/jquery-1.12.4.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="/assets/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+    <!-- TOC -->
+    <script src="/assets/js/toc/TOC.js"></script>
+
+    <script>$("#search-form").submit(function(event){
+      var query = document.getElementById("search-input").value;
+      window.open("http://google.com/search?q=" + query + "%20site:" + "");
+    });</script>
+  </body>
+</html>

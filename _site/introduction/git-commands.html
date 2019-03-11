@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+  <title>
+    
+      Git commands in a nut shell &middot; Haozhe Ji's Blog
+    
+  </title>
+
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="/assets/bootstrap-3.3.7-dist/css/bootstrap.min.css">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="/assets/font-awesome/css/font-awesome.min.css">
+  <!-- My CSS -->
+  <link rel="stylesheet" href="/assets/main.css">
+
+  <!-- MathJax -->
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      TeX: {
+        equationNumbers: {
+          autoNumber: "AMS"
+        }
+      },
+      tex2jax: {
+        inlineMath: [ ['$','$'] , ['\(', '\)']],
+        displayMath: [ ['$$','$$'] , ['\[', '\]']],
+        processEscapes: true,
+      }
+    });
+  </script>
+  
+
+  <!-- code highlighting-->
+  <link rel="stylesheet" href="/lib/highlight/styles/hybrid.css">
+  <script src="/lib/highlight/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <script>hljs.configure({ ignore: ['text'] });</script>
+  
+  <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+</head>
+
+
+<body>
+    <header class="header">
+  <!-- Navigation -->
+  <nav class="navbar navbar-default .navbar-static-top">
+    <div class="container">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/" style="color:#333">Haozhe Ji's Blog</a>
+        <p class="navbar-text">窓の外の景色</p>
+      </div>
+
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav navbar-right">
+          <li class="nav-search">
+            <form class="navbar-form navbar-left" role="search" id="search-form">
+              <div class="input-group">
+                  <span class="input-group-btn">
+                    <button class="btn btn-default" type="submit" style="color:#777">Go!</button>
+                  </span>
+                  <input type="text" id="search-input" class="form-control" placeholder="Search">
+                  
+              </div>
+            </form>
+          </li>
+          <li>
+            <a href="/archives.html">Archives</a>
+          </li>
+          <li>
+            <a href="/categories.html">Categories</a>
+          </li>
+          <li>
+            <a href="/tags.html">Tags</a>
+          </li>
+          <li>
+            <a href="/about.html">About</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+
+  
+    <div class="container">
+  <div class="row-fluid main">
+    <div class="col-md-9 content">
+      <article class="post">
+        <h1 class="post-title">Git commands in a nut shell</h1>
+
+        <div class="post-info">
+          <span class="post-date">11 Mar 2019</span>
+           | 
+            <span class="fa fa-folder-open" aria-hidden="true">
+            
+              <a class="post-categories" href="/categories.html#Introduction">Introduction</a>
+            
+            </span>
+          
+           | 
+            <span class="fa fa-tag" aria-hidden="true">
+            
+              <a class="post-tags" href="/tags.html#git">git</a>
+            
+            </span>
+          
+        </div>
+
+        <hr>
+        <div class="post-content">
+          <h2 id="first-time-setup">First-time Setup</h2>
+
+<ul>
+  <li>first thing to do after installing git</li>
+</ul>
+
+<p><code class="highlighter-rouge">git config --global user.name "Haozhe Ji"</code>
+<code class="highlighter-rouge">git config --global user.email 1395082425@qq.com</code></p>
+
+<ul>
+  <li>optionally setup editor:</li>
+</ul>
+
+<p><code class="highlighter-rouge">git config --global core.editor vim</code></p>
+
+<ul>
+  <li>check out setting</li>
+</ul>
+
+<p><code class="highlighter-rouge">git config --list</code></p>
+
+<!-- more -->
+<h2 id="repo">Repo</h2>
+
+<ul>
+  <li>initializing local file to repository</li>
+</ul>
+
+<p><code class="highlighter-rouge">git init</code></p>
+
+<ul>
+  <li>clone from remote server/web</li>
+</ul>
+
+<p><code class="highlighter-rouge">git clone https:/url</code></p>
+
+<h2 id="status">Status</h2>
+
+<p><code class="highlighter-rouge">Untracked</code> means that the file has never ever been in the commit. Possibly created from scratch or copy from another file. Use <code class="highlighter-rouge">git add filename</code> to track.</p>
+
+<p><code class="highlighter-rouge">Unmodified</code> means that the file is already tracked and has not been modified since the last commit (?). Files has just been clone are tagged with <code class="highlighter-rouge">Unmodified</code>.</p>
+
+<p><code class="highlighter-rouge">Modified</code> means that the tracked file is modified in the working directory before staged. Use <code class="highlighter-rouge">git add filename</code> to stage.</p>
+
+<p><code class="highlighter-rouge">Staged</code> means that modified files has been staged. Once all the changes have been made, the user can commit the changes, so that the status goes to <code class="highlighter-rouge">Unmodified</code>.</p>
+
+<h3 id="check-status">Check Status</h3>
+
+<p>checking the status (default in the verbose mode):</p>
+
+<p><code class="highlighter-rouge">git status</code></p>
+
+<p>or short version:</p>
+
+<p><code class="highlighter-rouge">git status -s</code></p>
+
+<p><code class="highlighter-rouge">A</code> means new files added to the staging area, <code class="highlighter-rouge">M</code> means modified files, <code class="highlighter-rouge">?</code> means untracked files.</p>
+
+<p><code class="highlighter-rouge">M</code> in the first and second column mean staged and unstaged modification respectively.</p>
+
+<h2 id="ignoring-files">Ignoring Files</h2>
+
+<p>edit the <code class="highlighter-rouge">.gitignore</code> file.</p>
+
+<h2 id="viewing-changes">Viewing Changes</h2>
+
+<ul>
+  <li>view the changes after the modify the files in the <code class="highlighter-rouge">Staged</code> status use</li>
+</ul>
+
+<p><code class="highlighter-rouge">git diff</code></p>
+
+<ul>
+  <li>view the changes between the last commit and files in the <code class="highlighter-rouge">Staged</code> status (before this commit) use:</li>
+</ul>
+
+<p><code class="highlighter-rouge">git diff --staged</code></p>
+
+<h2 id="committing-changes">Committing Changes</h2>
+
+<ul>
+  <li>commit followed by message use:</li>
+</ul>
+
+<p><code class="highlighter-rouge">git commit -m "this commits files in the staging area"</code></p>
+
+<ul>
+  <li>commit all files in the <code class="highlighter-rouge">Modified</code> stage and skip the <code class="highlighter-rouge">Staged</code> status.</li>
+</ul>
+
+<p><code class="highlighter-rouge">git commit -a -m "this commits all modified files in track""</code></p>
+
+<h2 id="remove-files">Remove Files</h2>
+
+<ul>
+  <li>Remove files in both working dir and Git:</li>
+</ul>
+
+<p><code class="highlighter-rouge">rm filename</code> 
+<code class="highlighter-rouge">git rm filename</code> and then commit changes.</p>
+
+<ul>
+  <li>Remove files from being in tracked by git only</li>
+</ul>
+
+<p><code class="highlighter-rouge">git rm --cached filename</code></p>
+
+<ul>
+  <li>use matching patterns</li>
+</ul>
+
+<p><code class="highlighter-rouge">git rm log/\*.log</code> this, for example, remove all the files end up with <code class="highlighter-rouge">.log</code> below  the <code class="highlighter-rouge">log/</code> dir. Note that blackslash is necessary before <code class="highlighter-rouge">*</code>.</p>
+
+<h2 id="rename-files">Rename Files</h2>
+
+<p>Note that Git does not explicitly track file movements, so use provided git-style instruction to move files:</p>
+
+<p><code class="highlighter-rouge">git mv filename1 filename2</code></p>
+
+<h2 id="view-commit-history">View Commit History</h2>
+
+<p>basics use:</p>
+
+<p><code class="highlighter-rouge">git log</code></p>
+
+<h2 id="undo">Undo</h2>
+
+<ul>
+  <li>recommit from staging area and the previous commit will be rewritten</li>
+</ul>
+
+<p><code class="highlighter-rouge">git commit --amend</code></p>
+
+<ul>
+  <li>unstage files in staging area use:</li>
+</ul>
+
+<p><code class="highlighter-rouge">git reset HEAD filename</code></p>
+
+<ul>
+  <li>unmodify a modified file to last unmodified version</li>
+</ul>
+
+<p><code class="highlighter-rouge">git checkout -- filename</code></p>
+
+<h2 id="display-remote-servers">Display Remote Servers</h2>
+
+<p><code class="highlighter-rouge">git remote</code> it will display the default name Git configures as the server: origin.</p>
+
+<p><code class="highlighter-rouge">git remote -v</code> will show the URLs.</p>
+
+<h2 id="add--rename--remove-remote-repos">Add &amp; Rename &amp; Remove Remote Repos</h2>
+
+<ul>
+  <li>explicitly add a new remote Git repo use:</li>
+</ul>
+
+<p><code class="highlighter-rouge">git remote add &lt;shortname&gt; &lt;url&gt;</code></p>
+
+<p>e.g. <code class="highlighter-rouge">git remote add pb https://github.com/paulboone/ticgit</code></p>
+
+<ul>
+  <li>rename a remote server use:</li>
+</ul>
+
+<p><code class="highlighter-rouge">git remote rename pb paul</code></p>
+
+<ul>
+  <li>remove a remote server (from current remote server list):</li>
+</ul>
+
+<p><code class="highlighter-rouge">git remote remove paul</code></p>
+
+<h1 id="fetch--pull">Fetch &amp; Pull</h1>
+
+<ul>
+  <li>fetch data from default server:</li>
+</ul>
+
+<p><code class="highlighter-rouge">git fetch origin</code> or fetch from specified server name by replace origin with the server shortname</p>
+
+<p>however, this does not automatically merge those works. You have to manually merge them.</p>
+
+<ul>
+  <li>automatically fetch and merge from a remote branch that is identical to your current branch, use:</li>
+</ul>
+
+<p><code class="highlighter-rouge">git pull</code></p>
+
+<h2 id="push">Push</h2>
+
+<p><code class="highlighter-rouge">git push &lt;remote&gt; &lt;branch&gt;</code></p>
+
+<p>by default is <code class="highlighter-rouge">git push origin master</code></p>
+
+<h2 id="inspect-a-remote">Inspect a Remote</h2>
+
+<p><code class="highlighter-rouge">git remote show origin</code></p>
+
+<h1 id="git-branching">Git Branching</h1>
+
+<h2 id="create-new-branches">Create new branches</h2>
+
+<p><code class="highlighter-rouge">git branch new_branch</code></p>
+
+<h2 id="switch-branches">Switch Branches</h2>
+
+<p><code class="highlighter-rouge">git checkout branch_1</code></p>
+
+<h2 id="check-branches-and-which-current-branch-is-on">check branches and which current branch is on</h2>
+
+<p><code class="highlighter-rouge">HEAD</code> points to the current branch you are on</p>
+
+<p><code class="highlighter-rouge">git log --decorate</code> check the branches and <code class="highlighter-rouge">HEAD</code> pointer.</p>
+
+
+        </div>
+        <br><br>
+      </article>
+
+      <nav class="post-pagination">
+        
+        <a href="/tricks/jupyter-notebook.html" class="btn previous" title="在远程服务器登录jupyter notebook">&larr; 在远程服务器登录jupyter notebook</a>
+        
+        
+      </nav>
+
+      <hr>
+
+      
+      <aside class="related">
+        <h3>Related Posts</h3>
+        <ul class="related-posts">
+          
+            <li>
+              <a href="/tricks/jupyter-notebook.html">
+                在远程服务器登录jupyter notebook
+                <small><time datetime="2017-09-25T00:00:00+08:00">25 Sep 2017</time></small>
+              </a>
+            </li>
+          
+            <li>
+              <a href="/tricks/conda-proxy.html">
+                conda proxyerror 解决办法
+                <small><time datetime="2017-08-17T00:00:00+08:00">17 Aug 2017</time></small>
+              </a>
+            </li>
+          
+            <li>
+              <a href="/math/Incidence-Matrix.html">
+                Incidence Matrix
+                <small><time datetime="2017-06-18T00:00:00+08:00">18 Jun 2017</time></small>
+              </a>
+            </li>
+          
+        </ul>
+      </aside>
+      
+
+    </div>
+    
+    <div class="col-md-3 post-sidebar">
+      <div class="sidebar-content" id="sidebar">
+  <nav class="header-list-sidebar">
+    <ul id="sideNav" class="nav headers-sidenav">
+        <!-- code will be generated in TOC.js -->
+    </ul>
+  </nav>
+</div>
+    </div>
+  </div>
+</div>
+
+
+    <footer class="footer">
+  <div class="copyright">
+      Copyright &copy; <time datetime="2019-03-11T18:58:32+08:00">2019</time> <a href="http://localhost:4000">Haozhe Ji</a> | Powered by <a href="https://github.com/jekyll/jekyll">Jekyll</a> | Designed by <a href="https://github.com/lszero">lszero</a>
+  </div>
+</footer>
+
+
+    <a href="#top" class="back-to-top">^</a>
+
+<!--      -->
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="/assets/js/jquery-1.12.4.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="/assets/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+    <!-- TOC -->
+    <script src="/assets/js/toc/TOC.js"></script>
+
+    <script>$("#search-form").submit(function(event){
+      var query = document.getElementById("search-input").value;
+      window.open("http://google.com/search?q=" + query + "%20site:" + "");
+    });</script>
+  </body>
+</html>

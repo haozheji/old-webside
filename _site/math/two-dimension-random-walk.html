@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+  <title>
+    
+      二维格点随机游走问题 &middot; Haozhe Ji's Blog
+    
+  </title>
+
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="/assets/bootstrap-3.3.7-dist/css/bootstrap.min.css">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="/assets/font-awesome/css/font-awesome.min.css">
+  <!-- My CSS -->
+  <link rel="stylesheet" href="/assets/main.css">
+
+  <!-- MathJax -->
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      TeX: {
+        equationNumbers: {
+          autoNumber: "AMS"
+        }
+      },
+      tex2jax: {
+        inlineMath: [ ['$','$'] , ['\(', '\)']],
+        displayMath: [ ['$$','$$'] , ['\[', '\]']],
+        processEscapes: true,
+      }
+    });
+  </script>
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+  
+
+  <!-- code highlighting-->
+  <link rel="stylesheet" href="/lib/highlight/styles/hybrid.css">
+  <script src="/lib/highlight/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <script>hljs.configure({ ignore: ['text'] });</script>
+  
+  <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+</head>
+
+
+<body>
+    <header class="header">
+  <!-- Navigation -->
+  <nav class="navbar navbar-default .navbar-static-top">
+    <div class="container">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/" style="color:#333">Haozhe Ji's Blog</a>
+        <p class="navbar-text">窓の外の景色</p>
+      </div>
+
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav navbar-right">
+          <li class="nav-search">
+            <form class="navbar-form navbar-left" role="search" id="search-form">
+              <div class="input-group">
+                  <span class="input-group-btn">
+                    <button class="btn btn-default" type="submit" style="color:#777">Go!</button>
+                  </span>
+                  <input type="text" id="search-input" class="form-control" placeholder="Search">
+                  
+              </div>
+            </form>
+          </li>
+          <li>
+            <a href="/archives.html">Archives</a>
+          </li>
+          <li>
+            <a href="/categories.html">Categories</a>
+          </li>
+          <li>
+            <a href="/tags.html">Tags</a>
+          </li>
+          <li>
+            <a href="/about.html">About</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+
+  
+    <div class="container">
+  <div class="row-fluid main">
+    <div class="col-md-9 content">
+      <article class="post">
+        <h1 class="post-title">二维格点随机游走问题</h1>
+
+        <div class="post-info">
+          <span class="post-date">03 Jun 2017</span>
+           | 
+            <span class="fa fa-folder-open" aria-hidden="true">
+            
+              <a class="post-categories" href="/categories.html#Math">Math</a>
+            
+            </span>
+          
+           | 
+            <span class="fa fa-tag" aria-hidden="true">
+            
+              <a class="post-tags" href="/tags.html#probability theory">probability theory</a>
+            
+            </span>
+          
+        </div>
+
+        <hr>
+        <div class="post-content">
+          <p>一个粒子在二维空间中作随机运动，方向可以是上，下，左，右四种，且各方向等概，每一步步长为1. 假定从原点出发，以第n步时粒子所在位置到原点的距离作为半径画圆，计算这个圆的面积的期望。</p>
+
+<!--more-->
+
+<p>首先列出期望的两个性质：</p>
+
+<h3 id="性质一">性质一</h3>
+
+<p>任意函数(\phi (x))，(X)为随机变量（以下简称(r.v.)），定义一个新的随机变量(\phi (X)). 如果(\phi (X))具有有限的期望值，则：</p>
+
+<p>[E(\phi (X))=\sum_k \phi (x_k)f(x_k)]</p>
+
+<p>此处的级数绝对收敛当且仅当(E(\phi (X)))存在.</p>
+
+<h3 id="性质二">性质二</h3>
+
+<p>如果(X_1,X_2,\cdots ,X_n)都是具有有限期望值的(r.v.)，则它们的和的期望存在，且有：</p>
+
+<p>[E(X_1+X_2+\cdots+X_n)=E(X_1)+E(X_2)+\cdots+E(X_n)]</p>
+
+<p>这一性质对(r.v.)之间没有要求，也称为随机变量的线性性。</p>
+
+<p><a href="">William Feller</a>在其 <em>An Introduction to Probability Theory and Its Application</em> 一书中给出了使用联合分布的证明。</p>
+
+<p>只需考虑(X,Y)两个随机变量。</p>
+
+<p>[E(X+Y)=\sum_{j,k}(x_j+y_k)P(X=x_j,Y=y_k)=\sum_{j,k}x_j P(X=x_j,Y=y_k)+\sum_{j,k}y_k P(X=x_j,Y=y_k)]</p>
+
+<p>可以得到(X)的边缘分布:(P(X=x_j)=\sum_kP(X=x_j,Y=y_k))，(Y)同理。</p>
+
+<p>即得到：[L.H.S=\sum_jx_jP(X=x_j)+\sum_ky_kP(Y=y_k)=E(X)+E(Y)]</p>
+
+<p><strong>直接计算失败后，从递归的角度考虑得到了答案。递归的方法从第三部分开始。</strong></p>
+
+<hr />
+
+<p>​	回到本题目，表征粒子运动的随机变量为它的坐标((X,Y))，原题等价于求(X^2+Y^2)的期望。利用期望的第二个性质，可以分别求(E(X^2))和(E(Y^2))，再将它们相加得到结果。由于对称性，实际上只需求(E(X^2))。</p>
+
+<p>考虑粒子横坐标(r.v.)的分布(P(X=k)).需要注意的是粒子在横轴上移动的步数也是(r.v.)（介于0到n之间）设为(X’)。当横轴坐标为k，移动步数为m时，有：</p>
+
+<p>[P(X=k)=\sum_{m\ge 0}^nP(X=k, X’=m)]</p>
+
+<p><strong>上述写法其实有点问题，m并不能取到0～n中所有的值，因为粒子的运动是离散的</strong></p>
+
+<p>假设粒子在横轴上沿着正方向移动了a个单位，负方向移动了b个单位则根据(a+b=m,a-b=k)可解出此情况下正方向移动的单位为(\frac{m+k}{2})（需满足为整数）. 由于m步中每一步有两种选法，样本空间的大小为(2^m)；而m次中选了a次沿正向移动的情况有(\binom{m}{\frac{m+k}{2}})种，故：</p>
+
+<p>[P(X=k,X’=m)=\frac{\binom{m}{\frac{m+k}{2}}}{2^m}]</p>
+
+<p>得到计算(E(X^2))的总的表达式为：(由于对称性)</p>
+
+<p>[E(X^2)=2\sum_{k=0}^nk^2\sum_{m\ge 0}^nP(X=k,X’=m)]</p>
+
+<p>两个求和并非独立，第二个求和依赖于k的值。</p>
+
+<hr />
+
+<p>​	上述方法计算过于复杂，弃坑了。受到启发尝试使用递归的方法解决，发现出奇的简单。（递归大法好！）先列出走n步时的期望，以下标(n)记。</p>
+
+<p>[E_n(X^2+Y^2)=\sum (x^2+y^2)P(X=x,Y=y)]</p>
+
+<p>设此时到达((x,y))。再走一步时，比如说横轴正方向再走一步到达((x+1,y))概率为：</p>
+
+<p>[P(X=x+1,Y=y)=P(X=x+1,Y=y|X=x,Y=y)P(X=x,Y=y)=\frac{1}{4}P(X=x,Y=y)]</p>
+
+<p>同理对剩下的三个方向有类似的结果，则可以得到走(n+1)步时的所求期望：</p>
+
+<p>[E_{n+1}(X^2+Y^2)=\frac{1}{4}\sum {[(x+1)^2+y^2]+[x^2+(y+1)^2]+[(x-1)^2+y^2]+[x^2+(y-1)^2]} P(X=x,Y=y)]</p>
+
+<p>化简得到：</p>
+
+<p>[E_{n+1}(X^2+Y^2)=\sum (x^2+y^2+1)P(X=x,Y=y)=E_n(X^2+Y^2)+\sum P(X=x,Y=y)]</p>
+
+<p>后一项就是(X,Y)联合分布概率的归一，等于1！再根据边界条件(E(0)=0)得到</p>
+
+<p>[E_{n}(X^2+Y^2)=n]</p>
+
+<p>也就是说离散二维随机游走的距离平方的期望值就等于步数的大小！连续的情况其实也是类似，<a href="https://en.wikipedia.org/wiki/Albert_Einstein">A.Einstein</a>曾经给出过布朗运动扩散的方均距离与时间的关系，即：</p>
+
+<p>[\bar{l^2} \propto t]</p>
+
+
+        </div>
+        <br><br>
+      </article>
+
+      <nav class="post-pagination">
+        
+        <a href="/math/toss-coin-problem.html" class="btn previous" title="抛硬币先后手对胜率的影响">&larr; 抛硬币先后手对胜率的影响</a>
+        
+        
+        <a href="/math/How-does-FFT-work.html" class="btn next" title="How does FFT work?">How does FFT work? &rarr;</a>
+        
+      </nav>
+
+      <hr>
+
+      
+      <aside class="related">
+        <h3>Related Posts</h3>
+        <ul class="related-posts">
+          
+            <li>
+              <a href="/introduction/git-commands.html">
+                Git commands in a nut shell
+                <small><time datetime="2019-03-11T00:00:00+08:00">11 Mar 2019</time></small>
+              </a>
+            </li>
+          
+            <li>
+              <a href="/tricks/jupyter-notebook.html">
+                在远程服务器登录jupyter notebook
+                <small><time datetime="2017-09-25T00:00:00+08:00">25 Sep 2017</time></small>
+              </a>
+            </li>
+          
+            <li>
+              <a href="/tricks/conda-proxy.html">
+                conda proxyerror 解决办法
+                <small><time datetime="2017-08-17T00:00:00+08:00">17 Aug 2017</time></small>
+              </a>
+            </li>
+          
+        </ul>
+      </aside>
+      
+
+    </div>
+    
+    <div class="col-md-3 post-sidebar">
+      <div class="sidebar-content" id="sidebar">
+  <nav class="header-list-sidebar">
+    <ul id="sideNav" class="nav headers-sidenav">
+        <!-- code will be generated in TOC.js -->
+    </ul>
+  </nav>
+</div>
+    </div>
+  </div>
+</div>
+
+
+    <footer class="footer">
+  <div class="copyright">
+      Copyright &copy; <time datetime="2019-03-11T18:58:32+08:00">2019</time> <a href="http://localhost:4000">Haozhe Ji</a> | Powered by <a href="https://github.com/jekyll/jekyll">Jekyll</a> | Designed by <a href="https://github.com/lszero">lszero</a>
+  </div>
+</footer>
+
+
+    <a href="#top" class="back-to-top">^</a>
+
+<!--      -->
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="/assets/js/jquery-1.12.4.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="/assets/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+    <!-- TOC -->
+    <script src="/assets/js/toc/TOC.js"></script>
+
+    <script>$("#search-form").submit(function(event){
+      var query = document.getElementById("search-input").value;
+      window.open("http://google.com/search?q=" + query + "%20site:" + "");
+    });</script>
+  </body>
+</html>

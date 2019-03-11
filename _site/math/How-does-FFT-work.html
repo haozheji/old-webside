@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+  <title>
+    
+      How does FFT work? &middot; Haozhe Ji's Blog
+    
+  </title>
+
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="/assets/bootstrap-3.3.7-dist/css/bootstrap.min.css">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="/assets/font-awesome/css/font-awesome.min.css">
+  <!-- My CSS -->
+  <link rel="stylesheet" href="/assets/main.css">
+
+  <!-- MathJax -->
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      TeX: {
+        equationNumbers: {
+          autoNumber: "AMS"
+        }
+      },
+      tex2jax: {
+        inlineMath: [ ['$','$'] , ['\(', '\)']],
+        displayMath: [ ['$$','$$'] , ['\[', '\]']],
+        processEscapes: true,
+      }
+    });
+  </script>
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+  
+
+  <!-- code highlighting-->
+  <link rel="stylesheet" href="/lib/highlight/styles/hybrid.css">
+  <script src="/lib/highlight/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <script>hljs.configure({ ignore: ['text'] });</script>
+  
+  <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+</head>
+
+
+<body>
+    <header class="header">
+  <!-- Navigation -->
+  <nav class="navbar navbar-default .navbar-static-top">
+    <div class="container">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/" style="color:#333">Haozhe Ji's Blog</a>
+        <p class="navbar-text">窓の外の景色</p>
+      </div>
+
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav navbar-right">
+          <li class="nav-search">
+            <form class="navbar-form navbar-left" role="search" id="search-form">
+              <div class="input-group">
+                  <span class="input-group-btn">
+                    <button class="btn btn-default" type="submit" style="color:#777">Go!</button>
+                  </span>
+                  <input type="text" id="search-input" class="form-control" placeholder="Search">
+                  
+              </div>
+            </form>
+          </li>
+          <li>
+            <a href="/archives.html">Archives</a>
+          </li>
+          <li>
+            <a href="/categories.html">Categories</a>
+          </li>
+          <li>
+            <a href="/tags.html">Tags</a>
+          </li>
+          <li>
+            <a href="/about.html">About</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+
+  
+    <div class="container">
+  <div class="row-fluid main">
+    <div class="col-md-9 content">
+      <article class="post">
+        <h1 class="post-title">How does FFT work?</h1>
+
+        <div class="post-info">
+          <span class="post-date">15 Jun 2017</span>
+           | 
+            <span class="fa fa-folder-open" aria-hidden="true">
+            
+              <a class="post-categories" href="/categories.html#Math">Math</a>
+            
+            </span>
+          
+           | 
+            <span class="fa fa-tag" aria-hidden="true">
+            
+              <a class="post-tags" href="/tags.html#linear algebra">linear algebra</a>
+            
+            </span>
+          
+        </div>
+
+        <hr>
+        <div class="post-content">
+          <p>Let’s first start with DFT (Discrete Fourier Transform)</p>
+
+<!--more-->
+
+<script type="math/tex; mode=display">% <![CDATA[
+\begin{bmatrix}
+y_1\\\
+y_2\\\
+y_3\\\
+\vdots\\\
+y_n
+\end{bmatrix}=
+\begin{bmatrix}
+1 & 1 & 1 & \cdots & 1 \\\
+1 &  \omega & \omega^2 &\cdots & \omega^{n-1} \\\
+1 & \omega^2 & \omega^4 & \cdots & \omega^{2n-2} \\\
+\vdots & \vdots & \vdots & \ddots & \vdots \\\
+1 & \omega^{n-1} &\omega^{2n-2} & \cdots & \omega^{(n-1)^2}
+\end{bmatrix}
+\begin{bmatrix}
+c_1\\\
+c_2\\\
+c_3\\\
+\vdots\\\
+c_n
+\end{bmatrix},\quad \omega=e^{\frac{2\pi i}{n}} %]]></script>
+
+<p>The vector (y) is the function to be expanded and the matrix multiplied by the coefficients (c) is the Fourier matrix (F_n); it is seen in <em>frequency space</em> through the coefficients (c_k). This formula is actually called the inverse Fourier transform. It can be seen from (\omega)(it has positive sign on (\omega)). Fourier transform is the one that computes the frequency expansion given the function value at each time step.</p>
+
+<p>Compare to the continuous form of Fourier transform:</p>
+
+<script type="math/tex; mode=display">f(t)=\int_{-\infty}^{+\infty}F(\nu)e^{2\pi i\nu t}d\nu</script>
+
+<p>In the case of n order Fourier matrix, we have to compute</p>
+
+<script type="math/tex; mode=display">y_j=\sum_{k=0}^{n-1}\omega^{jk}x_k, \quad j=0,1,\cdots,n-1</script>
+
+<p>The complexity is (O(n^2)). The idea of FFT is to recursively compute the half size matrix (i.e. (F_{n/2}, F_{n/4}, \cdots)) and the complexity can be reduced to (O(nlog(n))).
+The link between the origin matrix and its half sized counterpart is the property of complex number. Suppose (m=\frac{n}{2}), then (\omega_m=\omega_n^2)</p>
+
+<p>For the first m entries of (y), we split the sum into even and odd parts.</p>
+
+<p>[y_j=\sum_{k=0}^{n-1}\omega_n^{jk}c_k=\sum_{k=0}^{n/2-1}\omega_n^{2jk}c_{2k}+\sum_{k=0}^{n/2-1}\omega_n^{j(2k+1)}c_{2k+1}, \quad j=0,1,\cdots, n/2-1]</p>
+
+<p>The even c’s go into (c’=(c_0,c_2,\cdots)) and the odd c’s go into (c’’=(c_1,c_3,\cdots)). Set (y’=F_mc’,y’'=F_mc’’). Then using (\omega_m=\omega_n^2), we can transform it into the combintion of (y’ and y’’).</p>
+
+<script type="math/tex; mode=display">LHS=\sum_{k=0}^{m-1}\omega_m^{jk}c'_k + \omega_n^j \sum_{k=0}^{m-1}\omega_m^{jk}c''_k=y'_j+(\omega_n)^jy''_j</script>
+
+<p>For (j\ge m), Noticing that (\omega_n^m=-1) we have:</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+\begin{equation} 
+\begin{split}
+y_{j+m} & = \sum_{k=0}^{n-1}\omega_n^{(j+m)k}c_{k} \\
+& = \sum_{k=0}^{n/2-1}(-1)^{2k}\omega_n^{2jk}c_{2k}+\sum_{k=0}^{n/2-1}(-1)^{(2k+1)}\omega_n^{j(2k+1)}c_{2k+1} \\
+& =\sum_{k=0}^{m-1}\omega_m^{jk}c'_k - \omega_n^j \sum_{k=0}^{m-1}\omega_m^{jk}c''_k \\
+& = y'_j - (\omega_n)^j y''_j 
+\end{split}
+\end{equation} %]]></script>
+
+<p>So here we are, the essential expansion in this recursion.</p>
+
+<script type="math/tex; mode=display">\begin{align}
+y_j=y'_j+\omega_n^jy''_j, \quad j=0,1,\cdots,m-1 \\
+y_{j+m}=y'_j-\omega_n^jy''_j, \quad j=0,1,\cdots,m-1
+\end{align}</script>
+
+<p>The equations can be written in matrix expression.</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+y=
+\begin{bmatrix}
+I_m & D_m \\
+I_m & -D_m
+\end{bmatrix}
+\begin{bmatrix}
+y'\\
+y''
+\end{bmatrix}, \quad D_m=diag(1,\omega,\cdots, \omega^{m-1}) %]]></script>
+
+<p>Remember the definition of (y’ and y’’).</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+\begin{bmatrix}
+y'\\y''
+\end{bmatrix}=
+\begin{bmatrix}
+F_m &O\\
+O&F_m
+\end{bmatrix}
+\begin{bmatrix}
+c'\\c''
+\end{bmatrix} %]]></script>
+
+<p>We are nearly there; the last matrix is an ‘even-odd’ permutation that separates the incoming vector (c) into its even and odd parts (c’=(c_0,c_2,\cdots,c_{n-2}) and c’’=(c_1, c_3,\cdots,c_{n-1})). For a direct look, we give the example of a 4-order even-odd permutation matrix:</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+P_4=\begin{bmatrix}
+1 &&&\\
+&&1&\\
+&1&&\\
+&&&1
+\end{bmatrix} %]]></script>
+
+<p>So one recursion of the FFT can be written as the multiplication of three matrix.</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+F_n=
+\begin{bmatrix}
+I_n/2 & D_n/2 \\
+I_n/2 & -D_n/2
+\end{bmatrix}
+\begin{bmatrix}
+F_n/2&O\\
+O& F_n/2
+\end{bmatrix}
+P_n %]]></script>
+
+<p>The whole algorithm will iteratively compute (log_2(n)) stages until it reaches the bottom. In each stage, The only computation is the multiplication between the diagonal matrix and the half sized Fourier matrix, which is (\frac{n}{2}) times of multiplications. So the complexity of the whole algorithm will be (\frac{1}{2}nlog_2n) .</p>
+
+<p>As for the multiplication of the permutation, there is an elegant way of addressing it. Write the number 0 to n-1 in binary,  and rearrange them in order while reversing the order of their bits. Below shows an example of n=8.</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+\begin{matrix}
+input& binary& reversed & output\\
+0& 000& 000 & 0\\ 
+1& 001& 100& 4\\
+2& 010& 010& 2\\
+3& 011& 110& 6\\
+4& 100& 001& 1\\
+5& 101& 101& 5\\
+6& 110& 011& 3\\
+7& 111& 111& 7\\
+\end{matrix} %]]></script>
+
+
+        </div>
+        <br><br>
+      </article>
+
+      <nav class="post-pagination">
+        
+        <a href="/math/two-dimension-random-walk.html" class="btn previous" title="二维格点随机游走问题">&larr; 二维格点随机游走问题</a>
+        
+        
+        <a href="/math/Incidence-Matrix.html" class="btn next" title="Incidence Matrix">Incidence Matrix &rarr;</a>
+        
+      </nav>
+
+      <hr>
+
+      
+      <aside class="related">
+        <h3>Related Posts</h3>
+        <ul class="related-posts">
+          
+            <li>
+              <a href="/introduction/git-commands.html">
+                Git commands in a nut shell
+                <small><time datetime="2019-03-11T00:00:00+08:00">11 Mar 2019</time></small>
+              </a>
+            </li>
+          
+            <li>
+              <a href="/tricks/jupyter-notebook.html">
+                在远程服务器登录jupyter notebook
+                <small><time datetime="2017-09-25T00:00:00+08:00">25 Sep 2017</time></small>
+              </a>
+            </li>
+          
+            <li>
+              <a href="/tricks/conda-proxy.html">
+                conda proxyerror 解决办法
+                <small><time datetime="2017-08-17T00:00:00+08:00">17 Aug 2017</time></small>
+              </a>
+            </li>
+          
+        </ul>
+      </aside>
+      
+
+    </div>
+    
+    <div class="col-md-3 post-sidebar">
+      <div class="sidebar-content" id="sidebar">
+  <nav class="header-list-sidebar">
+    <ul id="sideNav" class="nav headers-sidenav">
+        <!-- code will be generated in TOC.js -->
+    </ul>
+  </nav>
+</div>
+    </div>
+  </div>
+</div>
+
+
+    <footer class="footer">
+  <div class="copyright">
+      Copyright &copy; <time datetime="2019-03-11T18:58:32+08:00">2019</time> <a href="http://localhost:4000">Haozhe Ji</a> | Powered by <a href="https://github.com/jekyll/jekyll">Jekyll</a> | Designed by <a href="https://github.com/lszero">lszero</a>
+  </div>
+</footer>
+
+
+    <a href="#top" class="back-to-top">^</a>
+
+<!--      -->
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="/assets/js/jquery-1.12.4.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="/assets/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+    <!-- TOC -->
+    <script src="/assets/js/toc/TOC.js"></script>
+
+    <script>$("#search-form").submit(function(event){
+      var query = document.getElementById("search-input").value;
+      window.open("http://google.com/search?q=" + query + "%20site:" + "");
+    });</script>
+  </body>
+</html>
