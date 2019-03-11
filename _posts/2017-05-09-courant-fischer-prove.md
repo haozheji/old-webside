@@ -12,7 +12,7 @@ $$
 \lambda_{n-k+1}=\max_{V_k}\min_{x\in V_k}\frac{x^TAx}{x^Tx}
 $$
 
-<!--more-->
+<!-- more -->
 
 这个定理得到在不同约束下的*Rayleigh*商的极值。笔者最欣赏的证明出自于 [Gilbert Strang ](http://www-math.mit.edu/~gs/)的 *Linear Algebra and Its Application*，循序渐进由浅入深，为读者展现了解决问题的思考过程，读来颇有收获。在此整理一下，附上一些自己的理解。
 
