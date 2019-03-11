@@ -142,7 +142,7 @@ e.g. `git remote add pb https://github.com/paulboone/ticgit`
 
 `git remote remove paul`
 
-# Fetch & Pull
+## Fetch & Pull
 
 -  fetch data from default server:
 
@@ -154,27 +154,27 @@ however, this does not automatically merge those works. You have to manually mer
 
 `git pull`
 
-## Push
+### Push
 
 `git push <remote> <branch>`
 
 by default is `git push origin master`
 
-## Inspect a Remote
+### Inspect a Remote
 
 `git remote show origin`
 
-# Git Branching
+## Git Branching
 
-## Create new branches
+### Create new branches
 
 `git branch new_branch`
 
-## Switch Branches
+### Switch Branches
 
 `git checkout branch_1`
 
-## check branches and which current branch is on
+### check branches and which current branch is on
 
 `HEAD` points to the current branch you are on
 
