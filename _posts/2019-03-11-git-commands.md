@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Git commands in a nut shell
-categories: Introduction
+categories: Tutorial
 tags: git
 ---
 
@@ -168,11 +168,19 @@ by default is `git push origin master`
 
 ### Create new branches
 
-`git branch new_branch`
+`git branch <branch_name>`
+
+### Delete existing branches
+
+`gut branch -D <branch_name>`
 
 ### Switch Branches
 
-`git checkout branch_1`
+`git checkout <branch_name>`
+
+### create a new branch with `HEAD` at specific commit 
+
+`git checkout -b <branch_name> <commit_hash>`
 
 ### check branches and which current branch is on
 
