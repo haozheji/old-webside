@@ -4,7 +4,7 @@ title: Git commands in a nut shell
 categories: Tutorial
 tags: git
 ---
-
+<!-- more -->
 ## First-time Setup
 
 -  first thing to do after installing git
@@ -20,7 +20,7 @@ tags: git
 
 `git config --list`
 
-<!-- more -->
+
 ## Repo
 
 -  initializing local file to repository

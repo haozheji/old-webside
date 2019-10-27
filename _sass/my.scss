@@ -20,7 +20,6 @@ html {
 
 body {
     font-family: "Calendas Plus", "Crimson Text", "Hoefler Text", "Georgia", serif;
-    font-size: 24 px;
     min-height: 100%;
     position: relative;
     padding-bottom: $height-footer;
@@ -45,6 +44,11 @@ p {
     margin-bottom: 32px;
     font-size: 20px;
 }
+
+.post ul li {
+    font-size: 20px;
+    line-height: 19px;
+    margin-bottom: 10.6666666667px; }
 
 strong {
     font-weight: bolder;
