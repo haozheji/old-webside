@@ -13,18 +13,30 @@
 
 $height-footer: 40px;
 
+
 html {
     height: 100%;
 }
 
 body {
+    font-family: "Calendas Plus", "Crimson Text", "Hoefler Text", "Georgia", serif;
+    font-size: 24 px;
     min-height: 100%;
     position: relative;
     padding-bottom: $height-footer;
 }
 
+.katex {
+    font-size: 20px !important; }
+  
+.katex-display {
+overflow-x: auto;
+overflow-y: hidden; }
+
 p {
     color: #515151;
+    margin-bottom: 32px;
+    font-size: 20px;
 }
 
 strong {

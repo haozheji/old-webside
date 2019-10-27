@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+  <title>
+    
+      VAE in Natural Language Generation &middot; Haozhe Ji's Blog
+    
+  </title>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.css" integrity="sha384-wITovz90syo1dJWVh32uuETPVEtGigN07tkttEqPv+uR2SE/mbQcG7ATL28aI9H0" crossorigin="anonymous">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.js" integrity="sha384-/y1Nn9+QQAipbNQWU65krzJralCnuOasHncUFXGkdwntGeSvQicrYkiUBwsgUqc1" crossorigin="anonymous"></script>
+
+  
+
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="/assets/bootstrap-3.3.7-dist/css/bootstrap.min.css">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="/assets/font-awesome/css/font-awesome.min.css">
+  <!-- My CSS -->
+  <link rel="stylesheet" href="/assets/main.css">
+  
+
+
+  
+
+  <!-- code highlighting-->
+  <link rel="stylesheet" href="/lib/highlight/styles/hybrid.css">
+  <script src="/lib/highlight/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <script>hljs.configure({ ignore: ['text'] });</script>
+  
+  <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+</head>
+
+
+<body>
+    <header class="header">
+  <!-- Navigation -->
+  <nav class="navbar navbar-default .navbar-static-top">
+    <div class="container">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/" style="color:#333">Haozhe Ji's Blog</a>
+        <p class="navbar-text">窓の外の景色</p>
+      </div>
+
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav navbar-right">
+          <li class="nav-search">
+            <form class="navbar-form navbar-left" role="search" id="search-form">
+              <div class="input-group">
+                  <span class="input-group-btn">
+                    <button class="btn btn-default" type="submit" style="color:#777">Go!</button>
+                  </span>
+                  <input type="text" id="search-input" class="form-control" placeholder="Search">
+                  
+              </div>
+            </form>
+          </li>
+          <li>
+            <a href="/archives.html">Archives</a>
+          </li>
+          <li>
+            <a href="/categories.html">Categories</a>
+          </li>
+          <li>
+            <a href="/tags.html">Tags</a>
+          </li>
+          <li>
+            <a href="/about.html">About</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+
+  
+    <div class="container">
+  <div class="row-fluid main">
+    <div class="col-md-9 content">
+      <article class="post">
+        <h1 class="post-title">VAE in Natural Language Generation</h1>
+
+        <div class="post-info">
+          <span class="post-date">25 Oct 2019</span>
+           | 
+            <span class="fa fa-folder-open" aria-hidden="true">
+            
+              <a class="post-categories" href="/categories.html#Weekly">Weekly</a>
+            
+            </span>
+          
+           | 
+            <span class="fa fa-tag" aria-hidden="true">
+            
+              <a class="post-tags" href="/tags.html#NLG">NLG</a>
+            
+            </span>
+          
+        </div>
+
+        <hr>
+        <div class="post-content">
+          <h1 id="what-is-vae">What is VAE?</h1>
+
+<p>VAE is short for Variational Auto-Encoder which is proposed by Kingma et al. in <a href="https://arxiv.org/pdf/1312.6114.pdf">Auto-Encoding Variational Bayes</a>. It extends the Variational Bayesian (VB) method by deriving a tractable lower bound and a reparameterization trick that allows the bound to be optimized using stochastic gradient updating.</p>
+
+<!-- more -->
+
+<h2 id="bayesian-inference">Bayesian Inference</h2>
+
+<p>Brought from <a href="https://en.wikipedia.org/wiki/Bayesian_inference">Wikipedia</a>:</p>
+
+<blockquote>
+  <p>Bayesian inference is a method of statistical inference in which Bayes’ theorem is used to update the probability for a hypothesis as more evidence or information becomes available.</p>
+</blockquote>
+
+<p>The gist behind Bayesian inference is to approximate the <strong>posterior probability</strong> <script type="math/tex">P(H\mid E)</script> of some hypothesis <script type="math/tex">H</script> given the observed data (evidence) <script type="math/tex">E</script>. This posterior probability is often affected by the data and we often define the <strong>prior probability</strong> of the hypothesis before seeing any data as <script type="math/tex">P(H)</script>. The estimation of <script type="math/tex">P(H\mid E)</script> is given by the Bayes’ theorem:</p>
+
+<script type="math/tex; mode=display">P(H\mid E)=\frac{P(E\mid H)P(H)}{P(E)}</script>
+
+<p><script type="math/tex">P(E\mid H)</script> is called the <strong>likelihood</strong>. It indicates the compatibility of the evidence with respect to the given hypothesis.</p>
+
+<p><script type="math/tex">P(E)</script> is termed as the <strong>marginal likelihood</strong> or marginal evidence. This term describes the distribution of the data.</p>
+
+<p>Different from ‘frequentist’ statsitics, Bayesian theory calls for the use of the posterior predictive distribution to do predictive inference, i.e., to predict the distribution of a new, unobserved data point.</p>
+
+<h2 id="variational-bayesian">Variational Bayesian</h2>
+
+<p>Bayesian inference defines a set of probabilities. The term ‘variation’ actually comes from relaxing the integral e.g. of the marginal likelihood <script type="math/tex">p(x)=\int p(x\mid z)p(z)dz</script>.</p>
+
+<blockquote>
+  <p>The key to the variational method is to approximate the integral with a simpler form that is tractable, forming a lower or upper bound.</p>
+</blockquote>
+
+<p><del>In the problem formulation, an assumption to the data is that they are generated by some continuous latent variables.</del></p>
+
+<h1 id="variational-auto-encoder-from-a-probability-model-perspective"><em>Variational Auto-Encoder</em> from a probability model perspective</h1>
+
+<p>In this scenario, some assumptions are posed to the datapoints <script type="math/tex">\mathbf{X}=\{\mathbf{x}_i\}_{i=1}^N</script>.</p>
+
+<ul>
+  <li>
+    <p>Each datapoint <script type="math/tex">\mathbf{x}_i</script> is considered i.i.d, i.e. independent identically distributed.</p>
+  </li>
+  <li>
+    <p>Each datapoint <script type="math/tex">\mathbf{x}_i</script> is generated by a corresponding local latent random variable <script type="math/tex">\mathbf{z}_i</script>.</p>
+  </li>
+</ul>
+
+<p><del>What is shared across the datapoints is the global parameter <script type="math/tex">\theta</script> that parametrize the prior probability <script type="math/tex">p_\theta (\mathbf{z})</script> from which the latent variable <script type="math/tex">\mathbf{z}</script> is sampled.</del></p>
+
+<p>In variational inference, out goal is to approximate the intractable posterior distribution of the latent variable given the observed data, i.e. <script type="math/tex">p(\mathbf{z}\mid \mathbf{x})</script> with a simpler distribution chosen from a family of distributions <script type="math/tex">q_\lambda(\mathbf{z}\mid \mathbf{x})</script> parameterized by <script type="math/tex">\lambda</script>.</p>
+
+<blockquote>
+  <p><script type="math/tex">\lambda</script> is the variational parameter that indexes the family distributions. For example, if <script type="math/tex">q</script> were Gaussian, it would be the mean and variance of the latent variables for each datapoint <script type="math/tex">\lambda_{x_i} = (\mu_{x_i}, \sigma^2_{x_i})</script>.</p>
+</blockquote>
+
+<h2 id="amortizing-posterior-inference">Amortizing Posterior Inference</h2>
+
+<p>In amortized inference, instead of introducing different <script type="math/tex">\lambda_i</script> for each datapoint <script type="math/tex">\mathbf{x}_i</script> which would result in a linearly growing number of parameters with respect to the datapoints, we use a neural network parametrized by <script type="math/tex">\phi</script> to learn the variational parameter <script type="math/tex">\lambda</script>.</p>
+
+<p>So the number of parameters to be learned is reduced to constant with respect to the number of datapoints. And since the real parameter govern <script type="math/tex">q</script> becomes <script type="math/tex">\phi</script>, we could rewrite the distribution into <script type="math/tex">q_\phi(\mathbf{z}\mid \mathbf{x})</script>.</p>
+
+<h2 id="mean-field-variational-inference-mfvi">Mean-field Variational Inference (MFVI)</h2>
+
+<p>The Mean-field approximation assumes that <script type="math/tex">q_\phi(\mathbf{Z}\mid \mathbf{X})</script> could be fully factorized which means that all latent variables are independent.</p>
+
+<script type="math/tex; mode=display">q_\phi(\mathbf{Z}\mid \mathbf{X})=\prod_{\mathbf{z}\in\mathbf{Z},\ 
+\mathbf{x}\in\mathbf{X}} q_\phi (\mathbf{z}\mid \mathbf{x})</script>
+
+<h2 id="evidence-lower-bound-elbo">Evidence Lower Bound (ELBO)</h2>
+
+<p>To approximate the posterior distribution <script type="math/tex">p(\mathbf{z}\mid \mathbf{x})</script>, we take the tractable approach by minimizing the KL divergence between <script type="math/tex">q_\phi(\mathbf{z}\mid \mathbf{x})</script> and <script type="math/tex">p(\mathbf{z}\mid \mathbf{x})</script>.</p>
+
+<script type="math/tex; mode=display">\mathbb{KL}(q_\phi(\mathbf{z}|\mathbf{x})\|p(\mathbf{z}|\mathbf{x}))=\mathbf{E}_{z\sim q_\phi(\mathbf{z}\mid \mathbf{x})}[\log \frac{q_\phi(\mathbf{z}\mid \mathbf{x})}{p(\mathbf{z}\mid \mathbf{x})}]</script>
+
+<script type="math/tex; mode=display">=\mathbf{E}_q[q_\phi(\mathbf{z}\mid \mathbf{x})]-\mathbf{E}_q[p( \mathbf{x}, \mathbf{z})] + \log p(\mathbf{x})</script>
+
+<p>Rewrite the evidence as</p>
+
+<script type="math/tex; mode=display">\log p(\mathbf{x}) =ELBO(\phi) + \mathbb{KL}(q_\phi(\mathbf{z}\mid \mathbf{x})\|p(\mathbf{z}\mid \mathbf{x}))</script>
+
+<p>Since the log evidence is a constant, maximizing the ELBO is equivilant to minimizing the KL term.</p>
+
+<p>Let’s rewrite the ELBO into a tractable form:</p>
+
+<script type="math/tex; mode=display">ELBO(\phi)=\mathbf{E}_q[p( \mathbf{x}, \mathbf{z})] - \mathbf{E}_q[q_\phi(\mathbf{z}\mid \mathbf{x})]</script>
+
+<script type="math/tex; mode=display">=\mathbf{E}_{z\sim q_\phi}[p(\mathbf{x}\mid \mathbf{z})] - \mathbb{KL}(q_\phi(\mathbf{z}\mid \mathbf{x})\|p(\mathbf{z}))</script>
+
+<p>The likelihood <script type="math/tex">p(\mathbf{x}\mid \mathbf{z})</script> parametrized by another neural network with parameter <script type="math/tex">\theta</script> is called the <em>generative model</em>. Recall that the estimated posterior distribution <script type="math/tex">q_\phi(\mathbf{z}\mid \mathbf{x})</script> parametrized by a neural network with parameter <script type="math/tex">\phi</script> is called the <em>inference model</em>.</p>
+
+        </div>
+        <br><br>
+      </article>
+
+      <nav class="post-pagination">
+        
+        <a href="/tutorial/git-commands.html" class="btn previous" title="Git commands in a nut shell">&larr; Git commands in a nut shell</a>
+        
+        
+      </nav>
+
+      <hr>
+
+<div class="relatedPosts">
+
+  <h3>Related post</h3>
+
+  
+  
+
+  
+  
+
+  
+
+  
+
+    
+    
+
+    
+
+    
+
+  
+
+    
+    
+
+    
+
+    
+
+  
+
+    
+    
+
+    
+
+    
+
+  
+
+    
+    
+
+    
+
+    
+
+  
+
+    
+    
+
+    
+
+    
+
+  
+
+    
+    
+
+    
+
+    
+
+  
+
+    
+    
+
+    
+
+    
+
+  
+
+    
+    
+
+    
+
+    
+
+  
+
+    
+    
+
+    
+
+    
+
+  
+
+</div>
+
+
+      
+      <aside class="related">
+        <h3>Related Posts</h3>
+        <ul class="related-posts">
+          
+            <li>
+              <a href="/tutorial/git-commands.html">
+                Git commands in a nut shell
+                <small><time datetime="2019-03-11T00:00:00+08:00">11 Mar 2019</time></small>
+              </a>
+            </li>
+          
+            <li>
+              <a href="/tricks/jupyter-notebook.html">
+                远程登录jupyter notebook
+                <small><time datetime="2017-09-25T00:00:00+08:00">25 Sep 2017</time></small>
+              </a>
+            </li>
+          
+            <li>
+              <a href="/tricks/conda-proxy.html">
+                conda proxyerror 解决办法
+                <small><time datetime="2017-08-17T00:00:00+08:00">17 Aug 2017</time></small>
+              </a>
+            </li>
+          
+        </ul>
+      </aside>
+      
+
+    </div>
+    
+    <div class="col-md-3 post-sidebar">
+      <div class="sidebar-content" id="sidebar">
+  <nav class="header-list-sidebar">
+    <ul id="sideNav" class="nav headers-sidenav">
+        <!-- code will be generated in TOC.js -->
+    </ul>
+  </nav>
+</div>
+    </div>
+  </div>
+</div>
+
+
+    <footer class="footer">
+  <div class="copyright">
+      &copy; <a href="https://github.com/cdjhz">Haozhe Ji</a>  <time datetime="2019-10-28T02:02:54+08:00">2019</time> | Powered by <a href="https://github.com/jekyll/jekyll">Jekyll</a> & <a href="https://github.com/lszero">lszero</a>
+  
+  </div>
+  <script>
+    var scripts = document.getElementsByTagName("script");
+    for (var i = 0; i < scripts.length; i++) {
+      /* TODO: keep going after an individual parse error. */
+      var script = scripts[i];
+      if (script.type.match(/^math\/tex/)) {
+        var text = script.text === "" ? script.innerHTML : script.text;
+        var options = script.type.match(/mode\s*=\s*display/) ?
+                      {displayMode: true} : {};
+        script.insertAdjacentHTML("beforebegin",
+                                  katex.renderToString(text, options));
+      }
+    }
+    document.body.className += " math_finished";
+  </script>
+  
+</footer>
+
+
+    <a href="#top" class="back-to-top">^</a>
+
+<!--      -->
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="/assets/js/jquery-1.12.4.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="/assets/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+    <!-- TOC -->
+    <script src="/assets/js/toc/TOC.js"></script>
+
+    <script>$("#search-form").submit(function(event){
+      var query = document.getElementById("search-input").value;
+      window.open("http://google.com/search?q=" + query + "%20site:" + "");
+    });</script>
+  </body>
+</html>

@@ -1,16 +1,15 @@
 ---
 layout: post
 title: Courant Fischer定理的证明
-mathjax: true
 categories: Math
 tags: [linear algebra]
 ---
 
 对$n$阶实对称矩阵$A$有特征值$\lambda_1\le \lambda_2\le \cdots\le \lambda_{n}$，对应特征向量$x_1,x_2,\cdots ,x_n$，则对任意$k$维子空间$V_k$，有：
 
-\[
+$$
 \lambda_{n-k+1}=\max_{V_k}\min_{x\in V_k}\frac{x^TAx}{x^Tx}
-\]
+$$
 
 <!-- more -->
 
@@ -31,11 +30,15 @@ tags: [linear algebra]
 \lambda_1\le R(x)=\frac{x^TAx}{x^Tx}\le \lambda_n
 \]
 
+$$
+\lambda_1\le R(x)=\frac{x^TAx}{x^Tx}\le \lambda_n
+$$
+
 当$x=x_1$时取到最小值；当$x=x_n$时取到最大值。
 
 *proof:*
 
-先从几何上理解一下Rayleigh商的含义，以最小化$R(x)$为例。令分子等于1得到$n$维超椭球的方程，这时候问题转变为最大化分母$x^Tx=\|\|x\|\|^2$。也就是找到一个方向（轴）使得在这个方向上超椭球面上的点到原点的距离最大（最长轴）。显然，沿着最长主轴(major axis)的方向就能得到$R(x)$的最小值，这个方向也很好通过$A$的相似对角化确定。
+先从几何上理解一下Rayleigh商的含义，以最小化$$R(x)$$为例。令分子等于1得到$n$维超椭球的方程，这时候问题转变为最大化分母$x^Tx=\|\|x\|\|^2$。也就是找到一个方向（轴）使得在这个方向上超椭球面上的点到原点的距离最大（最长轴）。显然，沿着最长主轴(major axis)的方向就能得到$R(x)$的最小值，这个方向也很好通过$A$的相似对角化确定。
 
 \[
 R(x)=\frac{(Qy)^TA(Qy)}{(Qy)^T(Qy)}=\frac{y^T\Lambda y}{y^Ty}=\frac{\lambda_1y_1^2+\cdots +\lambda_ny_n^2}{y_1^2+\cdots +y_n^2}

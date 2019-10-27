@@ -24,9 +24,16 @@ url: "cdjhz.github.io" # the base hostname & protocol for your site, e.g. http:/
 #github_username:  cdjhz
 
 # Build settings
-markdown: kramdown
+markdown:    kramdown
+
 kramdown:
-   math_engine: mathjax
+  auto_ids: true
+  footnote_nr: 1
+  entity_output: as_char
+  toc_levels: 1..6
+  
+maruku:
+  use_tex:  true
 #theme: minima
 #plugins:
 #  - jekyll-paginate

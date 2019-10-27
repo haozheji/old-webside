@@ -12,28 +12,20 @@
     
   </title>
 
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.css" integrity="sha384-wITovz90syo1dJWVh32uuETPVEtGigN07tkttEqPv+uR2SE/mbQcG7ATL28aI9H0" crossorigin="anonymous">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.js" integrity="sha384-/y1Nn9+QQAipbNQWU65krzJralCnuOasHncUFXGkdwntGeSvQicrYkiUBwsgUqc1" crossorigin="anonymous"></script>
+
+  
+
   <!-- Bootstrap -->
   <link rel="stylesheet" href="/assets/bootstrap-3.3.7-dist/css/bootstrap.min.css">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="/assets/font-awesome/css/font-awesome.min.css">
   <!-- My CSS -->
   <link rel="stylesheet" href="/assets/main.css">
+  
 
-  <!-- MathJax -->
-  <script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-      TeX: {
-        equationNumbers: {
-          autoNumber: "AMS"
-        }
-      },
-      tex2jax: {
-        inlineMath: [ ['$','$'] , ['\(', '\)']],
-        displayMath: [ ['$$','$$'] , ['\[', '\]']],
-        processEscapes: true,
-      }
-    });
-  </script>
+
   
 
   <!-- code highlighting-->
@@ -119,6 +111,8 @@
         
           <a href="#jupyter notebook" title="jupyter notebook" rel="1">jupyter notebook (1)</a>
         
+          <a href="#NLG" title="NLG" rel="1">NLG (1)</a>
+        
       </div>
 
       <hr />
@@ -131,7 +125,7 @@
 
         <ul class="posts-list">
         
-          <li><a class="post-title" href="/introduction/git-commands.html">Git commands in a nut shell<small class="post-date">2019-03-11</small></a></li>
+          <li><a class="post-title" href="/tutorial/git-commands.html">Git commands in a nut shell<small class="post-date">2019-03-11</small></a></li>
           
         
           <li><a class="post-title" href="/tricks/auto-logging.html">Git和ssh自动登录<small class="post-date">2017-05-08</small></a></li>
@@ -200,6 +194,17 @@
         
         </ul>
       
+        <span class="fa fa-book" aria-hidden="true" id="NLG">
+          <span class="text">NLG</span>
+        </span>
+
+        <ul class="posts-list">
+        
+          <li><a class="post-title" href="/weekly/VAE.html">VAE in Natural Language Generation<small class="post-date">2019-10-25</small></a></li>
+          
+        
+        </ul>
+      
       </br></br>
       </div>
     </div>
@@ -209,8 +214,25 @@
 
     <footer class="footer">
   <div class="copyright">
-      &copy; <a href="https://github.com/cdjhz">Haozhe Ji</a>  <time datetime="2019-03-11T21:29:49+08:00">2019</time> | Powered by <a href="https://github.com/jekyll/jekyll">Jekyll</a> & <a href="https://github.com/lszero">lszero</a>
+      &copy; <a href="https://github.com/cdjhz">Haozhe Ji</a>  <time datetime="2019-10-28T02:02:54+08:00">2019</time> | Powered by <a href="https://github.com/jekyll/jekyll">Jekyll</a> & <a href="https://github.com/lszero">lszero</a>
+  
   </div>
+  <script>
+    var scripts = document.getElementsByTagName("script");
+    for (var i = 0; i < scripts.length; i++) {
+      /* TODO: keep going after an individual parse error. */
+      var script = scripts[i];
+      if (script.type.match(/^math\/tex/)) {
+        var text = script.text === "" ? script.innerHTML : script.text;
+        var options = script.type.match(/mode\s*=\s*display/) ?
+                      {displayMode: true} : {};
+        script.insertAdjacentHTML("beforebegin",
+                                  katex.renderToString(text, options));
+      }
+    }
+    document.body.className += " math_finished";
+  </script>
+  
 </footer>
 
 

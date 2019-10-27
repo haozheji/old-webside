@@ -12,30 +12,20 @@
     
   </title>
 
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.css" integrity="sha384-wITovz90syo1dJWVh32uuETPVEtGigN07tkttEqPv+uR2SE/mbQcG7ATL28aI9H0" crossorigin="anonymous">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.js" integrity="sha384-/y1Nn9+QQAipbNQWU65krzJralCnuOasHncUFXGkdwntGeSvQicrYkiUBwsgUqc1" crossorigin="anonymous"></script>
+
+  
+
   <!-- Bootstrap -->
   <link rel="stylesheet" href="/assets/bootstrap-3.3.7-dist/css/bootstrap.min.css">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="/assets/font-awesome/css/font-awesome.min.css">
   <!-- My CSS -->
   <link rel="stylesheet" href="/assets/main.css">
-
-  <!-- MathJax -->
-  <script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-      TeX: {
-        equationNumbers: {
-          autoNumber: "AMS"
-        }
-      },
-      tex2jax: {
-        inlineMath: [ ['$','$'] , ['\(', '\)']],
-        displayMath: [ ['$$','$$'] , ['\[', '\]']],
-        processEscapes: true,
-      }
-    });
-  </script>
   
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+
+
   
 
   <!-- code highlighting-->
@@ -145,19 +135,27 @@
 
 <p><em>Rayleigh’s Principle:</em></p>
 
+<p>[
+\lambda_1\le R(x)=\frac{x^TAx}{x^Tx}\le \lambda_n
+]</p>
+
 <script type="math/tex; mode=display">\lambda_1\le R(x)=\frac{x^TAx}{x^Tx}\le \lambda_n</script>
 
 <p>当$x=x_1$时取到最小值；当$x=x_n$时取到最大值。</p>
 
 <p><em>proof:</em></p>
 
-<p>先从几何上理解一下Rayleigh商的含义，以最小化$R(x)$为例。令分子等于1得到$n$维超椭球的方程，这时候问题转变为最大化分母$x^Tx=||x||^2$。也就是找到一个方向（轴）使得在这个方向上超椭球面上的点到原点的距离最大（最长轴）。显然，沿着最长主轴(major axis)的方向就能得到$R(x)$的最小值，这个方向也很好通过$A$的相似对角化确定。</p>
+<p>先从几何上理解一下Rayleigh商的含义，以最小化<script type="math/tex">R(x)</script>为例。令分子等于1得到$n$维超椭球的方程，这时候问题转变为最大化分母$x^Tx=||x||^2$。也就是找到一个方向（轴）使得在这个方向上超椭球面上的点到原点的距离最大（最长轴）。显然，沿着最长主轴(major axis)的方向就能得到$R(x)$的最小值，这个方向也很好通过$A$的相似对角化确定。</p>
 
-<script type="math/tex; mode=display">R(x)=\frac{(Qy)^TA(Qy)}{(Qy)^T(Qy)}=\frac{y^T\Lambda y}{y^Ty}=\frac{\lambda_1y_1^2+\cdots +\lambda_ny_n^2}{y_1^2+\cdots +y_n^2}</script>
+<p>[
+R(x)=\frac{(Qy)^TA(Qy)}{(Qy)^T(Qy)}=\frac{y^T\Lambda y}{y^Ty}=\frac{\lambda_1y_1^2+\cdots +\lambda_ny_n^2}{y_1^2+\cdots +y_n^2}
+]</p>
 
 <p>$Q$为正交阵，等价于进行有限次旋转和镜射，可以理解为将$x$在自然基下的坐标换到了$A$的特征向量基下。（注意上式中$y_i$表示坐标）由分子可以看出超椭球的主轴长度反比于$\frac{1}{\sqrt \lambda}$, 因此最长主轴方向就是$x_1$的方向，在$A$ 特征向量的基下坐标为$y_1=1,y_2=0,\cdots ,y_n=0$.也可以利用不等式：</p>
 
-<script type="math/tex; mode=display">\lambda_1(y_1^2+\cdots +y_n^2)\le \lambda_1y_1^2+\cdots\lambda_ny_n^2</script>
+<p>[
+\lambda_1(y_1^2+\cdots +y_n^2)\le \lambda_1y_1^2+\cdots\lambda_ny_n^2
+]</p>
 
 <p>类似地可以求出在$x_n$方向上，$R(x)$取到极大值。实际上除了边界的特征向量为极值点, 中间的特征向量则是$R(x)$的鞍点(saddle points)。一个典型的鞍点：</p>
 
@@ -171,7 +169,9 @@
 
 <p>鞍点的困难在于,对于一个特定的$x$,我们不知道$R(x)$和那些中间的特征值$\lambda_2,\cdots, \lambda_n$的大小关系. 比如说我们想要让$R(x)$的最小值取到第$j$个特征值, 利用实对称矩阵的特征向量$x_i$相互正交的性质, 直接的想法是约束变量$x$取到与$x_1,\cdots,x_{j-1}$正交, 即$x$取值于子空间$span\{x_j,\cdots,x_n\}$. 这样$R(x)$表达式中的$y_1=\cdots=y_{j-1}=0$, Rayleigh 商也化为:</p>
 
-<script type="math/tex; mode=display">\frac{\lambda_{j}y_j^2+\cdots+\lambda_ny_n^2}{y_j^2+\cdots+y_n^2}</script>
+<p>[
+\frac{\lambda_{j}y_j^2+\cdots+\lambda_ny_n^2}{y_j^2+\cdots+y_n^2}
+]</p>
 
 <p>上式取到当(y_j=1)时取到最小值(\lambda_j).总结成引理二.</p>
 
@@ -307,6 +307,15 @@
 
   
 
+    
+    
+
+    
+
+    
+
+  
+
 </div>
 
 
@@ -316,7 +325,14 @@
         <ul class="related-posts">
           
             <li>
-              <a href="/introduction/git-commands.html">
+              <a href="/weekly/VAE.html">
+                VAE in Natural Language Generation
+                <small><time datetime="2019-10-25T00:00:00+08:00">25 Oct 2019</time></small>
+              </a>
+            </li>
+          
+            <li>
+              <a href="/tutorial/git-commands.html">
                 Git commands in a nut shell
                 <small><time datetime="2019-03-11T00:00:00+08:00">11 Mar 2019</time></small>
               </a>
@@ -326,13 +342,6 @@
               <a href="/tricks/jupyter-notebook.html">
                 远程登录jupyter notebook
                 <small><time datetime="2017-09-25T00:00:00+08:00">25 Sep 2017</time></small>
-              </a>
-            </li>
-          
-            <li>
-              <a href="/tricks/conda-proxy.html">
-                conda proxyerror 解决办法
-                <small><time datetime="2017-08-17T00:00:00+08:00">17 Aug 2017</time></small>
               </a>
             </li>
           
@@ -357,8 +366,25 @@
 
     <footer class="footer">
   <div class="copyright">
-      &copy; <a href="https://github.com/cdjhz">Haozhe Ji</a>  <time datetime="2019-03-11T21:29:49+08:00">2019</time> | Powered by <a href="https://github.com/jekyll/jekyll">Jekyll</a> & <a href="https://github.com/lszero">lszero</a>
+      &copy; <a href="https://github.com/cdjhz">Haozhe Ji</a>  <time datetime="2019-10-28T02:02:54+08:00">2019</time> | Powered by <a href="https://github.com/jekyll/jekyll">Jekyll</a> & <a href="https://github.com/lszero">lszero</a>
+  
   </div>
+  <script>
+    var scripts = document.getElementsByTagName("script");
+    for (var i = 0; i < scripts.length; i++) {
+      /* TODO: keep going after an individual parse error. */
+      var script = scripts[i];
+      if (script.type.match(/^math\/tex/)) {
+        var text = script.text === "" ? script.innerHTML : script.text;
+        var options = script.type.match(/mode\s*=\s*display/) ?
+                      {displayMode: true} : {};
+        script.insertAdjacentHTML("beforebegin",
+                                  katex.renderToString(text, options));
+      }
+    }
+    document.body.className += " math_finished";
+  </script>
+  
 </footer>
 
 
