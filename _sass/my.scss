@@ -26,6 +26,13 @@ body {
     padding-bottom: $height-footer;
 }
 
+blockquote, blockquote p {
+    font-style: italic;
+    line-height: 1.3em;
+    text-align: center;
+    color: #3c3c3c;
+    margin-bottom: 32px; }
+
 .katex {
     font-size: 20px !important; }
   
