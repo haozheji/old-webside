@@ -25,14 +25,17 @@ url: "cdjhz.github.io" # the base hostname & protocol for your site, e.g. http:/
 
 # Build settings
 markdown: kramdown
+kramdown:
+   math_engine: mathjax
 #theme: minima
 #plugins:
 #  - jekyll-paginate
 #pagniate: 5
 #pagniate_path: "/pages:num/"
 
-mathjax: true
 
+#mathjax: true
+#katex: true
 
 plugins:
   - jekyll-paginate
