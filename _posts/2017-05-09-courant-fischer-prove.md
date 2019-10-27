@@ -8,9 +8,9 @@ tags: [linear algebra]
 
 对$n$阶实对称矩阵$A$有特征值$\lambda_1\le \lambda_2\le \cdots\le \lambda_{n}$，对应特征向量$x_1,x_2,\cdots ,x_n$，则对任意$k$维子空间$V_k$，有：
 
-$$
+\[
 \lambda_{n-k+1}=\max_{V_k}\min_{x\in V_k}\frac{x^TAx}{x^Tx}
-$$
+\]
 
 <!-- more -->
 
@@ -27,9 +27,9 @@ $$
 
 *Rayleigh's Principle:*
 
-$$
+\[
 \lambda_1\le R(x)=\frac{x^TAx}{x^Tx}\le \lambda_n
-$$
+\]
 
 当$x=x_1$时取到最小值；当$x=x_n$时取到最大值。
 
@@ -37,15 +37,15 @@ $$
 
 先从几何上理解一下Rayleigh商的含义，以最小化$R(x)$为例。令分子等于1得到$n$维超椭球的方程，这时候问题转变为最大化分母$x^Tx=\|\|x\|\|^2$。也就是找到一个方向（轴）使得在这个方向上超椭球面上的点到原点的距离最大（最长轴）。显然，沿着最长主轴(major axis)的方向就能得到$R(x)$的最小值，这个方向也很好通过$A$的相似对角化确定。
 
-$$
+\[
 R(x)=\frac{(Qy)^TA(Qy)}{(Qy)^T(Qy)}=\frac{y^T\Lambda y}{y^Ty}=\frac{\lambda_1y_1^2+\cdots +\lambda_ny_n^2}{y_1^2+\cdots +y_n^2}
-$$
+\]
 
 $Q$为正交阵，等价于进行有限次旋转和镜射，可以理解为将$x$在自然基下的坐标换到了$A$的特征向量基下。（注意上式中$y_i$表示坐标）由分子可以看出超椭球的主轴长度反比于$\frac{1}{\sqrt \lambda}$, 因此最长主轴方向就是$x_1$的方向，在$A$ 特征向量的基下坐标为$y_1=1,y_2=0,\cdots ,y_n=0$.也可以利用不等式：
 
-$$
+\[
 \lambda_1(y_1^2+\cdots +y_n^2)\le \lambda_1y_1^2+\cdots\lambda_ny_n^2
-$$
+\]
 
 类似地可以求出在$x_n$方向上，$R(x)$取到极大值。实际上除了边界的特征向量为极值点, 中间的特征向量则是$R(x)$的鞍点(saddle points)。一个典型的鞍点：
 
@@ -59,9 +59,9 @@ $$
 
 鞍点的困难在于,对于一个特定的$x$,我们不知道$R(x)$和那些中间的特征值$\lambda_2,\cdots, \lambda_n$的大小关系. 比如说我们想要让$R(x)$的最小值取到第$j$个特征值, 利用实对称矩阵的特征向量$x_i$相互正交的性质, 直接的想法是约束变量$x$取到与$x_1,\cdots,x_{j-1}$正交, 即$x$取值于子空间$span\\{x_j,\cdots,x_n\\}$. 这样$R(x)$表达式中的$y_1=\cdots=y_{j-1}=0$, Rayleigh 商也化为:
 
-$$
+\[
 \frac{\lambda_{j}y_j^2+\cdots+\lambda_ny_n^2}{y_j^2+\cdots+y_n^2}
-$$
+\]
 
 上式取到当\(y_j=1\)时取到最小值\(\lambda_j\).总结成引理二.
 
