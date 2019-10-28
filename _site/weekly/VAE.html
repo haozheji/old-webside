@@ -188,7 +188,7 @@
 
 <h2 id="evidence-lower-bound-elbo">Evidence Lower Bound (ELBO)</h2>
 
-<p>To approximate the posterior distribution <script type="math/tex">p(\mathbf{z}\mid \mathbf{x})</script>, we take the tractable approach by minimizing the KL divergence between <script type="math/tex">q_\phi(\mathbf{z}\mid \mathbf{x})</script> and <script type="math/tex">p(\mathbf{z}\mid \mathbf{x})</script>.</p>
+<p>To approximate the posterior distribution <script type="math/tex">p(\mathbf{z}\mid \mathbf{x})</script>, we take the tractable approach by minimizing the KL divergence of <script type="math/tex">q_\phi(\mathbf{z}\mid \mathbf{x})</script> from <script type="math/tex">p(\mathbf{z}\mid \mathbf{x})</script>.</p>
 
 <script type="math/tex; mode=display">\mathbb{KL}(q_\phi(\mathbf{z}|\mathbf{x})\|p(\mathbf{z}|\mathbf{x}))=\mathbf{E}_{z\sim q_\phi(\mathbf{z}\mid \mathbf{x})}[\log \frac{q_\phi(\mathbf{z}\mid \mathbf{x})}{p(\mathbf{z}\mid \mathbf{x})}]</script>
 
@@ -207,6 +207,27 @@
 <script type="math/tex; mode=display">=\mathbf{E}_{z\sim q_\phi}[p(\mathbf{x}\mid \mathbf{z})] - \mathbb{KL}(q_\phi(\mathbf{z}\mid \mathbf{x})\|p(\mathbf{z}))</script>
 
 <p>The likelihood <script type="math/tex">p(\mathbf{x}\mid \mathbf{z})</script> parametrized by another neural network with parameter <script type="math/tex">\theta</script> is called the <em>generative model</em>. Recall that the estimated posterior distribution <script type="math/tex">q_\phi(\mathbf{z}\mid \mathbf{x})</script> parametrized by a neural network with parameter <script type="math/tex">\phi</script> is called the <em>inference model</em>.</p>
+
+<p>While maximizing the ELBO with respect to <script type="math/tex">\theta</script> and <script type="math/tex">\phi</script>, we approximate the the posterior distribution of the latent variable for inference and the likelihood for reconstruction the datapoint.</p>
+
+<h2 id="the-reparametrization-trick">The Reparametrization Trick</h2>
+
+<p>In the original VAE paper, the prior distribution from which the latent variable <script type="math/tex">\mathbf{z}</script> is sampled, is the Normal distribution <script type="math/tex">\mathcal{N}(0,1)</script>. The estimated posterior distribution <script type="math/tex">q_\phi(z\mid x)</script> is another Gaussian distribution <script type="math/tex">\mathcal{N}(\mu(\phi), \sigma(\phi))</script>.</p>
+
+<p>Since <script type="math/tex">\mathbf{z}</script> is sampled from the distribution we are interested in, we cannot directly compute the gradient with respect to the parameter of the distribution. A simple approach is to estimate the gradient using the Monte Carlo method.</p>
+
+<script type="math/tex; mode=display">\nabla_{\phi}\mathbf{E}_{\mathbf{z}\sim q_\phi}[f(\mathbf{z})]=\nabla_\phi\int f(\mathbf{z})q_\phi(\mathbf{z})d\mathbf{z}</script>
+
+<script type="math/tex; mode=display">=\int f(\mathbf{z})\nabla_\phi q_\phi(\mathbf{z})d\mathbf{z}
+=\int f(\mathbf{z}) q_\phi(\mathbf{z}) \frac{\nabla_\phi q_\phi(\mathbf{z})}{q_\phi(\mathbf{z})} d\mathbf{z}</script>
+
+<script type="math/tex; mode=display">=\int f(\mathbf{z}) q_\phi(\mathbf{z}) \nabla_{\phi} \log q_\phi(\mathbf{z})  d\mathbf{z} = \mathbf{E}_{\mathbf{z}\sim q_\phi}[f(\mathbf{z})\nabla_{\phi} \log q_\phi(\mathbf{z})]</script>
+
+<p>This approach however is considered to have high variance.</p>
+
+<p>To circumvant direct sampling <script type="math/tex">\mathbf{z}</script> from <script type="math/tex">q_\phi(\mathbf{z}\mid \mathbf{x})</script>, we would like to find another differentiable transformation <script type="math/tex">g_\phi(\varepsilon, \mathbf{x})=\mathbf{z}</script> where the stochasticity only comes from <script type="math/tex">\varepsilon</script> which is sampled from <script type="math/tex">p(\varepsilon)</script>.</p>
+
+<p>As a concrete example, let’s apply</p>
 
         </div>
         <br><br>
@@ -366,7 +387,7 @@
 
     <footer class="footer">
   <div class="copyright">
-      &copy; <a href="https://github.com/cdjhz">Haozhe Ji</a>  <time datetime="2019-10-28T11:42:49+08:00">2019</time> | Powered by <a href="https://github.com/jekyll/jekyll">Jekyll</a> & <a href="https://github.com/lszero">lszero</a>
+      &copy; <a href="https://github.com/cdjhz">Haozhe Ji</a>  <time datetime="2019-10-28T17:01:58+08:00">2019</time> | Powered by <a href="https://github.com/jekyll/jekyll">Jekyll</a> & <a href="https://github.com/lszero">lszero</a>
   
   </div>
   <script>
